@@ -18,9 +18,9 @@ const Welcome = () => {
                     <Image style={styles.welcomeImage} resizeMode='contain' source={require('../assets/images/login-cover.png')}/>
                     {/*title*/}
                     <View style={{gap: 20}}>
-                        <Text style={styles.title}>LinkUp!</Text>
+                        <Text style={styles.title}>ZenStyle</Text>
                         <Text style={styles.punchline}>
-                            Where every thought finds a home and every image tells a story
+                            Beauty comes from the inside. Inside the hair salon
                         </Text>
                     </View>
 
