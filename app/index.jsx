@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Button} from 'react-native';
 import {router} from "expo-router";
 import ScreenWrapper from "../components/ScreenWrapper";
 import Welcome from "./welcome";
+import About from "./home/about";
+import {Drawer} from "expo-router/drawer";
 
 const index = () => {
   return (
@@ -13,6 +15,7 @@ const index = () => {
       {/*<Button title="Verify" onPress={()=> router.push('verify')}/>*/}
       {/*<Button title="Create Password" onPress={()=> router.push('createPassword')}/>*/}
         <Welcome/>
+
     </ScreenWrapper>
   );
 };

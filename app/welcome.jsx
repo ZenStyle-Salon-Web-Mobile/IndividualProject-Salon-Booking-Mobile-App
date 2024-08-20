@@ -29,7 +29,7 @@ const Welcome = () => {
                         <Button
                             title="Getting Started"
                             buttonStyle={{marginHorizontal: wp(3)}}
-                            onPress={()=> router.push('signUp')}
+                            onPress={()=> router.push('/home/about')}
                         />
                         <View style={styles.bottomTextContainer}>
                             <Text style={styles.loginText}>
