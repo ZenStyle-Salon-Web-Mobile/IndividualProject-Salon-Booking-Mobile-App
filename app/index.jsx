@@ -2,15 +2,17 @@ import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {router} from "expo-router";
 import ScreenWrapper from "../components/ScreenWrapper";
+import Welcome from "./welcome";
 
 const index = () => {
   return (
     <ScreenWrapper >
-      <Text>index Component</Text>
-      <Button title="welcome" onPress={()=> router.push('welcome')}/>
-      <Button title="Forgot Password" onPress={()=> router.push('forgotPassword')}/>
-      <Button title="Verify" onPress={()=> router.push('verify')}/>
-      <Button title="Create Password" onPress={()=> router.push('createPassword')}/>
+      {/*<Text>index Component</Text>*/}
+      {/*<Button title="welcome" onPress={()=> router.push('welcome')}/>*/}
+      {/*<Button title="Forgot Password" onPress={()=> router.push('forgotPassword')}/>*/}
+      {/*<Button title="Verify" onPress={()=> router.push('verify')}/>*/}
+      {/*<Button title="Create Password" onPress={()=> router.push('createPassword')}/>*/}
+        <Welcome/>
     </ScreenWrapper>
   );
 };

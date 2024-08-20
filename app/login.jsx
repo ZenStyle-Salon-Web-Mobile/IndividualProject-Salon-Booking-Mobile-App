@@ -52,9 +52,12 @@ const Login = () => {
                         sec
                         onChangeText={value => passwordRef.current = value}
                     />
-                    <Text style={styles.forgotPassword}>
-                        Forgot Password?
-                    </Text>
+                    <Pressable onPress={() => router.push('forgotPassword')}>
+                        <Text style={styles.forgotPassword}>
+                            Forgot Password?
+                        </Text>
+                    </Pressable>
+
                 {/*  button  */}
                     <Button title={'Login'} loading={loading} onPress={onSubmit}/>
                 </View>

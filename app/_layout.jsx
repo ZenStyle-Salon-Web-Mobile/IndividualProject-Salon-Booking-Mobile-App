@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {Stack} from "expo-router";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
 
 const _layout = () => {
   return (
@@ -9,6 +11,7 @@ const _layout = () => {
             headerShown: false
         }}
     />
+
   );
 };
 

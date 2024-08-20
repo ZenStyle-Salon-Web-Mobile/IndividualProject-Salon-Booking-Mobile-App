@@ -21,8 +21,9 @@ const Verify = () => {
     const inputs = useRef([]);
 
     const onSubmit = async () => {
+        router.push('createPassword')
         if(!emailRef.current || !passwordRef.current){
-            Alert.alert("Sign Up", "please fill all the fields!");
+            // Alert.alert("Sign Up", "please fill all the fields!");
         }
     }
 

@@ -21,7 +21,7 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = () => {
-
+    router.push('login')
   }
 
   return (

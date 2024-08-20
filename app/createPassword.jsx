@@ -18,8 +18,9 @@ const CreatePassword = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async () => {
+    router.push('login')
     if(!emailRef.current || !passwordRef.current){
-      Alert.alert("Sign Up", "please fill all the fields!");
+      // Alert.alert("Sign Up", "please fill all the fields!");
     }
   }
 
