@@ -1,8 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import {View, Text, StyleSheet, Dimensions, FlatList, Image} from 'react-native';
 import {Video} from 'expo-av';
-import {hp} from "../../helpers/common";
+import {getColumnCount, hp, wp} from "../../helpers/common";
 import Marquee from 'react-native-marquee';
+import {MasonryFlashList} from "@shopify/flash-list";
+import ImageCard from "../../components/ImageCard";
 
 
 const {width, height} = Dimensions.get('window');
@@ -17,8 +19,9 @@ const logos = [
     // Add more logos from your local assets directory
 ];
 
-const Gallery = () => {
+const Gallery = ({images}) => {
     const videoRef = useRef(null);
+    const columns = getColumnCount();
 
     return (
         <View style={styles.container}>
@@ -52,13 +55,21 @@ const Gallery = () => {
             </View>
 
             {/* Additional Elements */}
-            <View style={styles.additionalContent}>
-                <Text style={styles.textContent}>Additional Text Content 1</Text>
-                <Text style={styles.textContent}>Additional Text Content 2</Text>
-                <Text style={styles.textContent}>Additional Text Content 3</Text>
-                {/* Add more elements as needed */}
+            <View style={styles.gridContainor}>
+                <MasonryFlashList
+                    data={images}
+                    numColumns={2}
+                    initialNumToRender = {1000}
+                    contentContainerStyle={styles.listContainerStyle}
+                    renderItem={({item, index}) => <ImageCard columns={columns} item={item} index={index} />}
+                    estimatedItemSize={200}
+                />
+
             </View>
 
+            <Text style={styles.textContent}>Additional Text Content 2</Text>
+            <Text style={styles.textContent}>Additional Text Content 3</Text>
+            {/* Add more elements as needed */}
         </View>
 
 
@@ -90,7 +101,7 @@ const styles = StyleSheet.create({
 
         width: width,
         height: 100, // Adjust height based on your logo size
-       marginTop: 10,
+        marginTop: 10,
         backgroundColor: '#c7ecee',
     },
     marquee: {
@@ -109,6 +120,13 @@ const styles = StyleSheet.create({
     textContent: {
         fontSize: 18,
         marginBottom: 10,
+    },
+    gridContainor: {
+        minHeight: 3,
+        width: wp(100)
+    },
+    listContainerStyle: {
+
     },
 });
 

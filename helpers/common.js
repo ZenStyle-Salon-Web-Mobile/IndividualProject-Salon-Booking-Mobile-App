@@ -10,3 +10,18 @@ export const hp = percentage => {
 export const wp = percentage => {
     return(percentage*deviceWidth) / 100;
 }
+
+export const getColumnCount = () => {
+    if (deviceWidth >= 1024){
+        //desktop
+        return 4;
+    }
+    else if (deviceWidth >= 768){
+        //tablet
+        return 3;
+    }
+    else {
+        //phone
+        return 2
+    }
+}
