@@ -9,7 +9,7 @@ const {width} = Dimensions.get('window');
 const testimonials = [
     {
         id: 1,
-        text: "Hi Liyo Team, today is my first experience with you. I had a feather haircut and straightened my hair today. My haircut was done by one of the males. I don’t know his name but he was a friendly person. I especially want to say my hair was straightened by Ms. Ruchira and Ms. Dilshani. They were very friendly, and they did a great job.",
+        text: "Had an amazing experience. The staff was very friendly, and I loved the results of my haircut and color. I will definitely come back.",
         name: 'Shalika Prasadi',
         rating: 5,
     },
@@ -30,7 +30,7 @@ const About = () => {
             <View style={styles.card}>
                 {/* Quotation Icon */}
                 <View style={styles.quoteIconContainer}>
-                    <FontAwesome name="quote-right" size={50} color="gray"/>
+                    <FontAwesome name="quote-right" size={30} color="gray"/>
                 </View>
 
                 {/* Review Text */}
@@ -61,7 +61,7 @@ const About = () => {
     return (
         <View style={styles.container}>
             {/* ScrollView for the Text Content */}
-            <Text style={{fontSize: hp(5), fontWeight: theme.fonts.extraBold,paddingVertical:10}}>
+            <Text style={{fontSize: hp(5), fontWeight: theme.fonts.extraBold, paddingVertical: 10}}>
                 ZenStyle Salon
             </Text>
             <ScrollView contentContainerStyle={styles.textContainer}>
@@ -69,38 +69,55 @@ const About = () => {
                     Our Journey
                 </Text>
                 <Text style={styles.textContent}>
-                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                    ZenStyle was founded on June 10th, 2024, by Ramesh Kaushika at High level Road,
+                    Wijerama, with a vision to provide exceptional beauty services. In 2012, to better serve our growing
+                    clientele, we expanded our services and relocated to a larger, more sophisticated space at
+                    Jambugasmulla, Nugegoda. This move allowed us to offer a wider range of services and enhance our
+                    client experience, further establishing our reputation for excellence in the beauty industry.
                 </Text>
                 <Text style={styles.textTitle}>
                     Our Vision and Mission
                 </Text>
                 <Text style={styles.textContent}>
-                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                    <Text style={{fontWeight: theme.fonts.bold}}> Our vision</Text>
+                    is to set the standard for beauty and wellness in Sri Lanka by combining cutting-edge
+                    techniques with a personalized touch. We are dedicated to continually improving our services and
+                    facilities to meet the evolving needs of our clients.
+                    {"\n"}{"\n"}
+                    <Text style={{fontWeight: theme.fonts.bold}}> Our mission</Text>
+                    is to provide exceptional beauty services that enhance the natural beauty of our
+                    clients. We strive to create a welcoming and relaxing environment where every client feels valued
+                    and pampered.
                 </Text>
                 <Text style={styles.textTitle}>
-                    Our Vision and Mission
+                    Who We Are
                 </Text>
                 <Text style={styles.textContent}>
-                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                    The foremost cosmetology clinic in Sri Lanka, ZenStyle Salon offers cutting-edge,
+                    non-invasive medical treatments for all skin, hair, and body care needs for both men and women. Led
+                    by the mother-daughter duo, Prof. Ramani Arsecularatne, and Dr. Shanika Arsecularatne brings with
+                    them over 25 years of industry expertise.
                 </Text>
                 <Text style={styles.textTitle}>
-                    Our Vision and Mission
+                    Our Technologies
                 </Text>
                 <Text style={styles.textContent}>
-                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                    We use state-of-the-art US Food & Drug Administration (US FDA) approved technology and treatments,
+                    ensuring safety and accountability in all our services. Our treatments are upgraded by the latest
+                    research and developments in the industry. The ZenStyle Salon
+                    utilizes the most up-to-date technology from global leaders in cosmetology and skin care, while our
+                    staff undergoes regular international training and refreshers.
                 </Text>
                 <Text style={styles.textTitle}>
-                    Our Vision and Mission
+                    Our Commitment
                 </Text>
                 <Text style={styles.textContent}>
-                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                    At ZenStyle Salon, your satisfaction is our top priority. We are committed to maintaining the
+                    highest
+                    standards of quality and hygiene in all our services. We continuously invest in training and
+                    development to ensure our team stays at the forefront of industry trends and innovations.
                 </Text>
-                <Text style={styles.textTitle}>
-                    Our Vision and Mission
-                </Text>
-                <Text style={styles.textContent}>
-                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
-                </Text>
+
 
                 {/* Add more text sections as needed */}
             </ScrollView>
@@ -113,7 +130,7 @@ const About = () => {
                     width={width}
                     height={400}
                     onSnapToItem={(index) => setActiveSlide(index)}
-                    loop={false}
+                    loop={true}
                 />
             </View>
         </View>
@@ -129,7 +146,7 @@ const styles = StyleSheet.create({
     textContainer: {
         alignItems: 'center',
         paddingHorizontal: 20,
-        paddingBottom: 20, // Adds spacing at the bottom to avoid overlapping with the carousel
+
     },
     textContent: {
         textAlign: 'center',
@@ -149,17 +166,18 @@ const styles = StyleSheet.create({
         right: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 400, // Adjust as per your carousel height
+        height: 270, // Adjust as per your carousel height
     },
     card: {
         backgroundColor: '#d7d7d7',
         borderRadius: 30,
-        padding: 20,
-        margin: 30,
+        padding: 10,
+        marginVertical: 10,
+        marginHorizontal: 10,
         alignItems: 'center',
         justifyContent: 'center',
         shadowColor: '#000',
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.9,
         shadowRadius: 10,
         shadowOffset: {width: 0, height: 5},
         elevation: 5,
