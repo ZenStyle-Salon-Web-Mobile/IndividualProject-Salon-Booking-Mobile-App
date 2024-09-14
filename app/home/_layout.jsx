@@ -11,6 +11,13 @@ const _layout = () => {
       <GestureHandlerRootView style={{ flex: 1 }}>
           <Drawer>
               <Drawer.Screen
+                  name="homepage" // This is the name of the page and must match the url from root
+                  options={{
+                      drawerLabel: 'Home Page',
+                      title: 'Homepage',
+                  }}
+              />
+              <Drawer.Screen
                   name="about" // This is the name of the page and must match the url from root
                   options={{
                       drawerLabel: 'About',
