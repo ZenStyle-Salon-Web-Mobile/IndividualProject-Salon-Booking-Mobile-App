@@ -5,8 +5,7 @@ import {theme} from "../../constants/theme";
 import Carousel from "react-native-reanimated-carousel/src/Carousel";
 import {FontAwesome} from "@expo/vector-icons";
 
-
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 const testimonials = [
     {
         id: 1,
@@ -23,16 +22,15 @@ const testimonials = [
     // Add more testimonials as needed
 ];
 
-
 const About = () => {
     const [activeSlide, setActiveSlide] = useState(0);
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({item}) => {
         return (
             <View style={styles.card}>
                 {/* Quotation Icon */}
                 <View style={styles.quoteIconContainer}>
-                    <FontAwesome name="quote-right" size={50} color="gray" />
+                    <FontAwesome name="quote-right" size={50} color="gray"/>
                 </View>
 
                 {/* Review Text */}
@@ -47,8 +45,8 @@ const About = () => {
 
                 {/* Star Rating */}
                 <View style={styles.ratingContainer}>
-                    {Array.from({ length: item.rating }, (_, i) => (
-                        <FontAwesome key={i} name="star" size={24} color="gold" />
+                    {Array.from({length: item.rating}, (_, i) => (
+                        <FontAwesome key={i} name="star" size={24} color="gold"/>
                     ))}
                 </View>
 
@@ -61,66 +59,109 @@ const About = () => {
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <Text style={{fontSize:hp(5),fontWeight:theme.fonts.extraBold}}>
+        <View style={styles.container}>
+            {/* ScrollView for the Text Content */}
+            <Text style={{fontSize: hp(5), fontWeight: theme.fonts.extraBold,paddingVertical:10}}>
                 ZenStyle Salon
             </Text>
-            <Text style={{fontSize:hp(2),fontWeight:theme.fonts.extraBold,marginVertical:10}}>
-                Our Journey
-            </Text>
-            <Text style={{textAlign: 'center',paddingHorizontal:20,fontSize:hp(1.9),fontWeight:theme.fonts.medium,}}>In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin.
-                Women are beautiful in themselves; but a little make-up does help a lot and it keeps one to make the day
-                better and happier. Every woman wants to be pretty whether she’s young or old so the beauty salon is the
-                place to go. Beauty salons are also like a temple; however, the difference is that we go to worship in
-                the temple and in the beauty salon we go to be worshipped by the beauticians and by the other people
-                around.
-                The beauty salon has become an almost iconic figure in Western culture and Southeast Asian culture as
-                well as in modern generation. The beauty salon is where a woman goes to have their hair and nails done,
-                but is also a …</Text>
-            <Text style={{fontSize:hp(2),fontWeight:theme.fonts.extraBold,marginVertical:10}}>
-                Our Vision and Mission
-            </Text>
-            <Text style={{textAlign: 'center',paddingHorizontal:20,fontSize:hp(1.9),fontWeight:theme.fonts.medium,}}>In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin.
-                Women are beautiful in themselves; but a little make-up does help a lot and it keeps one to make the day
-                better and happier. Every woman wants to be pretty whether she’s young or old so the beauty salon is the
-                place to go. Beauty salons are also like a temple; however, the difference is that we go to worship in
-                the temple and in the beauty salon we go to be worshipped by the beauticians and by the other people
-                around.
-                The beauty salon has become an almost iconic figure in Western culture and Southeast Asian culture as
-                well as in modern generation. The beauty salon is where a woman goes to have their hair and nails done,
-                but is also a …</Text>
-            <View style={styles.carousel}>
+            <ScrollView contentContainerStyle={styles.textContainer}>
+                <Text style={{fontSize: hp(2), fontWeight: theme.fonts.extraBold, marginVertical: 10}}>
+                    Our Journey
+                </Text>
+                <Text style={styles.textContent}>
+                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                </Text>
+                <Text style={styles.textTitle}>
+                    Our Vision and Mission
+                </Text>
+                <Text style={styles.textContent}>
+                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                </Text>
+                <Text style={styles.textTitle}>
+                    Our Vision and Mission
+                </Text>
+                <Text style={styles.textContent}>
+                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                </Text>
+                <Text style={styles.textTitle}>
+                    Our Vision and Mission
+                </Text>
+                <Text style={styles.textContent}>
+                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                </Text>
+                <Text style={styles.textTitle}>
+                    Our Vision and Mission
+                </Text>
+                <Text style={styles.textContent}>
+                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                </Text>
+                <Text style={styles.textTitle}>
+                    Our Vision and Mission
+                </Text>
+                <Text style={styles.textContent}>
+                    In the 21st century, beauty and make up are like the wheels of a cart or the two sides of a coin...
+                </Text>
+
+                {/* Add more text sections as needed */}
+            </ScrollView>
+
+            {/* Carousel Fixed at the Bottom */}
+            <View style={styles.carouselContainer}>
                 <Carousel
                     data={testimonials}
                     renderItem={renderItem}
                     width={width}
-                    height={300}
+                    height={400}
                     onSnapToItem={(index) => setActiveSlide(index)}
                     loop={false}
-                    style={{ flexGrow: 0 }}
                 />
             </View>
-        </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flexGrow: 1,
-        alignItems: 'center',
+        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textContainer: {
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        paddingBottom: 20, // Adds spacing at the bottom to avoid overlapping with the carousel
+    },
+    textContent: {
+        textAlign: 'center',
+        fontSize: hp(1.6),
+        fontWeight: theme.fonts.medium,
+        marginBottom: 20,
+    },
+    textTitle: {
+        fontSize: hp(2),
+        fontWeight: theme.fonts.extraBold,
+        marginVertical: 10,
+    },
+    carouselContainer: {
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 400, // Adjust as per your carousel height
     },
     card: {
         backgroundColor: '#d7d7d7',
         borderRadius: 30,
         padding: 20,
-        margin:10,
+        margin: 30,
         alignItems: 'center',
         justifyContent: 'center',
         shadowColor: '#000',
         shadowOpacity: 0.1,
         shadowRadius: 10,
-        shadowOffset: { width: 0, height: 5 },
+        shadowOffset: {width: 0, height: 5},
         elevation: 5,
     },
     quoteIconContainer: {
@@ -143,12 +184,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginVertical: 10,
     },
-    carousel: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
 });
 
 export default About;
