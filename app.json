@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.salonapp.salonapp"
+      "bundleIdentifier": "com.salonapp.salonapp",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCsWfl19TeGiNF50x8Q145hJJi7GhBJs5c"
+      }
     },
     "android": {
       "adaptiveIcon": {
