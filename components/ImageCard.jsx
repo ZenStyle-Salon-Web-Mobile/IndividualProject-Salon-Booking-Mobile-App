@@ -1,20 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
+import { Image } from 'expo-image';
 
 const ImageCard = () => {
-  return (
-    <View style={styles.container}>
-      <Text>ImageCard Component</Text>
-    </View>
-  );
+    function getImageHeight = () => {
+        let {imageHeight:height, imageWidth: width} = item;
+    }
+
+    return (
+        <Pressable>
+            <Image style={[styles.image, getImageHeight()]}
+                    // source={}
+                   transition={100}
+            >ImageCard Component</Image>
+        </Pressable>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    image: {
+        height: 300,
+        width: '100%'
+    },
 });
 
 export default ImageCard;

@@ -4,7 +4,7 @@ import {Video} from 'expo-av';
 import {getColumnCount, hp, wp} from "../../helpers/common";
 import Marquee from 'react-native-marquee';
 import {MasonryFlashList} from "@shopify/flash-list";
-import ImageCard from "../../components/ImageCard";
+import ImageGrid from "../../components/ImageGrid";
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
 
 
@@ -50,7 +50,7 @@ const Gallery = ({images}) => {
                     style={styles.backgroundVideo}
                     resizeMode="cover"
                     shouldPlay
-                    isLooping
+                   // isLooping
                 />
 
                 {/* Text Overlay */}
@@ -73,15 +73,7 @@ const Gallery = ({images}) => {
 
             {/* Additional Elements */}
             <View style={styles.gridContainor}>
-                <MasonryFlashList
-                    data={images}
-                    numColumns={2}
-                    initialNumToRender = {1000}
-                    contentContainerStyle={styles.listContainerStyle}
-                    renderItem={({item, index}) => <ImageCard columns={columns} item={item} index={index} />}
-                    estimatedItemSize={200}
-                />
-
+                images.length >0 && <ImageGrid images={images}/>
             </View>
 
             <Text style={styles.textContent}>Additional Text Content 2</Text>
