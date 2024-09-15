@@ -5,6 +5,7 @@ import {getColumnCount, hp, wp} from "../../helpers/common";
 import Marquee from 'react-native-marquee';
 import {MasonryFlashList} from "@shopify/flash-list";
 import ImageCard from "../../components/ImageCard";
+import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
 
 
 const {width, height} = Dimensions.get('window');
@@ -25,6 +26,22 @@ const Gallery = ({images}) => {
 
     return (
         <View style={styles.container}>
+            <Svg height="100%" width="100%" style={styles.gradientBackground}>
+                <Defs>
+                    <LinearGradient id="grad" x1="0%" y1="100%" x2="0%" y2="0%">
+                        <Stop offset="0%" stopColor="#1a000e" stopOpacity="1" />
+                        <Stop offset="12.5%" stopColor="#531d3a" stopOpacity="1" />
+                        <Stop offset="25%" stopColor="#8c3a66" stopOpacity="1" />
+                        <Stop offset="37.5%" stopColor="#c55792" stopOpacity="1" />
+                        <Stop offset="50%" stopColor="#ff74bf" stopOpacity="1" />
+                        <Stop offset="62.5%" stopColor="#ff90cc" stopOpacity="1" />
+                        <Stop offset="75%" stopColor="#ffacd9" stopOpacity="1" />
+                        <Stop offset="87.5%" stopColor="#ffc8e6" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="#ffe5f3" stopOpacity="1" />
+                    </LinearGradient>
+                </Defs>
+                <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
+            </Svg>
             <View>
                 {/* Video Component */}
                 <Video
@@ -97,13 +114,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
     },
-    containerMarq: {
 
-        width: width,
-        height: 100, // Adjust height based on your logo size
-        marginTop: 10,
-        backgroundColor: '#c7ecee',
-    },
     marquee: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -127,6 +138,11 @@ const styles = StyleSheet.create({
     },
     listContainerStyle: {
 
+    },
+    gradientBackground: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
     },
 });
 

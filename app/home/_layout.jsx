@@ -47,6 +47,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Gallery',
                       title: 'Gallery',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
