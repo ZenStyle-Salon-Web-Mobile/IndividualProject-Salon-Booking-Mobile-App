@@ -22,7 +22,11 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'About',
                       title: 'About',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
+
               />
               <Drawer.Screen
                   name="careers" // This is the name of the page and must match the url from root
@@ -50,6 +54,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Locations',
                       title: 'Locations',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
