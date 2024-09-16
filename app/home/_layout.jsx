@@ -40,6 +40,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Contact',
                       title: 'Contact',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
