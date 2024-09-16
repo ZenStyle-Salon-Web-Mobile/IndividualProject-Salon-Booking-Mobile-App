@@ -1,26 +1,39 @@
-import React, {useEffect, useRef} from 'react';
-import {View, Text, StyleSheet, Dimensions, FlatList, Image} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, Text, StyleSheet, Dimensions, FlatList, Image, ScrollView} from 'react-native';
 import {Video} from 'expo-av';
 import {getColumnCount, hp, wp} from "../../helpers/common";
 import Marquee from 'react-native-marquee';
-import {MasonryFlashList} from "@shopify/flash-list";
 import ImageGrid from "../../components/ImageGrid";
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
+import imageMapping from "../../components/imageMapping";
 
 
 const {width, height} = Dimensions.get('window');
 
 const logos = [
     require('../../assets/images/gallery/happy-womens-day-celebration-card-with-flowers-line-face.png'),
-    require('../../assets/images/gallery/gradient-hair-salon-logo-template.png'),
-    require('../../assets/images/gallery/gradient-hair-salon-logo-template (1).png'),
-    require('../../assets/images/gallery/hand-drawn-happy-women-s-day-background.png'),
     require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
+    require('../../assets/images/gallery/gradient-hair-salon-logo-template.png'),
+    require('../../assets/images/gallery/hand-drawn-happy-women-s-day-background.png'),
+    require('../../assets/images/gallery/toa-heftiba-ewpTmN9pQJM-unsplash.jpg'),
     require('../../assets/images/gallery/spa-floral-badge.png'),
     // Add more logos from your local assets directory
 ];
 
-const Gallery = ({images}) => {
+const Gallery = () => {
+
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        fetchImage();
+    }, []);
+
+    const fetchImage = async () => {
+        const imageKeys = ['image1', 'image2', 'image3','image4', 'image5', 'image6','image7', 'image8' ]; // Keys matching the ones in imageMapping.js
+        const loadedImages = imageKeys.map(key => imageMapping[key]);
+        setImages(loadedImages);
+    }
+
     const videoRef = useRef(null);
     const columns = getColumnCount();
 
@@ -42,43 +55,45 @@ const Gallery = ({images}) => {
                 </Defs>
                 <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
             </Svg>
-            <View>
-                {/* Video Component */}
-                <Video
-                    ref={videoRef}
-                    source={require('../../assets/3997198-uhd_4096_2160_25fps.mp4')} // Replace with your actual video file path
-                    style={styles.backgroundVideo}
-                    resizeMode="cover"
-                    shouldPlay
-                   // isLooping
-                />
+            <ScrollView contentContainerStyle={{gap: 15}}>
+                <View>
+                    {/* Video Component */}
+                    <Video
+                        ref={videoRef}
+                        source={require('../../assets/3997198-uhd_4096_2160_25fps.mp4')} // Replace with your actual video file path
+                        style={styles.backgroundVideo}
+                        resizeMode="cover"
+                        shouldPlay
+                        isLooping
+                    />
 
-                {/* Text Overlay */}
-                <View style={styles.overlay}>
-                    <Text style={styles.overlayText}>Experience {"\n"} the Elegance of {"\n"}ZenStyle
-                        Salon</Text>
+                    {/* Text Overlay */}
+                    <View style={styles.overlay}>
+                        <Text style={styles.overlayText}>Experience {"\n"} the Elegance of {"\n"}ZenStyle
+                            Salon</Text>
+                    </View>
+                    <View style={styles.containerMarq}>
+                        <Marquee
+                            style={styles.marquee}
+                            duration={100000} // Adjust duration based on speed
+                            marqueeOnStart
+                        >
+                            {logos.map((logo, index2) => (
+                                <Image key={index2} source={logo} style={styles.logo}/>
+                            ))}
+                        </Marquee>
+                    </View>
                 </View>
-                <View style={styles.containerMarq}>
-                    <Marquee
-                        style={styles.marquee}
-                        duration={100000} // Adjust duration based on speed
-                        marqueeOnStart
-                    >
-                        {logos.map((logo, index) => (
-                            <Image key={index} source={logo} style={styles.logo}/>
-                        ))}
-                    </Marquee>
+
+                {/* Additional Elements */}
+                <View style={styles.gridContainor}>
+                    {images.length > 0 ? (
+                        <ImageGrid images={images} /> // Custom component to display images in a grid
+                    ) : (
+                        <Text>Loading...</Text>
+                    )}
                 </View>
-            </View>
-
-            {/* Additional Elements */}
-            <View style={styles.gridContainor}>
-                images.length >0 && <ImageGrid images={images}/>
-            </View>
-
-            <Text style={styles.textContent}>Additional Text Content 2</Text>
-            <Text style={styles.textContent}>Additional Text Content 3</Text>
-            {/* Add more elements as needed */}
+            </ScrollView>
         </View>
 
 
@@ -127,9 +142,6 @@ const styles = StyleSheet.create({
     gridContainor: {
         minHeight: 3,
         width: wp(100)
-    },
-    listContainerStyle: {
-
     },
     gradientBackground: {
         position: 'absolute',
