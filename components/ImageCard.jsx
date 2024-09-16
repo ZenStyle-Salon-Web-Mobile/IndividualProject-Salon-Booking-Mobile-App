@@ -19,7 +19,7 @@ const ImageCard = ({item, index, columns}) => {
 
     return (
         <Pressable style={[styles.imageWrapper, !isLastInRow() && styles.spacing]}>
-            <Image style={[styles.image]}
+            <Image style={styles.image}
                    source={item} // If item is a URI or require statement
                    transition={100}
             />
@@ -30,7 +30,8 @@ const ImageCard = ({item, index, columns}) => {
 const styles = StyleSheet.create({
     image: {
         height: 300,
-        width: '100%'
+        width: '100%',
+        borderRadius: theme.radius.xl,
     },
     imageWrapper: {
       backgroundColor: theme.colors.gray,

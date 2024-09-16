@@ -11,7 +11,14 @@ import imageMapping from "../../components/imageMapping";
 const {width, height} = Dimensions.get('window');
 
 const logos = [
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
     require('../../assets/images/gallery/happy-womens-day-celebration-card-with-flowers-line-face.png'),
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
+    require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
     require('../../assets/images/gallery/nail-salon-logo-template-design.png'),
     require('../../assets/images/gallery/gradient-hair-salon-logo-template.png'),
     require('../../assets/images/gallery/hand-drawn-happy-women-s-day-background.png'),
@@ -72,17 +79,17 @@ const Gallery = () => {
                         <Text style={styles.overlayText}>Experience {"\n"} the Elegance of {"\n"}ZenStyle
                             Salon</Text>
                     </View>
-                    <View style={styles.containerMarq}>
-                        <Marquee
-                            style={styles.marquee}
-                            duration={100000} // Adjust duration based on speed
-                            marqueeOnStart
-                        >
-                            {logos.map((logo, index2) => (
-                                <Image key={index2} source={logo} style={styles.logo}/>
-                            ))}
-                        </Marquee>
-                    </View>
+                    {/*<View style={styles.containerMarq}>*/}
+                    {/*    <Marquee*/}
+                    {/*        style={styles.marquee}*/}
+                    {/*        duration={100000} // Adjust duration based on speed*/}
+                    {/*        marqueeOnStart*/}
+                    {/*    >*/}
+                    {/*        {logos.map((logo, index) => (*/}
+                    {/*            <Image key={index} source={logo} style={styles.logo}/>*/}
+                    {/*        ))}*/}
+                    {/*    </Marquee>*/}
+                    {/*</View>*/}
                 </View>
 
                 {/* Additional Elements */}
@@ -93,7 +100,10 @@ const Gallery = () => {
                         <Text>Loading...</Text>
                     )}
                 </View>
+
             </ScrollView>
+
+
         </View>
 
 
