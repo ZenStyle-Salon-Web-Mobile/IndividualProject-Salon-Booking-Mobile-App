@@ -100,10 +100,7 @@ const Gallery = () => {
                         <Text>Loading...</Text>
                     )}
                 </View>
-
             </ScrollView>
-
-
         </View>
 
 
