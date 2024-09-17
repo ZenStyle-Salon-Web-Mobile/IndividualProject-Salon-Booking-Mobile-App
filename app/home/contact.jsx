@@ -47,7 +47,9 @@ const Contact = () => {
 
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.container}>
             {/* Contact Info Section */}
             <View style={styles.contactSection}>
                 <Text style={styles.contactTitle}>Contact Info</Text>
