@@ -5,11 +5,21 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import {NavigationContainer} from "@react-navigation/native";
 import Settings from "./settings";
+import {theme} from "../../constants/theme";
 
 const _layout = () => {
   return (
       <GestureHandlerRootView style={{ flex: 1 }}>
-          <Drawer>
+          <Drawer
+              screenOptions={{
+                  drawerStyle: {
+                      backgroundColor: '#000000', // Customize the drawer background color
+                      width: 240,
+                  },
+                  drawerActiveTintColor: '#ff74bf', // Customize active item color
+                  drawerInactiveTintColor: theme.colors.darkLight,  // Customize inactive item color
+              }}
+          >
               <Drawer.Screen
                   name="homepage" // This is the name of the page and must match the url from root
                   options={{
@@ -38,7 +48,6 @@ const _layout = () => {
                       title: 'Membership',
                   }}
               />
-
               <Drawer.Screen
                   name="careers" // This is the name of the page and must match the url from root
                   options={{

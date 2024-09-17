@@ -8,6 +8,7 @@ import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
 import imageMapping from "../../components/imageMapping";
 
 
+
 const {width, height} = Dimensions.get('window');
 
 const logos = [
@@ -30,6 +31,7 @@ const logos = [
 const Gallery = () => {
 
     const [images, setImages] = useState([]);
+
 
     useEffect(() => {
         fetchImage();
@@ -97,7 +99,7 @@ const Gallery = () => {
                 {/* Additional Elements */}
                 <View style={styles.gridContainor}>
                     {images.length > 0 ? (
-                        <ImageGrid images={images}/> // Custom component to display images in a grid
+                        <ImageGrid images={images} /> // Custom component to display images in a grid
                     ) : (
                         <Text>Loading...</Text>
                     )}
