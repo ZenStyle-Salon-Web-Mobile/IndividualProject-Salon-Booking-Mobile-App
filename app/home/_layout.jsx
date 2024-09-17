@@ -12,12 +12,14 @@ const _layout = () => {
       <GestureHandlerRootView style={{ flex: 1 }}>
           <Drawer
               screenOptions={{
+                  icon:{backgroundColor:'red'},
                   drawerStyle: {
                       backgroundColor: '#000000', // Customize the drawer background color
                       width: 240,
                   },
                   drawerActiveTintColor: '#ff74bf', // Customize active item color
                   drawerInactiveTintColor: theme.colors.darkLight,  // Customize inactive item color
+                  headerTintColor: '#000000', // Change hamburger menu icon color to black
               }}
           >
               <Drawer.Screen
@@ -25,6 +27,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Home Page',
                       title: 'Homepage',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -32,6 +37,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Services',
                       title: 'Services',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -39,6 +47,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Promotions',
                       title: 'Promotions',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -46,6 +57,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Membership',
                       title: 'Membership',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -53,6 +67,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Careers',
                       title: 'Careers',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -60,6 +77,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Ratings',
                       title: 'Ratings',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -107,6 +127,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Settings',
                       title: 'Settings',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
 
               />
