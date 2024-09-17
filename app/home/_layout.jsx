@@ -18,16 +18,27 @@ const _layout = () => {
                   }}
               />
               <Drawer.Screen
-                  name="about" // This is the name of the page and must match the url from root
+                  name="services" // This is the name of the page and must match the url from root
                   options={{
-                      drawerLabel: 'About',
-                      title: 'About',
-                      headerStyle:{
-                          backgroundColor: '#ffe5f3',
-                      }
+                      drawerLabel: 'Services',
+                      title: 'Services',
                   }}
-
               />
+              <Drawer.Screen
+                  name="promotions" // This is the name of the page and must match the url from root
+                  options={{
+                      drawerLabel: 'Promotions',
+                      title: 'Promotions',
+                  }}
+              />
+              <Drawer.Screen
+                  name="membership" // This is the name of the page and must match the url from root
+                  options={{
+                      drawerLabel: 'Membership',
+                      title: 'Membership',
+                  }}
+              />
+
               <Drawer.Screen
                   name="careers" // This is the name of the page and must match the url from root
                   options={{
@@ -36,13 +47,10 @@ const _layout = () => {
                   }}
               />
               <Drawer.Screen
-                  name="contact" // This is the name of the page and must match the url from root
+                  name="ratings" // This is the name of the page and must match the url from root
                   options={{
-                      drawerLabel: 'Contact',
-                      title: 'Contact',
-                      headerStyle:{
-                          backgroundColor: '#ffe5f3',
-                      }
+                      drawerLabel: 'Ratings',
+                      title: 'Ratings',
                   }}
               />
               <Drawer.Screen
@@ -66,31 +74,23 @@ const _layout = () => {
                   }}
               />
               <Drawer.Screen
-                  name="membership" // This is the name of the page and must match the url from root
+                  name="about" // This is the name of the page and must match the url from root
                   options={{
-                      drawerLabel: 'Membership',
-                      title: 'Membership',
+                      drawerLabel: 'About',
+                      title: 'About',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
-                  name="promotions" // This is the name of the page and must match the url from root
+                  name="contact" // This is the name of the page and must match the url from root
                   options={{
-                      drawerLabel: 'Promotions',
-                      title: 'Promotions',
-                  }}
-              />
-              <Drawer.Screen
-                  name="ratings" // This is the name of the page and must match the url from root
-                  options={{
-                      drawerLabel: 'Ratings',
-                      title: 'Ratings',
-                  }}
-              />
-              <Drawer.Screen
-                  name="services" // This is the name of the page and must match the url from root
-                  options={{
-                      drawerLabel: 'Services',
-                      title: 'Services',
+                      drawerLabel: 'Contact',
+                      title: 'Contact',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
               <Drawer.Screen
@@ -108,9 +108,7 @@ const _layout = () => {
                       title: 'Terms & Conditions',
                   }}
               />
-
           </Drawer>
-
       </GestureHandlerRootView>
 
   );
