@@ -106,6 +106,9 @@ const _layout = () => {
                   options={{
                       drawerLabel: 'Terms & Conditions',
                       title: 'Terms & Conditions',
+                      headerStyle:{
+                          backgroundColor: '#ffe5f3',
+                      }
                   }}
               />
           </Drawer>
