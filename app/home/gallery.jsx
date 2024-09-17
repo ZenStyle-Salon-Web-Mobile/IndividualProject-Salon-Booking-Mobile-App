@@ -36,7 +36,7 @@ const Gallery = () => {
     }, []);
 
     const fetchImage = async () => {
-        const imageKeys = ['image1', 'image2', 'image3','image4', 'image5', 'image6','image7', 'image8' ]; // Keys matching the ones in imageMapping.js
+        const imageKeys = ['image1', 'image2', 'image3', 'image4', 'image5', 'image6', 'image7', 'image8']; // Keys matching the ones in imageMapping.js
         const loadedImages = imageKeys.map(key => imageMapping[key]);
         setImages(loadedImages);
     }
@@ -49,20 +49,22 @@ const Gallery = () => {
             <Svg height="100%" width="100%" style={styles.gradientBackground}>
                 <Defs>
                     <LinearGradient id="grad" x1="0%" y1="100%" x2="0%" y2="0%">
-                        <Stop offset="0%" stopColor="#1a000e" stopOpacity="1" />
-                        <Stop offset="12.5%" stopColor="#531d3a" stopOpacity="1" />
-                        <Stop offset="25%" stopColor="#8c3a66" stopOpacity="1" />
-                        <Stop offset="37.5%" stopColor="#c55792" stopOpacity="1" />
-                        <Stop offset="50%" stopColor="#ff74bf" stopOpacity="1" />
-                        <Stop offset="62.5%" stopColor="#ff90cc" stopOpacity="1" />
-                        <Stop offset="75%" stopColor="#ffacd9" stopOpacity="1" />
-                        <Stop offset="87.5%" stopColor="#ffc8e6" stopOpacity="1" />
-                        <Stop offset="100%" stopColor="#ffe5f3" stopOpacity="1" />
+                        <Stop offset="0%" stopColor="#1a000e" stopOpacity="1"/>
+                        <Stop offset="12.5%" stopColor="#531d3a" stopOpacity="1"/>
+                        <Stop offset="25%" stopColor="#8c3a66" stopOpacity="1"/>
+                        <Stop offset="37.5%" stopColor="#c55792" stopOpacity="1"/>
+                        <Stop offset="50%" stopColor="#ff74bf" stopOpacity="1"/>
+                        <Stop offset="62.5%" stopColor="#ff90cc" stopOpacity="1"/>
+                        <Stop offset="75%" stopColor="#ffacd9" stopOpacity="1"/>
+                        <Stop offset="87.5%" stopColor="#ffc8e6" stopOpacity="1"/>
+                        <Stop offset="100%" stopColor="#ffe5f3" stopOpacity="1"/>
                     </LinearGradient>
                 </Defs>
-                <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
+                <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)"/>
             </Svg>
-            <ScrollView contentContainerStyle={{gap: 15}}>
+            <ScrollView contentContainerStyle={{gap: 15}}
+                        showsVerticalScrollIndicator={false}
+            >
                 <View>
                     {/* Video Component */}
                     <Video
@@ -95,7 +97,7 @@ const Gallery = () => {
                 {/* Additional Elements */}
                 <View style={styles.gridContainor}>
                     {images.length > 0 ? (
-                        <ImageGrid images={images} /> // Custom component to display images in a grid
+                        <ImageGrid images={images}/> // Custom component to display images in a grid
                     ) : (
                         <Text>Loading...</Text>
                     )}
