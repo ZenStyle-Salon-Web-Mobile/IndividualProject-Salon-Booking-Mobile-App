@@ -11,8 +11,8 @@ import {useRouter} from "expo-router";
 const Welcome = () => {
     const router = useRouter()
     return (
-        <ScreenWrapper bg="white">
-            <StatusBar style="dark"/>
+        <ScreenWrapper >
+            <StatusBar style="black"/>
                 <View style={styles.container}>
                         {/*login cover*/}
                     <Image style={styles.welcomeImage} resizeMode='contain' source={require('../assets/images/login-cover.png')}/>
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: 'white',
         paddingHorizontal: wp(4),
 
     },
