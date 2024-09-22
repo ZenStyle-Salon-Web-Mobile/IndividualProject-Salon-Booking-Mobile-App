@@ -10,6 +10,7 @@ const Ratings = () => {
       <Text>Ratings Component</Text>
       <Text>Ratings Component</Text>
       <Text>Ratings Component</Text>
+      <Text>Ratings Component</Text>
     </View>
   );
 };
