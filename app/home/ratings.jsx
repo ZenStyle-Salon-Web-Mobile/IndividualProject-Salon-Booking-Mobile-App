@@ -14,7 +14,7 @@ const Ratings = () => {
       <Text>Ratings Component</Text>
       <Text>Ratings Component</Text>
       <Text>Ratings Component</Text>
-      <Text>Ratings Component</Text>dkgggg
+      <Text>Ratings Component</Text>dkggggTYUTU
     </View>
   );
 };
