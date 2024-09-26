@@ -76,7 +76,7 @@ const _layout = () => {
                   name="ratings" // This is the name of the page and must match the url from root
                   options={{
                       drawerLabel: 'Ratings',
-                      title: 'Ratings',
+                      title: 'Customer Feedback',
                       headerStyle:{
                           backgroundColor: '#ffe5f3',
                       }

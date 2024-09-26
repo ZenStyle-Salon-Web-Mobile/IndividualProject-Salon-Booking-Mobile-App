@@ -42,7 +42,6 @@ const Welcome = () => {
                             </Pressable>
                         </View>
                      </View>
-
                 </View>
         </ScreenWrapper>
     );
