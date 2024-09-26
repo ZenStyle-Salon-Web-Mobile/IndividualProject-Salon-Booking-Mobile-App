@@ -47,91 +47,78 @@ const Ratings = () => {
 
     // Initial state for rating counts
     const [ratings, setRatings] = useState({
-        excellent: 0,
-        good: 0,
-        average: 0,
-        poor: 0,
-        total: 0,  // Total ratings
+        fiveStars: 5,
+        fourStars: 10,
+        threeStars: 3,
+        twoStars: 1,
+        oneStar: 1,
+        total: 20,
     });
 
-    // // Calculate percentage of ratings for each category
-    // const getPercentage = (count) => (ratings.total === 0 ? 0 : (count / ratings.total) * 100);
-    //
-    // const getOverallRating = () => {
-    //     const totalStars = (ratings.fiveStars * 5) + (ratings.fourStars * 4) + (ratings.threeStars * 3) +
-    //         (ratings.twoStars * 2) + (ratings.oneStar * 1);
-    //     return ratings.total === 0 ? 0 : (totalStars / ratings.total).toFixed(1);
-    // };
+    // Calculate percentage of ratings for each category
+    const getPercentage = (count) => (ratings.total === 0 ? 0 : (count / ratings.total) * 100);
 
-    const rating = 4.5;
-    // Create an array for star rendering
-    const totalStars = 5; // Assuming 5 stars
-    const stars = [];
-
-    // Loop through total stars to render filled and empty stars
-    for (let i = 1; i <= totalStars; i++) {
-        stars.push(
-            <FontAwesome
-                key={i}
-                name={i <= rating ? 'star' : 'star-o'} // 'star' for filled, 'star-o' for empty
-                size={30} // Size of the star
-                color="#e7cc33" // Gold color for stars
-                style={styles.star}
-            />
-        );
-    }
-
-    // Calculate percentages for progress bars
-    const getPercentage = (count) => {
-        return ratings.total === 0 ? 0 : (count / ratings.total) * 100;
+    const getOverallRating = () => {
+        const totalStars = (ratings.fiveStars * 5) + (ratings.fourStars * 4) + (ratings.threeStars * 3) +
+            (ratings.twoStars * 2) + (ratings.oneStar * 1);
+        return ratings.total === 0 ? 0 : (totalStars / ratings.total).toFixed(1);
     };
-
 
     return (
 
-            <View style={styles.container}>
-                <View style={styles.ratingContainer}>
-                    <Text style={{fontSize: hp(3.7)}}>Overall Rating</Text>
-                    <Text style={{fontSize: hp(12), fontWeight: theme.fonts.bold}}>3.9</Text>
-                    <View style={styles.starContainer}>
-                        {stars}
-                    </View>
-                    <Text style={{fontSize: hp(2.3), fontWeight: theme.fonts.medium}}>Based on 20 reviews</Text>
-
-
+        <View style={styles.container}>
+            <View style={styles.ratingContainer}>
+                <Text style={{fontSize: hp(3.7)}}>Overall Rating</Text>
+                <Text style={{fontSize: hp(12), fontWeight: theme.fonts.bold}}>3.9</Text>
+                <View style={styles.starContainer}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <FontAwesome
+                            key={star}
+                            name="star" size={30}
+                            style={styles.star}
+                            color={star <= Math.round(getOverallRating()) ? '#e7cc33' : '#ccc'}/>
+                    ))}
                 </View>
-                {/* Progress Bars for Ratings */}
-                <View style={styles.progressSection}>
-                    <View style={styles.progressRow}>
-                        <Text style={styles.label}>Excellent</Text>
-                        <Progress.Bar progress={0.5} width={200} color="pink" />
-                    </View>
-                    <View style={styles.progressRow}>
-                        <Text style={styles.label}>Good</Text>
-                        <Progress.Bar progress={0.5} width={200} color="pink" />
-                    </View>
-                    <View style={styles.progressRow}>
-                        <Text style={styles.label}>Average</Text>
-                        <Progress.Bar progress={0.5} width={200} color="pink" />
-                    </View>
-                    <View style={styles.progressRow}>
-                        <Text style={styles.label}>Poor</Text>
-                        <Progress.Bar progress={0.5} width={200} color="pink" />
-                    </View>
-                </View>
+                <Text style={{fontSize: hp(2.3), fontWeight: theme.fonts.medium}}>Based
+                    on {ratings.total} reviews</Text>
 
-                {/* Reviews List */}
+
+            </View>
+            {/* Progress Bars for Ratings */}
+            <View style={styles.progressSection}>
+                <View style={styles.progressRow}>
+                    <Text style={styles.label}>Excellent</Text>
+                    <Progress.Bar progress={getPercentage(ratings.fiveStars) / 100} width={200} color="#ff74bf"/>
+                </View>
+                <View style={styles.progressRow}>
+                    <Text style={styles.label}>Good</Text>
+                    <Progress.Bar progress={getPercentage(ratings.fourStars) / 100} width={200} color="#ff74bf"/>
+                </View>
+                <View style={styles.progressRow}>
+                    <Text style={styles.label}>Average</Text>
+                    <Progress.Bar progress={getPercentage(ratings.threeStars) / 100} width={200} color="#ff74bf"/>
+                </View>
+                <View style={styles.progressRow}>
+                    <Text style={styles.label}>Poor</Text>
+                    <Progress.Bar progress={getPercentage(ratings.twoStars) / 100} width={200} color='#ff74bf'/>
+                </View>
+            </View>
+
+            <View style={{flex: 1, marginBottom: 10}}>
                 <FlatList
                     data={reviewsData}
                     keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
+                    renderItem={({item}) => (
                         <View style={styles.reviewCard}>
-                            <Image source={{ uri: item.avatar }} style={styles.avatar} />
+                            <Image source={{uri: item.avatar}} style={styles.avatar}/>
                             <View style={styles.reviewContent}>
                                 <Text style={styles.name}>{item.name}</Text>
                                 <View style={styles.starContainer}>
                                     {[1, 2, 3, 4, 5].map((star) => (
-                                        <FontAwesome key={star} name="star" size={20} color={star <= item.rating ? 'gold' : '#ccc'} />
+                                        <FontAwesome key={star} name="star"
+                                                     size={20} color={star <= item.rating ? '#e7cc33' : '#ccc'}
+                                                     style={styles.star}
+                                        />
                                     ))}
                                 </View>
                                 <Text style={styles.date}>{item.date}</Text>
@@ -140,12 +127,16 @@ const Ratings = () => {
                         </View>
                     )}
                 />
-                <Pressable style={styles.reviewButton}>
-                    <Text style={styles.reviewButtonText}>
-                        Write a review
-                    </Text>
-                </Pressable>
             </View>
+
+
+            {/* Reviews List */}
+            <Pressable style={styles.reviewButton}>
+                <Text style={styles.reviewButtonText}>
+                    Write a review
+                </Text>
+            </Pressable>
+        </View>
 
 
     );
@@ -156,14 +147,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: wp(6),
-        top:hp(2),
+        top: hp(2),
     },
     reviewButton: {
         alignItems: 'center',
         backgroundColor: theme.colors.primary,
         padding: '5%',
         borderRadius: theme.radius.lg,
-        marginBottom:40,
+        marginBottom: 40,
     },
     reviewButtonText: {
         fontSize: hp(2.2),
@@ -188,13 +179,14 @@ const styles = StyleSheet.create({
     },
     progressRow: {
         flexDirection: 'row',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 10,
     },
     label: {
         width: 70,
         fontSize: 16,
+        fontWeight: theme.fonts.medium
     },
     progressBar: {
         flex: 1,
@@ -205,7 +197,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#fff',
         padding: 10,
-        borderRadius: 8,
+        borderRadius: theme.radius.md,
         marginBottom: 10,
         elevation: 2,
     },
