@@ -54,6 +54,15 @@ const Ratings = () => {
         total: 0,  // Total ratings
     });
 
+    // // Calculate percentage of ratings for each category
+    // const getPercentage = (count) => (ratings.total === 0 ? 0 : (count / ratings.total) * 100);
+    //
+    // const getOverallRating = () => {
+    //     const totalStars = (ratings.fiveStars * 5) + (ratings.fourStars * 4) + (ratings.threeStars * 3) +
+    //         (ratings.twoStars * 2) + (ratings.oneStar * 1);
+    //     return ratings.total === 0 ? 0 : (totalStars / ratings.total).toFixed(1);
+    // };
+
     const rating = 4.5;
     // Create an array for star rendering
     const totalStars = 5; // Assuming 5 stars
@@ -79,7 +88,7 @@ const Ratings = () => {
 
 
     return (
-        <ScreenWrapper>
+
             <View style={styles.container}>
                 <View style={styles.ratingContainer}>
                     <Text style={{fontSize: hp(3.7)}}>Overall Rating</Text>
@@ -137,7 +146,7 @@ const Ratings = () => {
                     </Text>
                 </Pressable>
             </View>
-        </ScreenWrapper>
+
 
     );
 };
@@ -147,13 +156,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: wp(6),
+        top:hp(2),
     },
     reviewButton: {
         alignItems: 'center',
         backgroundColor: theme.colors.primary,
         padding: '5%',
         borderRadius: theme.radius.lg,
-        marginBottom:20,
+        marginBottom:40,
     },
     reviewButtonText: {
         fontSize: hp(2.2),
