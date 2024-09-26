@@ -72,13 +72,16 @@ export default function TermsConditions() {
     );
 
     return (
+        <View style={{flex:1, backgroundColor: '#ffe5f3'}}>
+            <FlatList
+                data={blogData}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.container}
+            />
+        </View>
 
-        <FlatList
-            data={blogData}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.container}
-        />
+
     );
 }
 
