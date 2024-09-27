@@ -20,14 +20,13 @@ const DATA = [
   {
     id: '2',
     title: 'MAKEUP',
-    image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'), // Use require for local image
+    image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'), // Use require for local image
   },
-  // {
-  //   id: '3',
-  //   title: 'NAILS',
-  //   image: require('../../assets/images/react-logo.png'), // Use require for local image
-  //
-  // },
+  {
+    id: '3',
+    title: 'NAILS',
+    image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg'), // Use require for local image
+  },
 ];
 
 type ItemProps = {
