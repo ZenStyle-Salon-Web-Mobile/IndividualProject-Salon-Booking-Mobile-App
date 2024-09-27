@@ -11,6 +11,7 @@ const HomePage = () => {
       <Text>Notifications</Text>
       <Text>Notifications</Text>
       <Text>Notifications</Text>
+      <Text>Notifications</Text>
     </View>
   );
 };
