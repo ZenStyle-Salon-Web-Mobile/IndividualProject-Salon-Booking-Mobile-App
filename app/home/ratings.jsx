@@ -63,7 +63,6 @@ const Ratings = () => {
             (ratings.twoStars * 2) + (ratings.oneStar * 1);
         return ratings.total === 0 ? 0 : (totalStars / ratings.total).toFixed(1);
     };
-
     return (
 
         <View style={styles.container}>
