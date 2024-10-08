@@ -8,7 +8,7 @@ const HomePage = () => {
       <Text>Notifications</Text>
         DSFASASDASD
       ASDASDAD
-    </View>abcdefg
+    </View>abcdefgh
   );
 };
 
