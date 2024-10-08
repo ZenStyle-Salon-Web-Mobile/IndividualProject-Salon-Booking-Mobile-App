@@ -6,8 +6,7 @@ const HomePage = () => {
     <View style={styles.container}>
       <Text>Home Page </Text>
       <Text>Notifications</Text>
-        DSFASASDASD
-      ASDASDAD
+
     </View>abcdefghij
   );
 };
