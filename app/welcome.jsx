@@ -22,7 +22,7 @@ const Welcome = () => {
                         <Text style={styles.punchline}>
                             Beauty comes from the inside. Inside the hair salon
                         </Text>
-                    </View>vv
+                    </View>
 
                     {/*footer*/}
                     <View style={styles.footer}>
