@@ -7,7 +7,7 @@ const Careers = () => {
       <Text>Careers Component
               a
               b
-        c
+        cd
       </Text>
     </View>
   );
