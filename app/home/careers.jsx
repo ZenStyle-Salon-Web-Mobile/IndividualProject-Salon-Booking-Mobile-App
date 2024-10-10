@@ -4,7 +4,10 @@ import { View, Text, StyleSheet } from 'react-native';
 const Careers = () => {
   return (
     <View style={styles.container}>
-      <Text>Careers Component</Text>
+      <Text>Careers Component
+              a
+
+      </Text>
     </View>
   );
 };

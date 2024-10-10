@@ -38,7 +38,7 @@ const Welcome = () => {
                             <Pressable onPress={()=> router.push('login')}>
                                 <Text style={[styles.loginText, {color: theme.colors.primaryDark, fontWeight: theme.fonts.semibold}]}>
                                     Login
-                                </Text>sdfsxfsddfgdfgdxfhfgh
+                                </Text>
                             </Pressable>
                         </View>
                      </View>
