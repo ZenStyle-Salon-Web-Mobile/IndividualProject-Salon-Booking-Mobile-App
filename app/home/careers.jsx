@@ -6,7 +6,7 @@ const Careers = () => {
     <View style={styles.container}>
       <Text>Careers Component
               a
-
+              b
       </Text>
     </View>
   );
