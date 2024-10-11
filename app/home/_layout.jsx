@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Stack} from "expo-router";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import {NavigationContainer} from "@react-navigation/native";
 import Settings from "./settings";
 import {theme} from "../../constants/theme";
+import {Ionicons} from "@expo/vector-icons";
+import {Colors} from "react-native/Libraries/NewAppScreen";
 
 const _layout = () => {
   return (
@@ -26,10 +28,29 @@ const _layout = () => {
                   name="homepage" // This is the name of the page and must match the url from root
                   options={{
                       drawerLabel: 'Home Page',
-                      title: 'Homepage',
+                      title: 'Home',
                       headerStyle:{
                           backgroundColor: '#ffe5f3',
-                      }
+                      },
+                      headerRight: () => (
+                          <TouchableOpacity
+                              onPress={() => {}}
+                              style={{ marginRight: 12 ,
+                                  backgroundColor: "#ff74bf",
+                                  padding: 4,
+                                  borderRadius:10,
+                                  shadowColor: '#171717',
+                                  shadowOffset: {width: 2, height:2},
+                                  shadowOpacity:0.2,
+                                  shadowRadius: 3,
+
+
+                          }}
+                          >
+                              <Ionicons name="notifications" size={30} color={Colors.black} />
+                          </TouchableOpacity>
+                      ),
+
                   }}
               />
               <Drawer.Screen
