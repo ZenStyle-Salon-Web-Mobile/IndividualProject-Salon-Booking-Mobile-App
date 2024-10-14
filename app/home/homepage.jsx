@@ -74,6 +74,8 @@ const HomePage = () => {
                 <Text style={styles.subTopic}>Top Services</Text>
                 <Text style={styles.subTopic}>Top Services</Text>
                 <Text style={styles.subTopic}>Top Services</Text>
+                <Text style={styles.subTopic}>Top Services</Text>
+                <Text style={styles.subTopic}>Top Services</Text>
             </View>
 
             <View style={styles.carouselOffer}>
