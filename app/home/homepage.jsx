@@ -4,7 +4,7 @@ import {theme} from "../../constants/theme";
 import {hp, wp} from "../../helpers/common";
 import Carousel from 'react-native-reanimated-carousel';
 import {sliderImages} from "../../constants/imageIndex";
-import {Entypo, Ionicons} from "@expo/vector-icons";
+import {Entypo, FontAwesome6, Ionicons} from "@expo/vector-icons";
 
 const HomePage = () => {
     const [greeting, setGreeting] = useState('');
@@ -25,7 +25,7 @@ const HomePage = () => {
 
         <View style={styles.container}>
             {/*header*/}
-            <View style={{flexDirection:'row'}}>
+            <View style={{flexDirection:'row' ,justifyContent:'space-between'}}>
                 <View>
                     <TouchableOpacity
                         onPress={() => {
@@ -42,15 +42,16 @@ const HomePage = () => {
                     <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
                     <Text style={styles.headingText}>{greeting}</Text>
                 </View>
-                <View>
+                <View style={{paddingTop: 10, width:150}}>
                     <Text style={styles.subHeadingText}>CALL US NOW</Text>
-                    <Text style={styles.headingText}>+94765341860</Text>
-                    <View style={{flexDirection:'row'}}>
-                        <Entypo name="facebook" size={32} color={theme.colors.primaryDark} />
-                        <Entypo name="facebook" size={32} color="green" />
-                        <Entypo name="facebook" size={32} color="green" />
-                        <Entypo name="facebook" size={32} color="green" />
-                        <Entypo name="facebook" size={32} color="green" />
+                    <Text style={{fontSize:hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
+                    <View style={{ height: 20 }} />
+                    <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
+                        <Entypo name="facebook" size={22} color={theme.colors.primaryDark} />
+                        <Entypo name="instagram" size={22} color={theme.colors.primaryDark} />
+                        <FontAwesome6 name="x-twitter" size={22} color={theme.colors.primaryDark} />
+                        <Entypo name="linkedin" size={22} color={theme.colors.primaryDark} />
+                        <Entypo name="youtube" size={22} color={theme.colors.primaryDark} />
                     </View>
                 </View>
             </View>
@@ -102,7 +103,7 @@ const ItemCard = ({item}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal: 20,
+        marginHorizontal: 10,
     },
     headingText: {
         fontWeight: theme.fonts.extraBold,
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     imageContainer: {
-        width: wp(100) - 70, // Image container width with some space on sides
+        width: wp(100) - 40, // Image container width with some space on sides
         height: hp(25), // 25% height
         marginHorizontal: 10, // Horizontal space between images
         borderRadius: 20,
