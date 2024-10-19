@@ -5,8 +5,29 @@ import {hp, wp} from "../../helpers/common";
 import Carousel from 'react-native-reanimated-carousel';
 import {sliderImages} from "../../constants/imageIndex";
 import {Entypo, FontAwesome6, Ionicons} from "@expo/vector-icons";
+import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
 
 const HomePage = () => {
+
+    const currentIndex = useSharedValue(0); // Track the current slide index
+
+    // Handle onProgressChange to update the currentIndex shared value
+    const handleProgressChange = (_, absoluteProgress) => {
+        currentIndex.value = Math.round(absoluteProgress);
+    };
+
+    // Pagination Dot Component
+    const PaginationDots = () => {
+        return (
+            <View style={styles.paginationContainer}>
+                {sliderImages.map((_, index) => {
+                    return <PaginationDot key={index} index={index} currentIndex={currentIndex}/>;
+                })}
+            </View>
+        );
+    };
+
+
     const [greeting, setGreeting] = useState('');
 
     useEffect(() => {
@@ -25,7 +46,7 @@ const HomePage = () => {
 
         <View style={styles.container}>
             {/*header*/}
-            <View style={{flexDirection:'row' ,justifyContent:'space-between'}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View>
                     <TouchableOpacity
                         onPress={() => {
@@ -42,16 +63,21 @@ const HomePage = () => {
                     <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
                     <Text style={styles.headingText}>{greeting}</Text>
                 </View>
-                <View style={{paddingTop: 10, width:wp(30), alignItems:'flex-end',alignContent:'space-between'}}>
+                <View style={{paddingTop: 10, width: wp(30), alignItems: 'flex-end', alignContent: 'space-between'}}>
                     <Text style={styles.subHeadingText}>CALL US NOW</Text>
-                    <Text style={{fontSize:hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
-                    <View style={{ height: 20 }} />
-                    <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
-                        <Entypo name="facebook" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}} />
-                        <Entypo name="instagram" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
-                        <FontAwesome6 name="x-twitter" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
-                        <Entypo name="linkedin" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
-                        <Entypo name="youtube" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
+                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
+                    <View style={{height: 20}}/>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                        <Entypo name="facebook" size={22} color={theme.colors.primaryDark}
+                                style={{paddingHorizontal: 5}}/>
+                        <Entypo name="instagram" size={22} color={theme.colors.primaryDark}
+                                style={{paddingHorizontal: 5}}/>
+                        <FontAwesome6 name="x-twitter" size={22} color={theme.colors.primaryDark}
+                                      style={{paddingHorizontal: 5}}/>
+                        <Entypo name="linkedin" size={22} color={theme.colors.primaryDark}
+                                style={{paddingHorizontal: 5}}/>
+                        <Entypo name="youtube" size={22} color={theme.colors.primaryDark}
+                                style={{paddingHorizontal: 5}}/>
                     </View>
                 </View>
             </View>
@@ -71,10 +97,13 @@ const HomePage = () => {
                         mode="parallax-horizontal"
                         parallaxScrollingScale={0.9}
                         parallaxScrollingOffset={50}
+                        onProgressChange={handleProgressChange} // Updates the currentIndex as the user scrolls
                         renderItem={({item}) => (
                             <ItemCard item={item}/>
                         )}
                     />
+                    {/* Render the pagination dots below the carousel */}
+                    <PaginationDots/>
                 </View>
 
                 {/* Topics under the image */}
@@ -98,6 +127,21 @@ const ItemCard = ({item}) => {
             />
         </View>
     );
+};
+
+// Individual Pagination Dot Component
+const PaginationDot = ({index, currentIndex}) => {
+    const animatedStyle = useAnimatedStyle(() => {
+        const isActive = currentIndex.value === index;
+
+        return {
+            width: withSpring(isActive ? 10 : 6), // Animate width based on active state
+            height: withSpring(isActive ? 10 : 6), // Animate height based on active state
+            backgroundColor: withSpring(isActive ? '#FF6347' : '#d3d3d3'), // Change color on active state
+        };
+    });
+
+    return <Animated.View style={[styles.dot, animatedStyle]}/>;
 };
 
 const styles = StyleSheet.create({
@@ -136,7 +180,16 @@ const styles = StyleSheet.create({
         fontWeight: theme.fonts.extraBold,
         fontSize: hp(2.5),
         color: theme.colors.primaryDark,
-        marginVertical:15, // Increased space between each topic : 15,  // Increased space between each topic
+        marginVertical: 15, // Increased space between each topic : 15,  // Increased space between each topic
+    },
+    paginationContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 10,
+    },
+    dot: {
+        borderRadius: 5,
+        marginHorizontal: 5,
     },
 });
 
