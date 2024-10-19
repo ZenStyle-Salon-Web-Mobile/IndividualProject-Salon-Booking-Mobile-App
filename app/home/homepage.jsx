@@ -42,22 +42,22 @@ const HomePage = () => {
                     <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
                     <Text style={styles.headingText}>{greeting}</Text>
                 </View>
-                <View style={{paddingTop: 10, width:150}}>
+                <View style={{paddingTop: 10, width:wp(30), alignItems:'flex-end',alignContent:'space-between'}}>
                     <Text style={styles.subHeadingText}>CALL US NOW</Text>
                     <Text style={{fontSize:hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
                     <View style={{ height: 20 }} />
                     <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
-                        <Entypo name="facebook" size={22} color={theme.colors.primaryDark} />
-                        <Entypo name="instagram" size={22} color={theme.colors.primaryDark} />
-                        <FontAwesome6 name="x-twitter" size={22} color={theme.colors.primaryDark} />
-                        <Entypo name="linkedin" size={22} color={theme.colors.primaryDark} />
-                        <Entypo name="youtube" size={22} color={theme.colors.primaryDark} />
+                        <Entypo name="facebook" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}} />
+                        <Entypo name="instagram" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
+                        <FontAwesome6 name="x-twitter" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
+                        <Entypo name="linkedin" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
+                        <Entypo name="youtube" size={22} color={theme.colors.primaryDark} style={{paddingHorizontal:5}}/>
                     </View>
                 </View>
             </View>
 
             <ScrollView>
-
+                <Text style={styles.subTopic}>Special Offers</Text>
                 {/* Carousel Section */}
                 <View style={styles.carouselContainer}>
                     <Carousel
@@ -79,7 +79,7 @@ const HomePage = () => {
 
                 {/* Topics under the image */}
                 <View style={styles.topicContainer}>
-                    <Text style={styles.subTopic}>Special Offers</Text>
+
                     <Text style={styles.subTopic}>Top Services</Text>
                     <Text style={styles.subTopic}>Hair Specialist</Text>
                 </View>
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
         fontWeight: theme.fonts.extraBold,
         fontSize: hp(2.5),
         color: theme.colors.primaryDark,
-        marginBottom: 15,  // Increased space between each topic
+        marginVertical:15, // Increased space between each topic : 15,  // Increased space between each topic
     },
 });
 
