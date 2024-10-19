@@ -8,6 +8,7 @@ const Body = () => {
         <Text>Body Component</Text>
         <Text>Body Component</Text>
         <Text>Body Component</Text>
+        <Text>Body Component</Text>
     </View>
   );
 };
