@@ -19,11 +19,10 @@ const ForgotPassword = () => {
 
     const onSubmit = async () => {
         router.push('verify')
-        if(!emailRef.current || !passwordRef.current){
+        if (!emailRef.current || !passwordRef.current) {
             // Alert.alert("Sign Up", "please fill all the fields!");
         }
     }
-
 
 
     return (
@@ -33,7 +32,7 @@ const ForgotPassword = () => {
                 <BackButton router={router}/>
 
                 {/*Welcome*/}
-                <View >
+                <View>
                     <View style={styles.topic}>
                         <Text style={styles.welcomeText}>
                             Forgot {"\n"}Password

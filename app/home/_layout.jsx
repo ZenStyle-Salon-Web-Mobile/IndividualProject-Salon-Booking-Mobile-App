@@ -155,6 +155,7 @@ const _layout = () => {
                   }}
               />
           </Drawer>
+          {/*<Stack />*/}
       </GestureHandlerRootView>
 
   );
