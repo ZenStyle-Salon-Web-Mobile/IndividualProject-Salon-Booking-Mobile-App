@@ -99,11 +99,7 @@ const HomePage = () => {
                 <View style={{paddingTop: 10, width: 150}}>
                     <Text style={styles.subHeadingText}>CALL US NOW</Text>
                     <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
+
                     <View style={{height: 20}}/>
                     <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
                         <Entypo name="facebook" size={22} color={theme.colors.primaryDark}/>

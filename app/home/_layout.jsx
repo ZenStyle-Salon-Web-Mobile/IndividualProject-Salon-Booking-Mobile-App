@@ -84,16 +84,6 @@ const _layout = () => {
                   }}
               />
               <Drawer.Screen
-                  name="careers" // This is the name of the page and must match the url from root
-                  options={{
-                      drawerLabel: 'Careers',
-                      title: 'Careers',
-                      headerStyle:{
-                          backgroundColor: '#ffe5f3',
-                      }
-                  }}
-              />
-              <Drawer.Screen
                   name="ratings" // This is the name of the page and must match the url from root
                   options={{
                       drawerLabel: 'Ratings',
