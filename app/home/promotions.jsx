@@ -47,6 +47,22 @@ const Promotions = () => {
             showsHorizontalScrollIndicator={false}
             pagingEnabled
         />
+        <FlatList
+            data={banners}
+            renderItem={renderBannerItem}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+        />
+        <FlatList
+            data={banners}
+            renderItem={renderBannerItem}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+        />
       </View>
   );
 };
