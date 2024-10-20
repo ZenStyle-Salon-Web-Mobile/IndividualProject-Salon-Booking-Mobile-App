@@ -9,6 +9,7 @@ const _layout = () => {
     <Stack
         screenOptions={{
             headerShown: false,
+            swipeEnabled: false,
         }}
     />
 

@@ -14,6 +14,7 @@ const _layout = () => {
       <GestureHandlerRootView style={{ flex: 1 }}>
           <Drawer
               screenOptions={{
+                  swipeEnabled: false,
                   icon:{backgroundColor:'red'},
                   drawerStyle: {
                       backgroundColor: '#000000', // Customize the drawer background color
@@ -60,8 +61,11 @@ const _layout = () => {
                       title: 'Services',
                       headerStyle:{
                           backgroundColor: '#ffe5f3',
-                      }
+                      } ,
+                      swipeEnabled: false,
+
                   }}
+
               />
               <Drawer.Screen
                   name="promotions" // This is the name of the page and must match the url from root
@@ -155,7 +159,7 @@ const _layout = () => {
                   }}
               />
           </Drawer>
-          {/*<Stack />*/}
+
       </GestureHandlerRootView>
 
   );

@@ -6,14 +6,6 @@ const Body = () => {
     <View style={styles.container}>
       <Text>Body Component</Text>
         <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
-        <Text>Body Component</Text>
     </View>
   );
 };
