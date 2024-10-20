@@ -76,11 +76,10 @@ const styles = StyleSheet.create({
         backgroundColor:theme.colors.subColor
     },
     item: {
-
         marginVertical: 8,
         justifyContent: "center",
         alignItems: "center",
-        height: hp(30), // Adjust height as needed
+        height: hp(27.3), // Adjust height as needed
     },
     imageBackground: {
         width: '100%',
