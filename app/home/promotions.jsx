@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, FlatList, Image, Dimensions, StyleSheet } from 'react-native';
+import {hp} from "../../helpers/common";
 
 // Get the width of the screen
 const { width, height } = Dimensions.get('window');
 
-// Sample data for banners
-const banners = [
+// Sample data for firstPromo
+const firstPromo = [
   {
     id: '1',
     imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
@@ -28,11 +29,57 @@ const banners = [
   },
 ];
 
+const secondPromo = [
+  {
+    id: '1',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+  {
+    id: '2',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+  {
+    id: '3',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+  {
+    id: '4',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+];
+
+const thirdPromo = [
+  {
+    id: '1',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+  {
+    id: '2',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+  {
+    id: '3',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+  {
+    id: '4',
+    imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+
+  },
+];
+
 const Promotions = () => {
 
   // Render each banner item
   const renderBannerItem = ({ item }) => (
-      <View style={[styles.bannerContainer, { height: height * item.heightPercentage }]}>
+      <View style={styles.bannerContainer}>
         <Image source={item.imageUrl} style={styles.bannerImage} />
       </View>
   );
@@ -40,7 +87,7 @@ const Promotions = () => {
   return (
       <View style={styles.container}>
         <FlatList
-            data={banners}
+            data={firstPromo}
             renderItem={renderBannerItem}
             keyExtractor={item => item.id}
             horizontal
@@ -48,7 +95,7 @@ const Promotions = () => {
             pagingEnabled
         />
         <FlatList
-            data={banners}
+            data={firstPromo}
             renderItem={renderBannerItem}
             keyExtractor={item => item.id}
             horizontal
@@ -56,7 +103,7 @@ const Promotions = () => {
             pagingEnabled
         />
         <FlatList
-            data={banners}
+            data={firstPromo}
             renderItem={renderBannerItem}
             keyExtractor={item => item.id}
             horizontal
@@ -73,6 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   bannerContainer: {
+    height: hp(20),
     width: width,  // Full width banner
     justifyContent: 'center',
     alignItems: 'center',
