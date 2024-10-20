@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
         marginRight: 20,
         opacity: 0,
         transform: [{scale: 0.5}],
+
     },
     logo: {
         width: 60,
