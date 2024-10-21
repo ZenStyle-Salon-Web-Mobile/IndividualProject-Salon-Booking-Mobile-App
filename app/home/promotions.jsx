@@ -166,6 +166,14 @@ const Promotions = () => {
               showsHorizontalScrollIndicator={false}
               pagingEnabled
           />
+          <FlatList
+              data={firstPromo}
+              renderItem={renderBannerItem}
+              keyExtractor={item => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              pagingEnabled
+          />
       </View>
   );
 };
