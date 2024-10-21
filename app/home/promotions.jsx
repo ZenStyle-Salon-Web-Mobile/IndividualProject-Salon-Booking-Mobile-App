@@ -110,7 +110,6 @@ const Promotions = () => {
             showsHorizontalScrollIndicator={false}
             pagingEnabled
         />
-
       </View>
   );
 };
