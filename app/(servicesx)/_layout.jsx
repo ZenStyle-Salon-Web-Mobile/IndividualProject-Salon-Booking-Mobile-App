@@ -14,7 +14,7 @@ const _layout = () => {
                options={{headerShown: true,
                    title: 'Body', // Title in the header
                    headerStyle:{
-                       backgroundColor: '#ffe5f3',
+                       backgroundColor: '#ff4000',
                    },
                    headerLeft: () => <BackButton router={router} />, // Set custom BackButton in the header
            }}
@@ -25,7 +25,7 @@ const _layout = () => {
                options={{headerShown: true,
                    title: 'Hair', // Title in the header
                    headerStyle:{
-                       backgroundColor: '#ffe5f3',
+                       backgroundColor: '#ff7c00',
                    },
                    headerLeft: () => <BackButton router={router} />, // Set custom BackButton in the header
                }}
@@ -36,7 +36,7 @@ const _layout = () => {
                    headerShown: true,  // Show header with back button
                    title: 'Skin & Face', // Title in the header
                    headerStyle:{
-                       backgroundColor: '#ffe5f3',
+                       backgroundColor: '#98ff98',
                    },
                    headerLeft: () => <BackButton router={router} />, // Set custom BackButton in the header
                }}

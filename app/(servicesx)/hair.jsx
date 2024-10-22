@@ -1,18 +1,34 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
-import {MaterialCommunityIcons} from "@expo/vector-icons";
-import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
-import {theme} from "../../constants/theme";
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList , Image} from 'react-native';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { theme } from "../../constants/theme";
+import {hp, wp} from "../../helpers/common";
+
+// Sample image URLs; replace these with your actual image paths
+const images = {
+    1: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'), // Replace with actual image paths
+    2: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    3: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    4: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    5: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    6: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    7: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    8: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    9: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+
+    // Add more images as needed
+};
 
 const blogData = [{
     id: '1',
-    title: '1) Registration and Account Verification',
-    paragraph: 'Users are required to register on the Salon Liyo website to book appointments. The registration process involves providing personal information such as name, contact number, email address, residential address, postal code, and city. Verification of the user\'s mobile number is necessary to activate the account.',
+    title: '1) ACNE',
+    paragraph: 'Acne is a skin condition caused by increased oil production of the sebaceous (oil) glands. The excess oil, together with dead skin cells, blocks the hair follicles causing whiteheads, blackheads, and pimples. The skin on the face, chest, upper back, and shoulders are most prone to this condition.',
     date: '11th Jan 2022',
+
 }, {
     id: '2',
-    title: '2) Payment and Booking Confirmation',
-    paragraph: 'Payment for appointments can be made through online payment methods or via bank transfer. Immediate confirmation of the appointment is provided upon successful online payment.' + 'For payments made by bank transfer, users must deposit the booking advance within 48 hours and confirm the payment by sending the transfer receipt to our designated WhatsApp number. If the payment is not verified within this timeframe, the booking will be automatically cancelled without prior notification.',
+    title: '2) ACNE SCARS',
+    paragraph: 'Though skin has the natural ability to heal itself, and even with the most careful of treatment, depending on the severity of the acne, scars may occur. An acne lesion may result in loss or formation of skin tissue – the loss results in milder scars and the formation results in more severe scars.',
     date: '5th Nov 2021',
 }, {
     id: '3',
@@ -58,61 +74,99 @@ export default function Hair() {
         setExpandedId(expandedId === id ? null : id);
     };
 
-    const renderItem = ({item}) => (
+    const renderItem = ({ item }) => (
         <View style={styles.itemContainer}>
             <TouchableOpacity onPress={() => handlePress(item.id)} style={styles.titleContainer}>
+
                 <Text style={styles.title}>{item.title}</Text>
                 <MaterialCommunityIcons
-                    name={expandedId === item.id ? name = "arrow-up-drop-circle" : name = "arrow-down-drop-circle"}
-                    size={24} color="black"/>
+                    name={expandedId === item.id ? "arrow-up-drop-circle" : "arrow-down-drop-circle"}
+                    size={24} color={theme.colors.textLight}
+                />
             </TouchableOpacity>
-            {expandedId === item.id && (<Text style={styles.paragraph}>{item.paragraph}</Text>)}
+            {expandedId === item.id && (
+                <View style={styles.expandedContainer}>
+                    <Image resizeMode="cover" source={images[item.id]} style={styles.image} />
+                    <Text style={styles.paragraph}>{item.paragraph}</Text>
+                </View>
+            )}
             <Text style={styles.date}>{item.date}</Text>
         </View>
     );
 
     return (
-        <View style={{flex:1, backgroundColor: '#ffe5f3'}}>
+        <View style={styles.container}>
             <FlatList
                 data={blogData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
-                contentContainerStyle={styles.container}
+                contentContainerStyle={{ padding: 20 }}
             />
         </View>
-
-
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
-        flex:1,
-        backgroundColor: '#ffe5f3',
+        flex: 1,
+        backgroundColor: '#ff7c00', // Background color of the whole screen
     },
     itemContainer: {
-        marginBottom: 20,
+
+        backgroundColor: '#001f3f', // Background color of each item
+        borderRadius: 10, // Rounded corners
+        shadowColor: '#000', // Shadow color for iOS
+        shadowOffset: {
+            width: 0,
+            height: 2, // Vertical offset
+        },
+        shadowOpacity: 0.3, // Shadow opacity
+        shadowRadius: 4, // Shadow blur
+        elevation: 5, // Shadow for Android
+        padding: 15, // Padding inside each item
+        marginBottom: 20, // Spacing between items
+    },
+    image: {
+        width: wp(80), // Set the width of the image
+        height: hp(25), // Set the height of the image
+        borderRadius: 20,
+        shadowColor: '#000', // Shadow color for iOS
+        shadowOffset: {
+            width: 0,
+            height: 2, // Vertical offset
+        },
+        shadowOpacity: 0.3, // Shadow opacity
+        shadowRadius: 4, // Shadow blur
+        elevation: 5, // Shadow for Android
     },
     titleContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-
     },
     title: {
         fontSize: 18,
+        color: theme.colors.textLight,
         fontWeight: 'bold',
         marginBottom: 5,
-        textAlign: "auto",
     },
     paragraph: {
         fontSize: 16,
         marginTop: 10,
+        color: theme.colors.textLight,
     },
     date: {
         fontSize: 14,
-        color: theme.colors.text,
+        color: theme.colors.textLight,
         marginTop: 5,
     },
+    expandedContainer: {
+        marginTop: 10, // Optional: Add some space above the expanded content
+        flexDirection: 'column', // Optional: If you want to align image and text in a row
+        alignItems: 'center', // Optional: Align items vertically centered
+
+    },
+
 });
+
+

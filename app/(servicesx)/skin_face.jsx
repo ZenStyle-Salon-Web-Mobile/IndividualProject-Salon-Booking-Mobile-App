@@ -12,6 +12,11 @@ const images = {
     3: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
     4: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
     5: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    6: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    7: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    8: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+    9: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+
     // Add more images as needed
 };
 
@@ -77,7 +82,7 @@ export default function Skin_Face() {
                 <Text style={styles.title}>{item.title}</Text>
                 <MaterialCommunityIcons
                     name={expandedId === item.id ? "arrow-up-drop-circle" : "arrow-down-drop-circle"}
-                    size={24} color="black"
+                    size={24} color={theme.colors.textLight}
                 />
             </TouchableOpacity>
             {expandedId === item.id && (
@@ -105,10 +110,11 @@ export default function Skin_Face() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffe5f3', // Background color of the whole screen
+        backgroundColor: '#98ff98', // Background color of the whole screen
     },
     itemContainer: {
-        backgroundColor: '#d27caa', // Background color of each item
+
+        backgroundColor: '#333333', // Background color of each item
         borderRadius: 10, // Rounded corners
         shadowColor: '#000', // Shadow color for iOS
         shadowOffset: {
@@ -141,16 +147,18 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
+        color: theme.colors.textLight,
         fontWeight: 'bold',
         marginBottom: 5,
     },
     paragraph: {
         fontSize: 16,
         marginTop: 10,
+        color: theme.colors.textLight,
     },
     date: {
         fontSize: 14,
-        color: theme.colors.text,
+        color: theme.colors.textLight,
         marginTop: 5,
     },
     expandedContainer: {
