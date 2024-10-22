@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList , Image} from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
