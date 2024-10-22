@@ -1,156 +1,110 @@
-import React from 'react';
-import {View, Text, FlatList, Image, Dimensions, StyleSheet, ScrollView} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {View, Text, Image, Dimensions, StyleSheet, ScrollView, Animated} from 'react-native';
 import {hp, wp} from "../../helpers/common";
 import {theme} from "../../constants/theme";
 import Banner from "../../components/Banner";
 import Carousel from "react-native-reanimated-carousel";
+// import Animated from "react-native-reanimated";
+
+
 
 // Get the width of the screen
 const {width, height} = Dimensions.get('window');
 
-// Sample data for firstPromo
+// Sample data for promotions
 const firstPromo = [
     {
         id: '1',
         imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
     },
     {
         id: '2',
         imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
     },
     {
         id: '3',
         imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
     },
     {
         id: '4',
         imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-];
-
-const secondPromo = [
-    {
-        id: '1',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-    {
-        id: '2',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-    {
-        id: '3',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-    {
-        id: '4',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-];
-
-const thirdPromo = [
-    {
-        id: '1',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-    {
-        id: '2',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-    {
-        id: '3',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
-    },
-    {
-        id: '4',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-
     },
 ];
 
 const Promotions = () => {
+    const [activeSlide, setActiveSlide] = useState(0); // Tracks current slide for pagination
+    const carouselRef = useRef();
+    const animatedValue = useRef(new Animated.Value(0)).current; // Animated value for pagination dots
 
-    // Render each banner item
-    const renderBannerItem = ({item}) => (
-        <View style={styles.subContainer}>
+    // Function to handle slide change and animate pagination
+    const handleSnapToItem = (index) => {
+        setActiveSlide(index);
+        Animated.spring(animatedValue, {
+            toValue: index,
+            useNativeDriver: false,
+        }).start();
+    };
+
+    // Animated dot style
+    const getDotStyle = (index) => {
+        const isActive = index === activeSlide;
+        const scale = animatedValue.interpolate({
+            inputRange: [index - 1, index, index + 1],
+            outputRange: [0.8, 1.5, 0.8],
+            extrapolate: 'clamp',
+        });
+        return { transform: [{ scale }] };
+    };
+
+    // Render the banner carousel
+    const renderBannerCarousel = ({ item }) => (
+        <View style={styles.carouselContainer}>
             <Carousel
+                ref={carouselRef}
                 loop
                 autoPlay
                 autoPlayInterval={3000}
-                width={screenWidth}
-                height={screenWidth * 0.5} // 50% of screen height
-                data={banners}
-                scrollAnimationDuration={1000}
-                renderItem={({ item }) => (
+                width={wp(90)}
+                height={hp(20)} // 50% of screen height
+                data={firstPromo}
+                scrollAnimationDuration={500}
+                renderItem={({item}) => (
                     <View style={styles.bannerContainer}>
-                        <Image source={item.imageUrl} style={styles.bannerImage} />
+                        <Image source={item.imageUrl} style={styles.bannerImage}/>
                     </View>
                 )}
-                onSnapToItem={(index) => setActiveSlide(index)} // Updates active slide
+                // onSnapToItem={(index) => setActiveSlide(index)} // Updates active slide
+                onSnapToItem={handleSnapToItem} // Updates active slide
+
             />
-            {/* Pagination */}
-            <Pagination
-                dotsLength={banners.length}
-                activeDotIndex={activeSlide}
-                containerStyle={styles.paginationContainer}
-                dotStyle={styles.activeDot}
-                inactiveDotStyle={styles.inactiveDot}
-            />
+            <View style={styles.paginationContainer}>
+                {firstPromo.map((_, index) => (
+                    <Animated.View key={index} style={[styles.dot, getDotStyle(index)]}>
+                        {index === activeSlide ? (
+                            <View style={styles.activeDot} />
+                        ) : (
+                            <View style={styles.inactiveDot} />
+                        )}
+                    </Animated.View>
+                ))}
+            </View>
+
         </View>
-        // <View style={styles.bannerContainer}>
-        //     <Image source={item.imageUrl} style={styles.bannerImage}/>
-        // </View>
     );
 
     return (
         <ScrollView style={styles.container}>
-            <Banner
-                text={"SALE 75% OFF"}
-                backgroundColor={theme.colors.darkLight}
-            />
-            <FlatList
-                data={firstPromo}
-                renderItem={renderBannerItem}
-                keyExtractor={item => item.id}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                pagingEnabled
-            />
-            <Banner
-                text={"SALE 50% OFF"}
-                backgroundColor={theme.colors.primary}
-            />
-            <FlatList
-                data={firstPromo}
-                renderItem={renderBannerItem}
-                keyExtractor={item => item.id}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                pagingEnabled
-            />
-            <Banner
-                text={"SALE 25% OFF"}
-                backgroundColor={theme.colors.dark}
-                textColor={theme.colors.darkLight}
-            />
-            <FlatList
-                data={firstPromo}
-                renderItem={renderBannerItem}
-                keyExtractor={item => item.id}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                pagingEnabled
-            />
+            {/* First Banner */}
+            <Banner text={"SALE 75% OFF"} backgroundColor={theme.colors.darkLight}/>
+            {renderBannerCarousel(firstPromo)}
+
+            {/* Second Banner */}
+            <Banner text={"SALE 50% OFF"} backgroundColor={theme.colors.primary}/>
+            {renderBannerCarousel(firstPromo)}
+
+            {/* Third Banner */}
+            <Banner text={"SALE 25% OFF"} backgroundColor={theme.colors.dark} textColor={theme.colors.darkLight}/>
+            {renderBannerCarousel(firstPromo)}
         </ScrollView>
     );
 };
@@ -161,18 +115,52 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffe5f3',
         marginBottom: 10,
     },
+    carouselContainer: {
+        alignItems: 'center',
+
+    },
     bannerContainer: {
         height: hp(20),
-        width: wp(100),  // Full width banner
+        width: wp(90), // Adjust width for padding effect
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: theme.radius.xxl
+        overflow: 'visible',
+        borderRadius: 20, // Rounded corners
+        paddingHorizontal: 15, // Horizontal padding
 
     },
     bannerImage: {
         width: '100%',
         height: '100%',
-        resizeMode: 'cover',  // Image covers the container
+        borderRadius: 20, // Rounded corners
+        resizeMode: 'cover',
+
+    },
+    paginationContainer: {
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: 10,
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    activeDot: {
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        backgroundColor: 'black', // Dot style
+        marginHorizontal: 5,
+    },
+    inactiveDot: {
+        width: 20, // Dash style
+        height: 10,
+        backgroundColor: 'gray', // Dash style
+        marginHorizontal: 2,
+        borderRadius: 5, // Optional rounded corners for dashes
+    },
+    dot: {
+        alignItems: 'center',
+        justifyContent: 'center',
+
     },
 });
 
