@@ -1,35 +1,10 @@
-import React, {useRef, useState} from 'react';
-import {View, Text, Image, Dimensions, StyleSheet, ScrollView, Animated} from 'react-native';
-import {hp, wp} from "../../helpers/common";
-import {theme} from "../../constants/theme";
+import React, { useRef, useState } from 'react';
+import { View, Text, Image, Dimensions, StyleSheet, ScrollView, Animated } from 'react-native';
+import { hp, wp } from "../../helpers/common";
+import { theme } from "../../constants/theme";
 import Banner from "../../components/Banner";
 import Carousel from "react-native-reanimated-carousel";
-// import Animated from "react-native-reanimated";
-
-
-
-// Get the width of the screen
-const {width, height} = Dimensions.get('window');
-
-// Sample data for promotions
-const firstPromo = [
-    {
-        id: '1',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-    },
-    {
-        id: '2',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-    },
-    {
-        id: '3',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-    },
-    {
-        id: '4',
-        imageUrl: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-    },
-];
+import { sale } from "../../components/reusable/Sale";
 
 const Promotions = () => {
     const [activeSlide, setActiveSlide] = useState(0); // Tracks current slide for pagination
@@ -57,7 +32,7 @@ const Promotions = () => {
     };
 
     // Render the banner carousel
-    const renderBannerCarousel = ({ item }) => (
+    const renderBannerCarousel = (promoData) => (
         <View style={styles.carouselContainer}>
             <Carousel
                 ref={carouselRef}
@@ -66,19 +41,17 @@ const Promotions = () => {
                 autoPlayInterval={3000}
                 width={wp(90)}
                 height={hp(20)} // 50% of screen height
-                data={firstPromo}
+                data={promoData} // Pass the promo data directly
                 scrollAnimationDuration={500}
-                renderItem={({item}) => (
+                renderItem={({ item }) => (
                     <View style={styles.bannerContainer}>
-                        <Image source={item.imageUrl} style={styles.bannerImage}/>
+                        <Image source={item.imageUrl} style={styles.bannerImage} />
                     </View>
                 )}
-                // onSnapToItem={(index) => setActiveSlide(index)} // Updates active slide
                 onSnapToItem={handleSnapToItem} // Updates active slide
-
             />
             <View style={styles.paginationContainer}>
-                {firstPromo.map((_, index) => (
+                {promoData.map((_, index) => (
                     <Animated.View key={index} style={[styles.dot, getDotStyle(index)]}>
                         {index === activeSlide ? (
                             <View style={styles.activeDot} />
@@ -88,23 +61,22 @@ const Promotions = () => {
                     </Animated.View>
                 ))}
             </View>
-
         </View>
     );
 
     return (
         <ScrollView style={styles.container}>
-            {/* First Banner */}
-            <Banner text={"SALE 75% OFF"} backgroundColor={theme.colors.darkLight}/>
-            {renderBannerCarousel(firstPromo)}
 
-            {/* Second Banner */}
-            <Banner text={"SALE 50% OFF"} backgroundColor={theme.colors.primary}/>
-            {renderBannerCarousel(firstPromo)}
+            <Banner text={"SALE 75% OFF"} backgroundColor={theme.colors.darkLight} />
+            {renderBannerCarousel(sale.firstPromo)}
 
-            {/* Third Banner */}
-            <Banner text={"SALE 25% OFF"} backgroundColor={theme.colors.dark} textColor={theme.colors.darkLight}/>
-            {renderBannerCarousel(firstPromo)}
+
+            <Banner text={"SALE 50% OFF"} backgroundColor={theme.colors.primary} />
+            {renderBannerCarousel(sale.SecPromo)}
+
+
+            <Banner text={"SALE 25% OFF"} backgroundColor={theme.colors.dark} textColor={theme.colors.darkLight} />
+            {renderBannerCarousel(sale.thirdPromo)}
         </ScrollView>
     );
 };
@@ -117,7 +89,6 @@ const styles = StyleSheet.create({
     },
     carouselContainer: {
         alignItems: 'center',
-
     },
     bannerContainer: {
         height: hp(20),
@@ -127,14 +98,12 @@ const styles = StyleSheet.create({
         overflow: 'visible',
         borderRadius: 20, // Rounded corners
         paddingHorizontal: 15, // Horizontal padding
-
     },
     bannerImage: {
         width: '100%',
         height: '100%',
         borderRadius: 20, // Rounded corners
         resizeMode: 'cover',
-
     },
     paginationContainer: {
         flexDirection: 'row',
@@ -160,7 +129,6 @@ const styles = StyleSheet.create({
     dot: {
         alignItems: 'center',
         justifyContent: 'center',
-
     },
 });
 
