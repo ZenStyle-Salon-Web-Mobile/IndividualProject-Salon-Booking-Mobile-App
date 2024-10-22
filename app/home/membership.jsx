@@ -9,6 +9,7 @@ import {hp} from "../../helpers/common";
 const membershipData = [
     {
         type: 'Gold',
+        price:'1550',
         backgroundColor: 'black',
         image: require('../../assets/images/cards/1.png'), // Add a relevant gold image
         name: 'Priority Booking',
@@ -26,6 +27,7 @@ const membershipData = [
     },
     {
         type: 'Platinum',
+        price:'1750',
         backgroundColor: 'black',
         image: require('../../assets/images/cards/3.png'), // Add a relevant platinum image
         name: 'Priority Booking',
@@ -39,6 +41,7 @@ const membershipData = [
     },
     {
         type: 'Silver',
+        price:'1250',
         backgroundColor: 'black',
         image: require('../../assets/images/cards/2.png'), // Add a relevant silver image
         name: 'Priority Booking',
@@ -60,8 +63,11 @@ const MembershipCard = ({item, parallaxProps}) => {
                 At "CHRISTELL EMPOWERED CLUB", it is our goal to listen to your concerns and find solutions that address
                 all of your aesthetic needs.</Text>
             <Image source={item.image} style={styles.image} {...parallaxProps} />
-            <Text style={styles.membershipText}>Rs.<Text>25</Text></Text>
-
+            <Text style={{
+                fontSize:hp(2),
+                color: theme.colors.textLight,
+                bottom:25
+            }}>Rs.<Text style={styles.membershipText}>{item.price}</Text>.00</Text>
             <Text style={styles.title}> BENEFITS INCLUDE</Text>
             <View style={{flexDirection:'row',flexWrap:'wrap',width: '80%', justifyContent:'space-evenly'}}>
                 <View style={{justifyContent: 'center', alignItems: 'center', margin:10}}>
@@ -81,7 +87,7 @@ const MembershipCard = ({item, parallaxProps}) => {
                     <Text style={{textAlign: 'center', color: theme.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
                 </View>
             </View>
-            <Pressable>
+            <Pressable style={styles.membershipButton}>
                 <Text style={{color: 'white'}}>
                     Become a Member
                 </Text>
@@ -163,8 +169,9 @@ const styles = StyleSheet.create({
         left: 0,
     },
     membershipText:{
-        fontSize:hp(7),
+        fontSize:hp(6.5),
         color: theme.colors.textLight,
+        fontWeight:theme.fonts.semibold
 
     },
 });
