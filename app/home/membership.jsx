@@ -4,6 +4,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
 import {theme} from "../../constants/theme";
 import {Fontisto, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
+import {hp} from "../../helpers/common";
 
 const membershipData = [
     {
@@ -59,6 +60,7 @@ const MembershipCard = ({item, parallaxProps}) => {
                 At "CHRISTELL EMPOWERED CLUB", it is our goal to listen to your concerns and find solutions that address
                 all of your aesthetic needs.</Text>
             <Image source={item.image} style={styles.image} {...parallaxProps} />
+            <Text style={styles.membershipText}>Rs.<Text>25</Text></Text>
 
             <Text style={styles.title}> BENEFITS INCLUDE</Text>
             <View style={{flexDirection:'row',flexWrap:'wrap',width: '80%', justifyContent:'space-evenly'}}>
@@ -159,6 +161,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
+    },
+    membershipText:{
+        fontSize:hp(7),
+        color: theme.colors.textLight,
+
     },
 });
 
