@@ -37,8 +37,9 @@ const _layout = () => {
                           <TouchableOpacity
                               onPress={() => {}}
                               style={{ marginRight: 12 ,
-                                  backgroundColor: "#ff74bf",
-                                  padding: 4,
+                                  marginBottom:5,
+                                  backgroundColor: 'white',
+                                  padding: 6,
                                   borderRadius:10,
                                   shadowColor: '#171717',
                                   shadowOffset: {width: 2, height:2},
@@ -48,7 +49,7 @@ const _layout = () => {
 
                           }}
                           >
-                              <Ionicons name="notifications" size={30} color={Colors.black} />
+                              <Ionicons name="notifications" size={28} color={Colors.black} />
                           </TouchableOpacity>
                       ),
 

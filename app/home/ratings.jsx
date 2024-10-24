@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Pressable, FlatList, Image} from 'react-native';
+import {View, Text, StyleSheet, Pressable, FlatList, Image, Modal, TextInput} from 'react-native';
 import {theme} from "../../constants/theme";
 import {hp, wp} from "../../helpers/common";
 import {FontAwesome} from "@expo/vector-icons";
@@ -60,7 +60,7 @@ const Ratings = () => {
 
     const getOverallRating = () => {
         const totalStars = (ratings.fiveStars * 5) + (ratings.fourStars * 4) + (ratings.threeStars * 3) +
-            (ratings.twoStars * 2) + (ratings.oneStar * 1);
+            (ratings.twoStars * 2) + (ratings.oneStar);
         return ratings.total === 0 ? 0 : (totalStars / ratings.total).toFixed(1);
     };
     return (
@@ -80,8 +80,6 @@ const Ratings = () => {
                 </View>
                 <Text style={{fontSize: hp(2.3), fontWeight: theme.fonts.medium}}>Based
                     on {ratings.total} reviews</Text>
-
-
             </View>
             {/* Progress Bars for Ratings */}
             <View style={styles.progressSection}>
@@ -128,6 +126,17 @@ const Ratings = () => {
                 />
             </View>
 
+            <Modal visible={true} transparent={true}>
+                <View style={styles.content}>
+                    <View style={styles.modalCard}>
+                        <View style={styles.startContainer}></View>
+                        <TextInput style={styles.modalDesc}
+                                   placeholder="Type here to Comment!"
+                                   multiline
+                        ></TextInput>
+                    </View>
+                </View>
+            </Modal>
 
             {/* Reviews List */}
             <Pressable style={styles.reviewButton}>
@@ -147,6 +156,38 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: wp(6),
         top: hp(2),
+    },
+    content: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalCard: {
+        backgroundColor: 'white',
+        width: wp(90),
+        height: hp(50),
+        borderRadius: theme.radius.xl,
+        justifyContent: "space-evenly",
+        alignItems: "center",
+    },
+    startContainer: {
+        borderWidth: 2,
+        borderStyle: 'solid', // Set the border style to solid
+        width: wp(80),
+        height: hp(12),
+        borderRadius: theme.radius.xl,
+    },
+    modalDesc: {
+        borderWidth: 2,
+        borderStyle: 'solid', // Set the border style to solid
+        width: wp(80),
+        height: hp(30),
+        borderRadius: theme.radius.xl,
+        fontSize: hp(2),
+        padding: 10,
+
+
     },
     reviewButton: {
         alignItems: 'center',
