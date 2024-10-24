@@ -134,17 +134,31 @@ const Ratings = () => {
             <Modal visible={true} transparent={true}>
                 <View style={styles.content}>
                     <View style={styles.modalCard}>
-                        <View style={styles.startContainer}></View>
+                        <Text>Add Ratings</Text>
+                        <View style={styles.startContainer}>
+                            {Array(5).fill().map((_, index) => (
+                                <Pressable key={index} onPress={() => handleStarPress(index + 1)}>
+                                    <FontAwesome
+                                        name={index < rating ? "star" : "star-o"} // Filled or outlined stars
+                                        size={35}
+                                        color={index < rating ? "#FFD700" : "#808080"} // Gold for filled, gray for outline
+                                    />
+                                </Pressable>
+                            ))}
+                        </View>
                         <TextInput style={styles.modalDesc}
                                    placeholder="Type here to Comment!"
                                    multiline
                         ></TextInput>
+                        <Pressable style={styles.cancelButton}>
+                            <Text style={styles.reviewButtonText}>Cancel</Text>
+                        </Pressable>
                     </View>
                 </View>
             </Modal>
 
             {/* Reviews List */}
-            <Pressable style={styles.reviewButton}>
+            <Pressable style={styles.reviewButton} onPress={() => {}}>
                 <Text style={styles.reviewButtonText}>
                     Write a review
                 </Text>
@@ -177,22 +191,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     startContainer: {
+        backgroundColor:'black',
         borderWidth: 2,
         borderStyle: 'solid', // Set the border style to solid
         width: wp(80),
-        height: hp(12),
+        height: hp(8),
         borderRadius: theme.radius.xl,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems:"center"
+
     },
     modalDesc: {
         borderWidth: 2,
         borderStyle: 'solid', // Set the border style to solid
         width: wp(80),
-        height: hp(30),
+        height: hp(25),
         borderRadius: theme.radius.xl,
         fontSize: hp(2),
         padding: 10,
-
-
     },
     reviewButton: {
         alignItems: 'center',
@@ -200,6 +217,13 @@ const styles = StyleSheet.create({
         padding: '5%',
         borderRadius: theme.radius.lg,
         marginBottom: 40,
+    },
+    cancelButton:{
+        alignItems: 'center',
+        backgroundColor: theme.colors.dark,
+        paddingHorizontal: wp(30),
+        borderRadius: theme.radius.lg,
+        paddingVertical:hp(1.2),
     },
     reviewButtonText: {
         fontSize: hp(2.2),
