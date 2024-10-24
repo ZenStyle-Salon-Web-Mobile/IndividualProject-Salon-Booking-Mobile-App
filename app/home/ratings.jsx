@@ -1,5 +1,16 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Pressable, FlatList, Image, Modal, TextInput} from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Pressable,
+    FlatList,
+    Image,
+    Modal,
+    TextInput,
+    Keyboard,
+    TouchableWithoutFeedback
+} from 'react-native';
 import {theme} from "../../constants/theme";
 import {hp, wp} from "../../helpers/common";
 import {FontAwesome} from "@expo/vector-icons";
@@ -44,6 +55,8 @@ const reviewsData = [
 
 
 const Ratings = () => {
+
+    const [openModel, setOpenModel] = useState(false);
 
     // Initial state for rating counts
     const [ratings, setRatings] = useState({
@@ -131,34 +144,39 @@ const Ratings = () => {
                 />
             </View>
 
-            <Modal visible={true} transparent={true}>
-                <View style={styles.content}>
-                    <View style={styles.modalCard}>
-                        <Text>Add Ratings</Text>
-                        <View style={styles.startContainer}>
-                            {Array(5).fill().map((_, index) => (
-                                <Pressable key={index} onPress={() => handleStarPress(index + 1)}>
-                                    <FontAwesome
-                                        name={index < rating ? "star" : "star-o"} // Filled or outlined stars
-                                        size={35}
-                                        color={index < rating ? "#FFD700" : "#808080"} // Gold for filled, gray for outline
-                                    />
-                                </Pressable>
-                            ))}
+            <Modal visible={openModel} transparent={true}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.content}>
+                        <View style={styles.modalCard}>
+                            <Text>Add Ratings</Text>
+                            <View style={styles.startContainer}>
+                                {Array(5).fill().map((_, index) => (
+                                    <Pressable key={index} onPress={() => handleStarPress(index + 1)}>
+                                        <FontAwesome
+                                            name={index < rating ? "star" : "star-o"} // Filled or outlined stars
+                                            size={35}
+                                            color={index < rating ? "#FFD700" : "#808080"} // Gold for filled, gray for outline
+                                        />
+                                    </Pressable>
+                                ))}
+                            </View>
+                            <TextInput style={styles.modalDesc}
+                                       placeholder="Type here to Comment!"
+                                       multiline
+                                       editable
+                                       keyboardType
+                            ></TextInput>
+                            <Pressable style={styles.cancelButton} onPress={() => setOpenModel(false)}>
+                                <Text style={styles.reviewButtonText}>Cancel</Text>
+                            </Pressable>
                         </View>
-                        <TextInput style={styles.modalDesc}
-                                   placeholder="Type here to Comment!"
-                                   multiline
-                        ></TextInput>
-                        <Pressable style={styles.cancelButton}>
-                            <Text style={styles.reviewButtonText}>Cancel</Text>
-                        </Pressable>
                     </View>
-                </View>
+                </TouchableWithoutFeedback>
+
             </Modal>
 
             {/* Reviews List */}
-            <Pressable style={styles.reviewButton} onPress={() => {}}>
+            <Pressable style={styles.reviewButton} onPress={() => setOpenModel(true)}>
                 <Text style={styles.reviewButtonText}>
                     Write a review
                 </Text>
