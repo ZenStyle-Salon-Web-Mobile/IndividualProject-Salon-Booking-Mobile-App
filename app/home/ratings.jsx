@@ -63,6 +63,11 @@ const Ratings = () => {
             (ratings.twoStars * 2) + (ratings.oneStar);
         return ratings.total === 0 ? 0 : (totalStars / ratings.total).toFixed(1);
     };
+    const [rating, setRating] = useState(0);
+
+    const handleStarPress = (star) => {
+        setRating(star);
+    };
     return (
 
         <View style={styles.container}>
