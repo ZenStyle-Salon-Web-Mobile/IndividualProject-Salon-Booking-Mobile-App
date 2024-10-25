@@ -181,16 +181,16 @@ const Ratings = () => {
                                        editable
                                        keyboardType
                             ></TextInput>
-                            <View>
-
+                            <View style={{flexDirection: 'row', justifyContent: 'space-around',width: wp(80) }}>
+                                <Pressable style={styles.cancelButton} onPress={() => setOpenModel(false)}>
+                                    <Text style={styles.reviewButtonText}>Submit</Text>
+                                </Pressable>
+                                <Pressable style={[styles.cancelButton, {backgroundColor: '#f00'}]}
+                                           onPress={() => setOpenModel(false)}>
+                                    <Text style={styles.reviewButtonText}>Cancel</Text>
+                                </Pressable>
                             </View>
-                            <Pressable style={styles.cancelButton} onPress={() => setOpenModel(false)}>
-                                <Text style={styles.reviewButtonText}>Submit</Text>
-                            </Pressable>
-                            <Pressable style={[styles.cancelButton, {backgroundColor: '#f00'}]}
-                                       onPress={() => setOpenModel(false)}>
-                                <Text style={styles.reviewButtonText}>Cancel</Text>
-                            </Pressable>
+
                         </View>
                     </View>
                 </TouchableWithoutFeedback>
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     cancelButton: {
         alignItems: 'center',
         backgroundColor: themes.colors.dark,
-        paddingHorizontal: wp(30),
+        paddingHorizontal: wp(10),
         borderRadius: themes.radius.lg,
         paddingVertical: hp(1.2),
     },
