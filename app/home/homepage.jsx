@@ -8,25 +8,57 @@ import {Entypo, FontAwesome6, Ionicons} from "@expo/vector-icons";
 import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
 
 const data = [
-    { id: 'Acne', image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg') },
-    { id: 'Facial', image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg') },
-    { id: 'Makeup', image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg') },
-    { id: 'Rebounding', image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg') },
-    { id: 'Curly', image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg') },
+    {
+        id: 'Acne',
+        image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+        price: '$50',
+        duration: '30 mins',
+        rating: 4.5,
+    },
+    {
+        id: 'Facial',
+        image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+        price: '$60',
+        duration: '45 mins',
+        rating: 4.0,
+    },
+    {
+        id: 'Makeup',
+        image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg'),
+        price: '$70',
+        duration: '60 mins',
+        rating: 5.0,
+    },
+    {
+        id: 'Rebounding',
+        image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg'),
+        price: '$70',
+        duration: '60 mins',
+        rating: 5.0,
+
+    },
+    {
+        id: 'Curly',
+        image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg'),
+        price: '$70',
+        duration: '60 mins',
+        rating: 5.0,
+
+    },
     // Add more images as needed
 ];
 
 const HomePage = () => {
 
-    const Card = ({ item, navigation }) => {
+    const Card = ({item, navigation}) => {
         return (
             <TouchableOpacity
                 // onPress={() => navigation.navigate('Details', { image: item.image, id: item.id })}
                 style={styles.card}
             >
-                <Image source={item.image} style={styles.image2} resizeMode="cover" />
+                <Image source={item.image} style={styles.image2} resizeMode="cover"/>
                 <View style={styles.addIcon}>
-                    <FontAwesome6 name="add" size={20} color="black" />
+                    <FontAwesome6 name="add" size={20} color="black"/>
                 </View>
                 <Text style={styles.cardText}> {item.id}</Text>
             </TouchableOpacity>
@@ -133,10 +165,10 @@ const HomePage = () => {
                 {/* Topics under the image */}
                 <View style={styles.topicContainer}>
                     <Text style={styles.subTopic}>Top Services</Text>
-                    <View style={styles.container}>
+                    <View >
                         <FlatList
                             data={data}
-                            renderItem={({ item }) => <Card item={item}  />}
+                            renderItem={({item}) => <Card item={item}/>}
                             keyExtractor={(item) => item.id}
                             horizontal
                             showsHorizontalScrollIndicator={false}
@@ -208,7 +240,7 @@ const styles = StyleSheet.create({
     },
     topicContainer: {
         marginTop: 10,  // Increased space between the carousel and topics
-        paddingHorizontal: 10,  // Space around the topics
+
     },
     subTopic: {
         fontWeight: themes.fonts.extraBold,
@@ -226,36 +258,44 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     card: {
-        width:wp(30),
+        width: wp(50),
         marginHorizontal: 10,
         borderRadius: 10,
         overflow: 'hidden',
         backgroundColor: themes.colors.primary,
         shadowColor: '#000',
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.9,
         shadowRadius: 5,
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: {width: 0, height: 2},
         elevation: 2,
+
     },
     image2: {
         width: '100%',
         height: hp(15),
     },
     cardText: {
-        color:'white',
-        fontWeight:themes.fonts.bold,
+        color: 'white',
+        fontWeight: themes.fonts.bold,
         padding: 10,
         textAlign: 'center',
     },
-    addIcon:{
+    addIcon: {
         position: 'absolute',
-        top:115,
-        right:12,
+        top: 115,
+        right: 12,
         backgroundColor: 'white',
-        padding:5,
-        borderRadius:50,
+        padding: 5,
+        borderRadius: 50,
         borderWidth: 2,
-        borderColor:themes.colors.primary,
+        borderColor: themes.colors.primary,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: {width: 0, height: 2},
+        elevation: 2,
+
+
 
     },
 });
