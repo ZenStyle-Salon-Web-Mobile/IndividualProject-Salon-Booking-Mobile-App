@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     priceText: {
         fontWeight: themes.fonts.bold,
         color: 'white',
-        fontSize: hp(2.8),
+        fontSize: hp(2.5),
         shadowColor: '#000',
         shadowOpacity: 0.2,
         shadowRadius: 5,

@@ -7,38 +7,38 @@ import {Entypo, FontAwesome, FontAwesome6, Ionicons} from "@expo/vector-icons";
 const data = [
     {
         id: 'Ramesh',
-        image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
+        image: require('../../assets/images/hairSpec/ramesh.jpg'),
         position: 'Hair Stylish',
-        duration: '30 mins',
+        duration: '4 yrs exp',
         rating: 4.5,
     },
     {
         id: 'Kaushika',
-        image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
+        image: require('../../assets/images/hairSpec/kaushika.jpg'),
         position: 'Hair Spa',
-        duration: '45 mins',
+        duration: '3 yrs exp',
         rating: 4.1,
     },
     {
         id: 'Nirushi',
-        image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg'),
+        image: require('../../assets/images/hairSpec/nirushi.jpg'),
         position: 'Oil Massage',
-        duration: '60 mins',
+        duration: '5 yrs exp',
         rating: 5.1,
     },
     {
         id: 'Dananjani',
-        image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg'),
+        image: require('../../assets/images/hairSpec/dananjani.jpg'),
         position: 'Therapy',
-        duration: '60 mins',
+        duration: '4 yrs exp',
         rating: 5.1,
 
     },
     {
         id: 'Kamesh',
-        image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg'),
+        image: require('../../assets/images/hairSpec/kamesh.jpg'),
         position: 'Skin Specialist',
-        duration: '60 mins',
+        duration: '7 yrs exp',
         rating: 5.1,
 
     },
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
         fontWeight: themes.fonts.bold,
         color: '#666',
         fontSize: hp(1.8),
+        paddingRight:30
 
     },
     rating: {
