@@ -6,6 +6,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import {sliderImages} from "../../constants/imageIndex";
 import {Entypo, FontAwesome, FontAwesome6, Ionicons} from "@expo/vector-icons";
 import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
+import HairSpecialistCont from "../../components/reusable/HairSpecialistCont";
 
 const data = [
     {
@@ -202,6 +203,7 @@ const HomePage = () => {
 
 
                     <Text style={styles.subTopic}>Hair Specialist</Text>
+                    <HairSpecialistCont/>
                 </View>
             </ScrollView>
 
