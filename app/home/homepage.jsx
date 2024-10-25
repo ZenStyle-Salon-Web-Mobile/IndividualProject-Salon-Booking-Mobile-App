@@ -11,38 +11,38 @@ const data = [
     {
         id: 'Acne',
         image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
-        price: '$50',
+        price: 'Rs.5000.00',
         duration: '30 mins',
         rating: 4.5,
     },
     {
         id: 'Facial',
         image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-        price: '$60',
+        price: 'Rs.6000.00',
         duration: '45 mins',
-        rating: 4.0,
+        rating: 4.1,
     },
     {
         id: 'Makeup',
         image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg'),
-        price: '$70',
+        price: 'Rs.7000.00',
         duration: '60 mins',
-        rating: 5.0,
+        rating: 5.1,
     },
     {
         id: 'Rebounding',
         image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg'),
-        price: '$70',
+        price: 'Rs.7000.00',
         duration: '60 mins',
-        rating: 5.0,
+        rating: 5.1,
 
     },
     {
         id: 'Curly',
         image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg'),
-        price: '$70',
+        price: 'Rs.7000.00',
         duration: '60 mins',
-        rating: 5.0,
+        rating: 5.1,
 
     },
     // Add more images as needed
@@ -60,28 +60,31 @@ const HomePage = () => {
                 <View style={styles.addIcon}>
                     <FontAwesome6 name="add" size={20} color="black"/>
                 </View>
-                <Text style={styles.cardText}> {item.id}</Text>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                    <FontAwesome
-                        name={"star"} // Filled or outlined stars
-                        size={20}
-                        color={"#FFD700"} // Gold for filled, gray for outline
-                        style={{
-                            shadowColor: '#000',
-                            shadowOpacity: 0.2,
-                            shadowRadius: 5,
-                            shadowOffset: {width: 0, height: 2},
-                            elevation: 2,
-                        }}
-                    />
-                    <Text style={styles.rating}>
-                        {item.rating}
-                    </Text>
-                </View>
-                <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                    <Text style={styles.priceText}>{item.price}</Text>
-                    <Text style={styles.durationText}>{item.duration}</Text>
-                </View>
+                    <Text style={styles.cardText}> {item.id}</Text>
+                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                        <FontAwesome
+                            name={"star"} // Filled or outlined stars
+                            size={20}
+                            color={"#FFD700"} // Gold for filled, gray for outline
+                            style={{
+                                shadowColor: '#000',
+                                shadowOpacity: 0.2,
+                                shadowRadius: 5,
+                                shadowOffset: {width: 0, height: 2},
+                                elevation: 2,
+                            }}
+                        />
+                        <Text style={styles.rating}>
+                            {item.rating}
+                        </Text>
+                        <Text style={styles.durationText}>{item.duration}</Text>
+                    </View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
+                        <Text style={styles.priceText}>{item.price}</Text>
+
+                    </View>
+
+
 
             </TouchableOpacity>
         );
@@ -280,7 +283,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     card: {
-        width: wp(50),
+        width: wp(55),
         marginHorizontal: 10,
         borderRadius: 10,
         overflow: 'hidden',
@@ -290,6 +293,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},
         elevation: 2,
+        paddingBottom:2,
 
     },
     image2: {
@@ -299,8 +303,8 @@ const styles = StyleSheet.create({
     cardText: {
         color: 'white',
         fontWeight: themes.fonts.bold,
-        padding: 10,
         textAlign: 'center',
+        fontSize: hp(2),
     },
     addIcon: {
         position: 'absolute',
@@ -318,15 +322,27 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     priceText: {
-        fontSize: 14,
-        color: '#000',
+        fontWeight: themes.fonts.bold,
+        color: 'white',
+        fontSize: hp(2.8),
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: {width: 0, height: 2},
+        elevation: 2,
+        fontStyle: 'italic',
     },
     durationText: {
-        fontSize: 12,
+        fontWeight: themes.fonts.bold,
         color: '#666',
+        fontSize: hp(1.8),
+
     },
     rating: {
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
+        color: '#666',
+        fontWeight: themes.fonts.bold,
+        fontSize: hp(1.5),
     },
 });
 
