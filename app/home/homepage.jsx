@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList} from 'react-native';
 import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import Carousel from 'react-native-reanimated-carousel';
@@ -7,7 +7,28 @@ import {sliderImages} from "../../constants/imageIndex";
 import {Entypo, FontAwesome6, Ionicons} from "@expo/vector-icons";
 import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
 
+const data = [
+    { id: '3', image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg') },
+    { id: '2', image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg') },
+    { id: '4', image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg') },
+    { id: '5', image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg') },
+    { id: '6', image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg') },
+    // Add more images as needed
+];
+
 const HomePage = () => {
+
+    const Card = ({ item, navigation }) => {
+        return (
+            <TouchableOpacity
+                // onPress={() => navigation.navigate('Details', { image: item.image, id: item.id })}
+                style={styles.card}
+            >
+                <Image source={item.image} style={styles.image2} resizeMode="cover" />
+                <Text style={styles.cardText}>Card {item.id}</Text>
+            </TouchableOpacity>
+        );
+    };
 
     const currentIndex = useSharedValue(0); // Track the current slide index
 
@@ -108,8 +129,18 @@ const HomePage = () => {
 
                 {/* Topics under the image */}
                 <View style={styles.topicContainer}>
-
                     <Text style={styles.subTopic}>Top Services</Text>
+                    <View style={styles.container}>
+                        <FlatList
+                            data={data}
+                            renderItem={({ item }) => <Card item={item}  />}
+                            keyExtractor={(item) => item.id}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    </View>
+
+
                     <Text style={styles.subTopic}>Hair Specialist</Text>
                 </View>
             </ScrollView>
@@ -190,6 +221,28 @@ const styles = StyleSheet.create({
     dot: {
         borderRadius: 5,
         marginHorizontal: 5,
+    },
+    card: {
+        width:wp(30),
+        marginHorizontal: 10,
+        borderRadius: 10,
+        overflow: 'hidden',
+        backgroundColor: themes.colors.primary,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 2 },
+        elevation: 2,
+    },
+    image2: {
+        width: '100%',
+        height: hp(15),
+    },
+    cardText: {
+        color:'white',
+        fontWeight:themes.fonts.bold,
+        padding: 10,
+        textAlign: 'center',
     },
 });
 
