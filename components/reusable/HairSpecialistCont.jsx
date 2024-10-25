@@ -6,38 +6,38 @@ import {Entypo, FontAwesome, FontAwesome6, Ionicons} from "@expo/vector-icons";
 
 const data = [
     {
-        id: 'Acne',
+        id: 'Ramesh',
         image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg'),
-        price: 'Rs.5000.00',
+        position: 'Hair Stylish',
         duration: '30 mins',
         rating: 4.5,
     },
     {
-        id: 'Facial',
+        id: 'Kaushika',
         image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg'),
-        price: 'Rs.6000.00',
+        position: 'Hair Spa',
         duration: '45 mins',
         rating: 4.1,
     },
     {
-        id: 'Makeup',
+        id: 'Nirushi',
         image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg'),
-        price: 'Rs.7000.00',
+        position: 'Oil Massage',
         duration: '60 mins',
         rating: 5.1,
     },
     {
-        id: 'Rebounding',
+        id: 'Dananjani',
         image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg'),
-        price: 'Rs.7000.00',
+        position: 'Therapy',
         duration: '60 mins',
         rating: 5.1,
 
     },
     {
-        id: 'Curly',
+        id: 'Kamesh',
         image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg'),
-        price: 'Rs.7000.00',
+        position: 'Skin Specialist',
         duration: '60 mins',
         rating: 5.1,
 
@@ -58,13 +58,15 @@ const HairSpecialistCont = () => {
                     <FontAwesome6 name="add" size={20} color="black"/>
                 </View>
                 <Text style={styles.cardText}> {item.id}</Text>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <Text style={styles.position}>{item.position}</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Text style={styles.durationText}>{item.duration}</Text>
                     <FontAwesome
                         name={"star"} // Filled or outlined stars
                         size={20}
                         color={"#FFD700"} // Gold for filled, gray for outline
                         style={{
-                            shadowColor: '#000',
+                            shadowColor: 'white',
                             shadowOpacity: 0.2,
                             shadowRadius: 5,
                             shadowOffset: {width: 0, height: 2},
@@ -74,11 +76,6 @@ const HairSpecialistCont = () => {
                     <Text style={styles.rating}>
                         {item.rating}
                     </Text>
-                    <Text style={styles.durationText}>{item.duration}</Text>
-                </View>
-                <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
-                    <Text style={styles.priceText}>{item.price}</Text>
-
                 </View>
             </TouchableOpacity>
         );
@@ -86,97 +83,52 @@ const HairSpecialistCont = () => {
 
     return (
 
-        <View>
-            <FlatList
-                data={data}
-                renderItem={({item}) => <Card item={item}/>}
-                keyExtractor={(item) => item.id}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-            />
-        </View>
+
+        <FlatList
+            data={data}
+            renderItem={({item}) => <Card item={item}/>}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+        />
+
 
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    card: {
+        width: wp(45),
         marginHorizontal: 10,
-    },
-    headingText: {
-        fontWeight: themes.fonts.extraBold,
-        fontSize: hp(3),
-    },
-    subHeadingText: {
-        color: themes.colors.text,
-        fontSize: hp(1.5),
-    },
-    carouselContainer: {
-        marginVertical: 10,
-    },
-    imageContainer: {
-        width: wp(100) - 40, // Image container width with some space on sides
-        height: hp(25), // 25% height
-        marginHorizontal: 10, // Horizontal space between images
         borderRadius: 20,
         overflow: 'hidden',
-    },
-    image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
-    },
-    topicContainer: {
-        marginTop: 10,  // Increased space between the carousel and topics
-
-    },
-    subTopic: {
-        fontWeight: themes.fonts.extraBold,
-        fontSize: hp(2.5),
-        color: themes.colors.primaryDark,
-        marginVertical: 15, // Increased space between each topic : 15,  // Increased space between each topic
-    },
-    paginationContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 10,
-    },
-    dot: {
-        borderRadius: 5,
-        marginHorizontal: 5,
-    },
-    card: {
-        width: wp(55),
-        marginHorizontal: 10,
-        borderRadius: 10,
-        overflow: 'hidden',
-        backgroundColor: themes.colors.primary,
+        backgroundColor: '#eaeaea',
         shadowColor: '#000',
         shadowOpacity: 0.9,
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},
         elevation: 2,
         paddingBottom: 2,
-
+        justifyContent: "space-around",
+        alignItems: 'center',
     },
     image2: {
-        width: '100%',
-        height: hp(15),
+        width: hp(10),
+        height: hp(10),
+        borderRadius: hp(5), // Half of the width/height to make it circular
     },
     cardText: {
-        color: 'white',
         fontWeight: themes.fonts.bold,
         textAlign: 'center',
-        fontSize: hp(2),
+        fontSize: hp(2.5),
     },
     addIcon: {
         position: 'absolute',
-        top: 115,
-        right: 12,
+        top: 120,
+        right: 9,
         backgroundColor: 'white',
-        padding: 5,
-        borderRadius: 50,
+        padding: 3,
+        borderRadius: 100,
         borderWidth: 2,
         borderColor: themes.colors.primary,
         shadowColor: '#000',
@@ -185,16 +137,10 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 2},
         elevation: 2,
     },
-    priceText: {
+    position: {
         fontWeight: themes.fonts.bold,
-        color: 'white',
-        fontSize: hp(2.8),
-        shadowColor: '#000',
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        shadowOffset: {width: 0, height: 2},
-        elevation: 2,
-        fontStyle: 'italic',
+        color: themes.colors.primary,
+        fontSize: hp(1.8),
     },
     durationText: {
         fontWeight: themes.fonts.bold,

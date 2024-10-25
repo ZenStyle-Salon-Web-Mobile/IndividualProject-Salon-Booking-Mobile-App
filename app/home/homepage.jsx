@@ -61,30 +61,29 @@ const HomePage = () => {
                 <View style={styles.addIcon}>
                     <FontAwesome6 name="add" size={20} color="black"/>
                 </View>
-                    <Text style={styles.cardText}> {item.id}</Text>
-                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                        <FontAwesome
-                            name={"star"} // Filled or outlined stars
-                            size={20}
-                            color={"#FFD700"} // Gold for filled, gray for outline
-                            style={{
-                                shadowColor: '#000',
-                                shadowOpacity: 0.2,
-                                shadowRadius: 5,
-                                shadowOffset: {width: 0, height: 2},
-                                elevation: 2,
-                            }}
-                        />
-                        <Text style={styles.rating}>
-                            {item.rating}
-                        </Text>
-                        <Text style={styles.durationText}>{item.duration}</Text>
-                    </View>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
-                        <Text style={styles.priceText}>{item.price}</Text>
+                <Text style={styles.cardText}> {item.id}</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <FontAwesome
+                        name={"star"} // Filled or outlined stars
+                        size={20}
+                        color={"#FFD700"} // Gold for filled, gray for outline
+                        style={{
+                            shadowColor: '#000',
+                            shadowOpacity: 0.2,
+                            shadowRadius: 5,
+                            shadowOffset: {width: 0, height: 2},
+                            elevation: 2,
+                        }}
+                    />
+                    <Text style={styles.rating}>
+                        {item.rating}
+                    </Text>
+                    <Text style={styles.durationText}>{item.duration}</Text>
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
+                    <Text style={styles.priceText}>{item.price}</Text>
 
-                    </View>
-
+                </View>
 
 
             </TouchableOpacity>
@@ -164,7 +163,10 @@ const HomePage = () => {
                 </View>
             </View>
 
-            <ScrollView>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+            >
                 <Text style={styles.subTopic}>Special Offers</Text>
                 {/* Carousel Section */}
                 <View style={styles.carouselContainer}>
@@ -191,7 +193,7 @@ const HomePage = () => {
                 {/* Topics under the image */}
                 <View style={styles.topicContainer}>
                     <Text style={styles.subTopic}>Top Services</Text>
-                    <View>
+                    <View style={{height: hp(23)}}>
                         <FlatList
                             data={data}
                             renderItem={({item}) => <Card item={item}/>}
@@ -203,7 +205,9 @@ const HomePage = () => {
 
 
                     <Text style={styles.subTopic}>Hair Specialist</Text>
-                    <HairSpecialistCont/>
+                    <View style={{height: hp(21)}}>
+                        <HairSpecialistCont/>
+                    </View>
                 </View>
             </ScrollView>
 
@@ -241,6 +245,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginHorizontal: 10,
+
     },
     headingText: {
         fontWeight: themes.fonts.extraBold,
@@ -251,7 +256,7 @@ const styles = StyleSheet.create({
         fontSize: hp(1.5),
     },
     carouselContainer: {
-        marginVertical: 10,
+        marginTop: 10,
     },
     imageContainer: {
         width: wp(100) - 40, // Image container width with some space on sides
@@ -266,7 +271,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     topicContainer: {
-        marginTop: 10,  // Increased space between the carousel and topics
+        marginBottom: 20,  // Increased space between the carousel and topics
 
     },
     subTopic: {
@@ -295,7 +300,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},
         elevation: 2,
-        paddingBottom:2,
+        paddingBottom: 2,
 
     },
     image2: {
