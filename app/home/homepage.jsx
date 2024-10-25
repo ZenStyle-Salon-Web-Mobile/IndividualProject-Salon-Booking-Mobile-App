@@ -8,11 +8,11 @@ import {Entypo, FontAwesome6, Ionicons} from "@expo/vector-icons";
 import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
 
 const data = [
-    { id: '3', image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg') },
-    { id: '2', image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg') },
-    { id: '4', image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg') },
-    { id: '5', image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg') },
-    { id: '6', image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg') },
+    { id: 'Acne', image: require('../../assets/images/services/andrea-giardini-ND44-6Dk2vk-unsplash.jpg') },
+    { id: 'Facial', image: require('../../assets/images/services/anna-keibalo-LZmPAULkFUc-unsplash.jpg') },
+    { id: 'Makeup', image: require('../../assets/images/services/anthony-tran-Sd9A6NVHsd4-unsplash.jpg') },
+    { id: 'Rebounding', image: require('../../assets/images/services/content-pixie-9l7r-n1zt-Y-unsplash.jpg') },
+    { id: 'Curly', image: require('../../assets/images/services/drew-dizzy-graham-cTKGZJTMJQU-unsplash.jpg') },
     // Add more images as needed
 ];
 
@@ -28,7 +28,7 @@ const HomePage = () => {
                 <View style={styles.addIcon}>
                     <FontAwesome6 name="add" size={20} color="black" />
                 </View>
-                <Text style={styles.cardText}>Card {item.id}</Text>
+                <Text style={styles.cardText}> {item.id}</Text>
             </TouchableOpacity>
         );
     };
