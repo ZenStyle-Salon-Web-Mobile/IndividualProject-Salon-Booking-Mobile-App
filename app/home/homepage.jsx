@@ -25,6 +25,9 @@ const HomePage = () => {
                 style={styles.card}
             >
                 <Image source={item.image} style={styles.image2} resizeMode="cover" />
+                <View style={styles.addIcon}>
+                    <FontAwesome6 name="add" size={20} color="black" />
+                </View>
                 <Text style={styles.cardText}>Card {item.id}</Text>
             </TouchableOpacity>
         );
@@ -243,6 +246,17 @@ const styles = StyleSheet.create({
         fontWeight:themes.fonts.bold,
         padding: 10,
         textAlign: 'center',
+    },
+    addIcon:{
+        position: 'absolute',
+        top:115,
+        right:12,
+        backgroundColor: 'white',
+        padding:5,
+        borderRadius:50,
+        borderWidth: 2,
+        borderColor:themes.colors.primary,
+
     },
 });
 
