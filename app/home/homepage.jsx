@@ -4,7 +4,7 @@ import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import Carousel from 'react-native-reanimated-carousel';
 import {sliderImages} from "../../constants/imageIndex";
-import {Entypo, FontAwesome6, Ionicons} from "@expo/vector-icons";
+import {Entypo, FontAwesome, FontAwesome6, Ionicons} from "@expo/vector-icons";
 import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
 
 const data = [
@@ -61,6 +61,28 @@ const HomePage = () => {
                     <FontAwesome6 name="add" size={20} color="black"/>
                 </View>
                 <Text style={styles.cardText}> {item.id}</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <FontAwesome
+                        name={"star"} // Filled or outlined stars
+                        size={20}
+                        color={"#FFD700"} // Gold for filled, gray for outline
+                        style={{
+                            shadowColor: '#000',
+                            shadowOpacity: 0.2,
+                            shadowRadius: 5,
+                            shadowOffset: {width: 0, height: 2},
+                            elevation: 2,
+                        }}
+                    />
+                    <Text style={styles.rating}>
+                        {item.rating}
+                    </Text>
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+                    <Text style={styles.priceText}>{item.price}</Text>
+                    <Text style={styles.durationText}>{item.duration}</Text>
+                </View>
+
             </TouchableOpacity>
         );
     };
@@ -165,7 +187,7 @@ const HomePage = () => {
                 {/* Topics under the image */}
                 <View style={styles.topicContainer}>
                     <Text style={styles.subTopic}>Top Services</Text>
-                    <View >
+                    <View>
                         <FlatList
                             data={data}
                             renderItem={({item}) => <Card item={item}/>}
@@ -294,9 +316,17 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},
         elevation: 2,
-
-
-
+    },
+    priceText: {
+        fontSize: 14,
+        color: '#000',
+    },
+    durationText: {
+        fontSize: 12,
+        color: '#666',
+    },
+    rating: {
+        paddingHorizontal: 5
     },
 });
 
