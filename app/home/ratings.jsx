@@ -61,7 +61,7 @@ const Ratings = () => {
 
     // Listen for theme changes
     useEffect(() => {
-        const listener = Appearance.addChangeListener(({ colorScheme }) => {
+        const listener = Appearance.addChangeListener(({colorScheme}) => {
             setTheme(colorScheme);
         });
 
@@ -97,8 +97,8 @@ const Ratings = () => {
     return (
 
         <View style={styles.container}>
-            <StatusBar   barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-                         backgroundColor={theme === 'dark' ? '#000' : '#fff'} />
+            <StatusBar barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
+                       backgroundColor={theme === 'dark' ? '#000' : '#fff'}/>
             <View style={styles.ratingContainer}>
                 <Text style={{fontSize: hp(3.7)}}>Overall Rating</Text>
                 <Text style={{fontSize: hp(12), fontWeight: themes.fonts.bold}}>3.9</Text>
@@ -181,7 +181,14 @@ const Ratings = () => {
                                        editable
                                        keyboardType
                             ></TextInput>
+                            <View>
+
+                            </View>
                             <Pressable style={styles.cancelButton} onPress={() => setOpenModel(false)}>
+                                <Text style={styles.reviewButtonText}>Submit</Text>
+                            </Pressable>
+                            <Pressable style={[styles.cancelButton, {backgroundColor: '#f00'}]}
+                                       onPress={() => setOpenModel(false)}>
                                 <Text style={styles.reviewButtonText}>Cancel</Text>
                             </Pressable>
                         </View>
@@ -224,7 +231,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     startContainer: {
-        backgroundColor:'black',
+        backgroundColor: 'black',
         borderWidth: 2,
         borderStyle: 'solid', // Set the border style to solid
         width: wp(80),
@@ -232,7 +239,7 @@ const styles = StyleSheet.create({
         borderRadius: themes.radius.xl,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        alignItems:"center"
+        alignItems: "center"
 
     },
     modalDesc: {
@@ -251,12 +258,12 @@ const styles = StyleSheet.create({
         borderRadius: themes.radius.lg,
         marginBottom: 40,
     },
-    cancelButton:{
+    cancelButton: {
         alignItems: 'center',
         backgroundColor: themes.colors.dark,
         paddingHorizontal: wp(30),
         borderRadius: themes.radius.lg,
-        paddingVertical:hp(1.2),
+        paddingVertical: hp(1.2),
     },
     reviewButtonText: {
         fontSize: hp(2.2),
