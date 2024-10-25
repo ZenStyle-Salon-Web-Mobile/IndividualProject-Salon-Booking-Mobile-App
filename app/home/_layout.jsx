@@ -5,7 +5,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import {NavigationContainer} from "@react-navigation/native";
 import Settings from "./settings";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import {Ionicons} from "@expo/vector-icons";
 import {Colors} from "react-native/Libraries/NewAppScreen";
 
@@ -21,7 +21,7 @@ const _layout = () => {
                       width: 240,
                   },
                   drawerActiveTintColor: '#ff74bf', // Customize active item color
-                  drawerInactiveTintColor: theme.colors.darkLight,  // Customize inactive item color
+                  drawerInactiveTintColor: themes.colors.darkLight,  // Customize inactive item color
                   headerTintColor: '#000000', // Change hamburger menu icon color to black
               }}
           >

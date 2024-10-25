@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import ScreenWrapper from "../components/ScreenWrapper";
 
-import {theme} from "../constants/theme";
+import {themes} from "../constants/themes";
 import Icon from "../assets/icons";
 import {useRouter} from "expo-router";
 import {StatusBar} from "expo-status-bar";
@@ -37,7 +37,7 @@ const SignUp = () => {
           </View>
           {/*form*/}
           <View style={styles.form}>
-            <Text style={{fontSize: hp(1.5), color: theme.colors.text}}>
+            <Text style={{fontSize: hp(1.5), color: themes.colors.text}}>
               Please fill the details to create an account
             </Text>
             <Input
@@ -80,8 +80,8 @@ const SignUp = () => {
             </Text>
             <Pressable onPress={() => router.push('login')}>
               <Text style={[styles.footerText, {
-                color: theme.colors.primaryDark,
-                fontWeight: theme.fonts.semibold
+                color: themes.colors.primaryDark,
+                fontWeight: themes.fonts.semibold
               }]}>Login</Text>
             </Pressable>
           </View>
@@ -98,16 +98,16 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: hp(4),
-    fontWeight: theme.fonts.bold,
-    color: theme.colors.text,
+    fontWeight: themes.fonts.bold,
+    color: themes.colors.text,
   },
   form: {
     gap: 25,
   },
   forgotPassword: {
     textAlign: 'right',
-    fontWeight: theme.fonts.semibold,
-    color: theme.colors.text,
+    fontWeight: themes.fonts.semibold,
+    color: themes.colors.text,
   },
   footer: {
     flexDirection: 'row',
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     textAlign: 'center',
-    color: theme.colors.text,
+    color: themes.colors.text,
     fontSize: hp(1.6),
   },
 });

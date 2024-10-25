@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {StyleSheet, ScrollView, View, Dimensions, Pressable, Linking, Text, TextInput, Button} from 'react-native';
 import Animated, {useAnimatedStyle, useSharedValue, withDelay, withTiming} from "react-native-reanimated";
 import {Image} from "expo-image";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import BottomSheet from '@gorhom/bottom-sheet';
 
 import facebookLogo from '../../assets/images/social-logos/icons8-facebook-480.png';
@@ -91,7 +91,7 @@ const Contact = () => {
             <View style={{flex: 1, marginVertical: 10, marginHorizontal: 30,}}>
                 <View style={styles.addressSection}>
                     <SimpleLineIcons name="location-pin" size={24} color="black"/>
-                    <Text style={{fontWeight: theme.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
+                    <Text style={{fontWeight: themes.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
                         Address
                     </Text>
                     <Text style={styles.addressText}>No.6, Pagoda Road,
@@ -99,21 +99,21 @@ const Contact = () => {
                 </View>
                 <View style={styles.addressSection}>
                     <FontAwesome name="mobile-phone" size={24} color="black"/>
-                    <Text style={{fontWeight: theme.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
+                    <Text style={{fontWeight: themes.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
                         Phone Number
                     </Text>
                     <Text style={styles.addressText}>123 Main St, Salon City</Text>
                 </View>
                 <View style={styles.addressSection}>
                     <Fontisto name="email" size={24} color="black"/>
-                    <Text style={{fontWeight: theme.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
+                    <Text style={{fontWeight: themes.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
                         E-mail
                     </Text>
                     <Text style={styles.addressText}>123 Main St, Salon City</Text>
                 </View>
                 <View style={styles.addressSection}>
                     <MaterialIcons name="access-time" size={24} color="black"/>
-                    <Text style={{fontWeight: theme.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
+                    <Text style={{fontWeight: themes.fonts.bold, fontSize: hp(2.8), paddingTop: 5}}>
                         Opening Time
                     </Text>
                     <Text style={styles.addressText}>9.00 AM - 07.00 PM Tuesday - Sunday</Text>
@@ -170,7 +170,7 @@ const Contact = () => {
                     <Pressable style={{ padding: 15,
                         backgroundColor: '#1a000e',
                         borderRadius: 10,}} onPress={() => console.log('Form Submitted')}>
-                        <Text style={{textAlign: "center",color:theme.colors.darkLight, fontWeight:theme.fonts.bold, fontSize: hp(2) }} >
+                        <Text style={{textAlign: "center",color:themes.colors.darkLight, fontWeight:themes.fonts.bold, fontSize: hp(2) }} >
                             Submit
                         </Text>
                     </Pressable>
@@ -195,13 +195,13 @@ const styles = StyleSheet.create({
     },
     contactTitle: {
         fontSize: hp(4),
-        fontWeight: theme.fonts.extraBold,
+        fontWeight: themes.fonts.extraBold,
         paddingVertical: 10,
     },
     textContent: {
         textAlign: 'center',
         fontSize: hp(1.6),
-        fontWeight: theme.fonts.medium,
+        fontWeight: themes.fonts.medium,
         marginBottom: 20,
     },
     logoScrollSection: {
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         backgroundColor: '#ffacd9',
-        borderRadius: theme.radius.xxl,
+        borderRadius: themes.radius.xxl,
         resizeMode: 'contain',
     },
     addressSection: {

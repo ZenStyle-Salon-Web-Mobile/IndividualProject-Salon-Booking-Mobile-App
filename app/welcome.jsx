@@ -3,16 +3,17 @@ import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import ScreenWrapper from "../components/ScreenWrapper";
 import {StatusBar} from "expo-status-bar";
 import {hp, wp} from "../helpers/common";
-import {theme} from "../constants/theme";
+import {themes} from "../constants/themes";
 import Button from "../components/Button";
 
 import {useRouter} from "expo-router";
 
 const Welcome = () => {
+
     const router = useRouter()
     return (
         <ScreenWrapper >
-            <StatusBar style="black"/>
+            <StatusBar barStyle="red-content" translucent={true}/>
                 <View style={styles.container}>
                         {/*login cover*/}
                     <Image style={styles.welcomeImage} resizeMode='contain' source={require('../assets/images/login-cover.png')}/>
@@ -36,7 +37,7 @@ const Welcome = () => {
                                 Already have an account!
                             </Text>
                             <Pressable onPress={()=> router.push('login')}>
-                                <Text style={[styles.loginText, {color: theme.colors.primaryDark, fontWeight: theme.fonts.semibold}]}>
+                                <Text style={[styles.loginText, {color: themes.colors.primaryDark, fontWeight: themes.fonts.semibold}]}>
                                     Login
                                 </Text>
                             </Pressable>
@@ -61,16 +62,16 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     title:{
-        color: theme.colors.text,
+        color: themes.colors.text,
         fontSize: hp(4),
         textAlign: 'center',
-        fontWeight: theme.fonts.extraBold
+        fontWeight: themes.fonts.extraBold
     },
     punchline:{
         textAlign: 'center',
         paddingHorizontal: wp(10),
         fontSize: hp(1.7),
-        color: theme.colors.text,
+        color: themes.colors.text,
     },
     footer: {
         gap: 30,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     },
     loginText: {
         textAlign: 'center',
-        color: theme.colors.text,
+        color: themes.colors.text,
         fontSize: hp(1.6)
     },
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
-import {theme} from "../constants/theme";
+import {themes} from "../constants/themes";
 import {hp} from "../helpers/common";
 import Loading from "./Loading";
 
@@ -15,7 +15,7 @@ const Button = ({
                 }) => {
 
     const shadowStyle = {
-        shadowColor: theme.colors.dark,
+        shadowColor: themes.colors.dark,
         shadowOffset: {width: 0, height: 10},
         shadowOpacity: 0.2,
         shadowRadius: 8,
@@ -44,17 +44,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        backgroundColor: theme.colors.primary,
+        backgroundColor: themes.colors.primary,
         height: hp(6.6),
         justifyContent: 'center',
         alignItems: 'center',
         borderCurve: "continuous",
-        borderRadius: theme.radius.xl
+        borderRadius: themes.radius.xl
     },
     text: {
         fontSize: hp(2.5),
         color: 'white',
-        fontWeight: theme.fonts.bold
+        fontWeight: themes.fonts.bold
     },
 });
 

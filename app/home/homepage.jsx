@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView} from 'react-native';
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import Carousel from 'react-native-reanimated-carousel';
 import {sliderImages} from "../../constants/imageIndex";
@@ -65,18 +65,18 @@ const HomePage = () => {
                 </View>
                 <View style={{paddingTop: 10, width: wp(30), alignItems: 'flex-end', alignContent: 'space-between'}}>
                     <Text style={styles.subHeadingText}>CALL US NOW</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: theme.fonts.medium}}>+94765341860</Text>
+                    <Text style={{fontSize: hp(1.8), fontWeight: themes.fonts.medium}}>+94765341860</Text>
                     <View style={{height: 20}}/>
                     <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                        <Entypo name="facebook" size={22} color={theme.colors.primaryDark}
+                        <Entypo name="facebook" size={22} color={themes.colors.primaryDark}
                                 style={{paddingHorizontal: 5}}/>
-                        <Entypo name="instagram" size={22} color={theme.colors.primaryDark}
+                        <Entypo name="instagram" size={22} color={themes.colors.primaryDark}
                                 style={{paddingHorizontal: 5}}/>
-                        <FontAwesome6 name="x-twitter" size={22} color={theme.colors.primaryDark}
+                        <FontAwesome6 name="x-twitter" size={22} color={themes.colors.primaryDark}
                                       style={{paddingHorizontal: 5}}/>
-                        <Entypo name="linkedin" size={22} color={theme.colors.primaryDark}
+                        <Entypo name="linkedin" size={22} color={themes.colors.primaryDark}
                                 style={{paddingHorizontal: 5}}/>
-                        <Entypo name="youtube" size={22} color={theme.colors.primaryDark}
+                        <Entypo name="youtube" size={22} color={themes.colors.primaryDark}
                                 style={{paddingHorizontal: 5}}/>
                     </View>
                 </View>
@@ -150,11 +150,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     headingText: {
-        fontWeight: theme.fonts.extraBold,
+        fontWeight: themes.fonts.extraBold,
         fontSize: hp(3),
     },
     subHeadingText: {
-        color: theme.colors.text,
+        color: themes.colors.text,
         fontSize: hp(1.5),
     },
     carouselContainer: {
@@ -177,9 +177,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,  // Space around the topics
     },
     subTopic: {
-        fontWeight: theme.fonts.extraBold,
+        fontWeight: themes.fonts.extraBold,
         fontSize: hp(2.5),
-        color: theme.colors.primaryDark,
+        color: themes.colors.primaryDark,
         marginVertical: 15, // Increased space between each topic : 15,  // Increased space between each topic
     },
     paginationContainer: {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import {hp} from "../../helpers/common";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import Carousel from "react-native-reanimated-carousel/src/Carousel";
 import {FontAwesome} from "@expo/vector-icons";
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
@@ -83,11 +83,11 @@ const About = () => {
             </Svg>
 
             {/* ScrollView for the Text Content */}
-                <Text style={{fontSize: hp(5), fontWeight: theme.fonts.extraBold, paddingVertical: 10}}>
+                <Text style={{fontSize: hp(5), fontWeight: themes.fonts.extraBold, paddingVertical: 10}}>
                     ZenStyle Salon
                 </Text>
                 <ScrollView contentContainerStyle={styles.textContainer}>
-                    <Text style={{fontSize: hp(2), fontWeight: theme.fonts.extraBold, marginVertical: 10}}>
+                    <Text style={{fontSize: hp(2), fontWeight: themes.fonts.extraBold, marginVertical: 10}}>
                         Our Journey
                     </Text>
                     <Text style={styles.textContent}>
@@ -101,12 +101,12 @@ const About = () => {
                         Our Vision and Mission
                     </Text>
                     <Text style={styles.textContent}>
-                        <Text style={{fontWeight: theme.fonts.bold}}> Our vision</Text>
+                        <Text style={{fontWeight: themes.fonts.bold}}> Our vision</Text>
                         is to set the standard for beauty and wellness in Sri Lanka by combining cutting-edge
                         techniques with a personalized touch. We are dedicated to continually improving our services and
                         facilities to meet the evolving needs of our clients.
                         {"\n"}{"\n"}
-                        <Text style={{fontWeight: theme.fonts.bold}}> Our mission</Text>
+                        <Text style={{fontWeight: themes.fonts.bold}}> Our mission</Text>
                         is to provide exceptional beauty services that enhance the natural beauty of our
                         clients. We strive to create a welcoming and relaxing environment where every client feels valued
                         and pampered.
@@ -174,12 +174,12 @@ const styles = StyleSheet.create({
     textContent: {
         textAlign: 'center',
         fontSize: hp(1.6),
-        fontWeight: theme.fonts.medium,
+        fontWeight: themes.fonts.medium,
         marginBottom: 20,
     },
     textTitle: {
         fontSize: hp(2),
-        fontWeight: theme.fonts.extraBold,
+        fontWeight: themes.fonts.extraBold,
         marginVertical: 10,
     },
     carouselContainer: {
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     reviewText: {
-        fontWeight: theme.fonts.medium,
+        fontWeight: themes.fonts.medium,
         color: '#333',
         textAlign: 'center',
         marginBottom: 20,

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { View, Text, Image, Dimensions, StyleSheet, ScrollView, Animated } from 'react-native';
 import { hp, wp } from "../../helpers/common";
-import { theme } from "../../constants/theme";
+import { themes } from "../../constants/themes";
 import Banner from "../../components/Banner";
 import Carousel from "react-native-reanimated-carousel";
 import { sale } from "../../components/reusable/Sale";
@@ -67,15 +67,15 @@ const Promotions = () => {
     return (
         <ScrollView style={styles.container}>
 
-            <Banner text={"SALE 75% OFF"} backgroundColor={theme.colors.darkLight} />
+            <Banner text={"SALE 75% OFF"} backgroundColor={themes.colors.darkLight} />
             {renderBannerCarousel(sale.firstPromo)}
 
 
-            <Banner text={"SALE 50% OFF"} backgroundColor={theme.colors.primary} />
+            <Banner text={"SALE 50% OFF"} backgroundColor={themes.colors.primary} />
             {renderBannerCarousel(sale.SecPromo)}
 
 
-            <Banner text={"SALE 25% OFF"} backgroundColor={theme.colors.dark} textColor={theme.colors.darkLight} />
+            <Banner text={"SALE 25% OFF"} backgroundColor={themes.colors.dark} textColor={themes.colors.darkLight} />
             {renderBannerCarousel(sale.thirdPromo)}
         </ScrollView>
     );

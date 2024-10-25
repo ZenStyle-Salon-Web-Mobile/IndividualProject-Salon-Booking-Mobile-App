@@ -7,7 +7,8 @@ import { View,
 import { useNavigation } from '@react-navigation/native';
 import {Icon} from "react-native-paper";
 import {Ionicons} from "@expo/vector-icons";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
+import {router} from "expo-router";
 // import Icon from 'react-native-vector-icons/Ionicons';
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -28,6 +29,10 @@ const SettingsScreen = ({navigation}) => {
           {
             text: 'Log Out',
             onPress: async () => {
+                //delete this line after project
+                router.push('login')
+
+
               // Implement logout functionality
               try {
                 // Clear any stored tokens or user data
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   versionText: {
-    color: theme.colors.primary,
+    color: themes.colors.primary,
     fontSize: 17,
     fontWeight:"bold"
   },

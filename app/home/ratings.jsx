@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     View,
     Text,
@@ -9,13 +9,14 @@ import {
     Modal,
     TextInput,
     Keyboard,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback, Appearance
 } from 'react-native';
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import {FontAwesome} from "@expo/vector-icons";
 import * as Progress from 'react-native-progress';
 import ScreenWrapper from "../../components/ScreenWrapper";
+import {StatusBar} from "expo-status-bar";
 
 const reviewsData = [
     {
@@ -56,6 +57,18 @@ const reviewsData = [
 
 const Ratings = () => {
 
+    const [theme, setTheme] = useState(Appearance.getColorScheme());
+
+    // Listen for theme changes
+    useEffect(() => {
+        const listener = Appearance.addChangeListener(({ colorScheme }) => {
+            setTheme(colorScheme);
+        });
+
+        // Cleanup the event listener
+        return () => listener.remove();
+    }, []);
+
     const [openModel, setOpenModel] = useState(false);
 
     // Initial state for rating counts
@@ -84,9 +97,11 @@ const Ratings = () => {
     return (
 
         <View style={styles.container}>
+            <StatusBar   barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
+                         backgroundColor={theme === 'dark' ? '#000' : '#fff'} />
             <View style={styles.ratingContainer}>
                 <Text style={{fontSize: hp(3.7)}}>Overall Rating</Text>
-                <Text style={{fontSize: hp(12), fontWeight: theme.fonts.bold}}>3.9</Text>
+                <Text style={{fontSize: hp(12), fontWeight: themes.fonts.bold}}>3.9</Text>
                 <View style={styles.starContainer}>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <FontAwesome
@@ -96,7 +111,7 @@ const Ratings = () => {
                             color={star <= Math.round(getOverallRating()) ? '#e7cc33' : '#ccc'}/>
                     ))}
                 </View>
-                <Text style={{fontSize: hp(2.3), fontWeight: theme.fonts.medium}}>Based
+                <Text style={{fontSize: hp(2.3), fontWeight: themes.fonts.medium}}>Based
                     on {ratings.total} reviews</Text>
             </View>
             {/* Progress Bars for Ratings */}
@@ -204,7 +219,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: wp(90),
         height: hp(50),
-        borderRadius: theme.radius.xl,
+        borderRadius: themes.radius.xl,
         justifyContent: "space-evenly",
         alignItems: "center",
     },
@@ -214,7 +229,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid', // Set the border style to solid
         width: wp(80),
         height: hp(8),
-        borderRadius: theme.radius.xl,
+        borderRadius: themes.radius.xl,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems:"center"
@@ -225,28 +240,28 @@ const styles = StyleSheet.create({
         borderStyle: 'solid', // Set the border style to solid
         width: wp(80),
         height: hp(25),
-        borderRadius: theme.radius.xl,
+        borderRadius: themes.radius.xl,
         fontSize: hp(2),
         padding: 10,
     },
     reviewButton: {
         alignItems: 'center',
-        backgroundColor: theme.colors.primary,
+        backgroundColor: themes.colors.primary,
         padding: '5%',
-        borderRadius: theme.radius.lg,
+        borderRadius: themes.radius.lg,
         marginBottom: 40,
     },
     cancelButton:{
         alignItems: 'center',
-        backgroundColor: theme.colors.dark,
+        backgroundColor: themes.colors.dark,
         paddingHorizontal: wp(30),
-        borderRadius: theme.radius.lg,
+        borderRadius: themes.radius.lg,
         paddingVertical:hp(1.2),
     },
     reviewButtonText: {
         fontSize: hp(2.2),
         color: '#ffffff',
-        fontWeight: theme.fonts.semibold,
+        fontWeight: themes.fonts.semibold,
     },
     ratingContainer: {
         alignItems: 'center',
@@ -273,7 +288,7 @@ const styles = StyleSheet.create({
     label: {
         width: 70,
         fontSize: 16,
-        fontWeight: theme.fonts.medium
+        fontWeight: themes.fonts.medium
     },
     progressBar: {
         flex: 1,
@@ -284,7 +299,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#fff',
         padding: 10,
-        borderRadius: theme.radius.md,
+        borderRadius: themes.radius.md,
         marginBottom: 10,
         elevation: 2,
     },

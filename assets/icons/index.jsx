@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Home from "./Home";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import Video from "./Video";
 import Logout from "./logout";
 import Image from "./Image";
@@ -54,7 +54,7 @@ const Icon = ({name, ...props}) => {
     height={props.size || 24}
     width={props.size || 24}
     strokeWidth={props.strokeWidth || 1.9}
-    color={theme.colors.textLight}
+    color={themes.colors.textLight}
     {...props}
    />
   );

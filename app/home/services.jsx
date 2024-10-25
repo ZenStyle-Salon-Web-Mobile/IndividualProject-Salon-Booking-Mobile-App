@@ -11,7 +11,7 @@ import {
 
 import { useRouter } from 'expo-router';
 import {hp} from "../../helpers/common";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 
 const DATA = [
     {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: StatusBar.currentHeight || 0,
-        backgroundColor:theme.colors.subColor
+        backgroundColor:themes.colors.subColor
     },
     item: {
         marginVertical: 8,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: hp(4),
         letterSpacing: 10,
-        fontWeight: theme.fonts.bold,
+        fontWeight: themes.fonts.bold,
         color: '#fff', // Adjust the text color for readability over the background
     },
 });

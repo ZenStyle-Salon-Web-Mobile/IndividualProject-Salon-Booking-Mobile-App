@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 
 const blogData = [{
     id: '1',
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     },
     date: {
         fontSize: 14,
-        color: theme.colors.text,
+        color: themes.colors.text,
         marginTop: 5,
     },
 });

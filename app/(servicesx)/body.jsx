@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList , Image} from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { theme } from "../../constants/theme";
+import { themes } from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 
 // Sample image URLs; replace these with your actual image paths
@@ -81,7 +81,7 @@ export default function Body() {
           <Text style={styles.title}>{item.title}</Text>
           <MaterialCommunityIcons
               name={expandedId === item.id ? "arrow-up-drop-circle" : "arrow-down-drop-circle"}
-              size={24} color={theme.colors.textLight}
+              size={24} color={themes.colors.textLight}
           />
         </TouchableOpacity>
         {expandedId === item.id && (
@@ -146,18 +146,18 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: theme.colors.textLight,
+    color: themes.colors.textLight,
     fontWeight: 'bold',
     marginBottom: 5,
   },
   paragraph: {
     fontSize: 16,
     marginTop: 10,
-    color: theme.colors.textLight,
+    color: themes.colors.textLight,
   },
   date: {
     fontSize: 14,
-    color: theme.colors.textLight,
+    color: themes.colors.textLight,
     marginTop: 5,
   },
   expandedContainer: {

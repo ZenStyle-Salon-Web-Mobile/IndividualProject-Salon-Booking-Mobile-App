@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
-import {theme} from "../../constants/theme";
+import {themes} from "../../constants/themes";
 import {Fontisto, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import {hp} from "../../helpers/common";
 
@@ -56,7 +56,7 @@ const MembershipCard = ({item, parallaxProps}) => {
         <View style={[styles.card, {backgroundColor: item.backgroundColor}]}>
             <Text style={styles.title}>{item.type} Membership</Text>
             <Text style={{
-                textAlign: 'center', color: theme.colors.textLight,
+                textAlign: 'center', color: themes.colors.textLight,
                 paddingHorizontal:20
             }}> Become a VIP Loyalty Member today to look and feel your best all year long,
                 while taking advantage of our best pricing!
@@ -65,26 +65,26 @@ const MembershipCard = ({item, parallaxProps}) => {
             <Image source={item.image} style={styles.image} {...parallaxProps} />
             <Text style={{
                 fontSize:hp(2),
-                color: theme.colors.textLight,
+                color: themes.colors.textLight,
                 bottom:25
             }}>Rs.<Text style={styles.membershipText}>{item.price}</Text>.00</Text>
             <Text style={styles.title}> BENEFITS INCLUDE</Text>
             <View style={{flexDirection:'row',flexWrap:'wrap',width: '80%', justifyContent:'space-evenly'}}>
                 <View style={{justifyContent: 'center', alignItems: 'center', margin:10}}>
                     <MaterialIcons name={item.iconName} size={60} color="#ffe5f3"/>
-                    <Text style={{textAlign: 'center', color: theme.colors.textLight,paddingVertical:10}}> {item.name}</Text>
+                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name}</Text>
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center',margin:10}}>
                     <Fontisto name={item.iconName2} size={60} color="#ffe5f3" />
-                    <Text style={{textAlign: 'center', color: theme.colors.textLight,paddingVertical:10}}> {item.name2}</Text>
+                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name2}</Text>
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center',margin:10}}>
                     <MaterialCommunityIcons name={item.iconName3} size={60} color="#ffe5f3" />
-                    <Text style={{textAlign: 'center', color: theme.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
+                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center',margin:10}}>
                     <MaterialCommunityIcons name={item.iconName3} size={60} color="#ffe5f3" />
-                    <Text style={{textAlign: 'center', color: theme.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
+                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
                 </View>
             </View>
             <Pressable style={styles.membershipButton}>
@@ -170,8 +170,8 @@ const styles = StyleSheet.create({
     },
     membershipText:{
         fontSize:hp(6.5),
-        color: theme.colors.textLight,
-        fontWeight:theme.fonts.semibold
+        color: themes.colors.textLight,
+        fontWeight:themes.fonts.semibold
 
     },
 });

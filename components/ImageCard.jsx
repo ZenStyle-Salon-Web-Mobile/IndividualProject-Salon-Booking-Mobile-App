@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, Modal, TouchableWithoutFeedback } from 'react-native';
 import { Image } from 'expo-image';
 import { getImageSize, wp } from "../helpers/common";
-import { theme } from "../constants/theme";
+import { themes } from "../constants/themes";
 
 
 const ImageCard = ({ item, index, columns }) => {
@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
     image: {
         height: 300,
         width: '100%',
-        borderRadius: theme.radius.xl,
+        borderRadius: themes.radius.xl,
     },
     imageWrapper: {
-        backgroundColor: theme.colors.gray,
-        borderRadius: theme.radius.xl,
+        backgroundColor: themes.colors.gray,
+        borderRadius: themes.radius.xl,
         marginBottom: wp(2),
     },
     spacing: {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     modalImage: {
         width: '100%',
         height: '100%',
-        borderRadius: theme.radius.lg, // Rounded corners if desired
+        borderRadius: themes.radius.lg, // Rounded corners if desired
     },
 });
 

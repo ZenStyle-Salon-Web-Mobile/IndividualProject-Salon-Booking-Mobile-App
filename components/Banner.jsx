@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {hp} from "../helpers/common";
-import {theme} from "../constants/theme";
+import {themes} from "../constants/themes";
 
 // Reusable Banner Component
 const Banner = ({ backgroundColor, text, textColor }) => {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         // color:theme.colors.textLight,
         fontSize:hp(5),
         textAlign:"center",
-        fontWeight:theme.fonts.bold,
+        fontWeight:themes.fonts.bold,
         letterSpacing: 7,
     },
 });

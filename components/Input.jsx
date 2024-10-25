@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
-import {theme} from "../constants/theme";
+import {themes} from "../constants/themes";
 import {hp} from "../helpers/common";
 
 const Input = (props) => {
@@ -11,7 +11,7 @@ const Input = (props) => {
       }
       <TextInput
       style={{flex: 1}}
-      placeholderTextColor={theme.colors.textLight}
+      placeholderTextColor={themes.colors.textLight}
       ref={props.inputRef && props.inputRef}
       {...props}
       />
@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 0.4,
-    borderColor: theme.colors.text,
+    borderColor: themes.colors.text,
     borderCurve: 'continuous',
-    borderRadius: theme.radius.xxl,
+    borderRadius: themes.radius.xxl,
     paddingHorizontal: 18,
     gap: 12
   },

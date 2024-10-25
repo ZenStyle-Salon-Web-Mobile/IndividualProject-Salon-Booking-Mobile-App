@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
-import {theme} from "../constants/theme";
+import {themes} from "../constants/themes";
 
-const Loading = ({size="Large", color=theme.colors.primary}) => {
+const Loading = ({size="Large", color=themes.colors.primary}) => {
   return (
     <View style={{justifyContent: 'center', alignItems: 'center'}}>
       <ActivityIndicator size={size} color={color}/>
