@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const TimerComp = () => {
 
   const saleEndDate = new Date();
-  saleEndDate.setDate(saleEndDate.getDate() + 2);
+  saleEndDate.setDate(saleEndDate.getDate() + 50);
   saleEndDate.setHours(23, 59, 59);
 
   const [timeUnits, setTimeUnits] = useState({

@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         borderRadius: 10,
         overflow: 'hidden',
-        backgroundColor: themes.colors.primary,
+        backgroundColor: '#ff90cc',
         shadowColor: '#000',
         shadowOpacity: 0.9,
         shadowRadius: 5,
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
         height: hp(15),
     },
     cardText: {
-        color: 'white',
+       color:'#002440',
         fontWeight: themes.fonts.bold,
         textAlign: 'center',
         fontSize: hp(2),
