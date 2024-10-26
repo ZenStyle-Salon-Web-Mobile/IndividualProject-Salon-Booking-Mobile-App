@@ -144,6 +144,7 @@ const HomePage = () => {
                     </TouchableOpacity>
                     <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
                     <Text style={styles.headingText}>{greeting}</Text>
+
                 </View>
                 <View style={{paddingTop: 10, width: wp(30), alignItems: 'flex-end', alignContent: 'space-between'}}>
                     <Text style={styles.subHeadingText}>CALL US NOW</Text>
@@ -163,6 +164,10 @@ const HomePage = () => {
                     </View>
                 </View>
             </View>
+            <TouchableOpacity style={styles.booknowButton}>
+                <Text style={styles.booknowText}>BOOK NOW</Text>
+                <Text style={styles.booknowTextOutline}>BOOK NOW</Text>
+            </TouchableOpacity>
 
             <ScrollView
                 showsVerticalScrollIndicator={false}
@@ -172,7 +177,7 @@ const HomePage = () => {
                     <Text style={styles.subTopic}>Special Offers</Text>
                     <View style={styles.timer}>
                         <Ionicons name='time-outline' size={16} color={'black'}/>
-                      <TimerComp/>
+                        <TimerComp/>
                     </View>
                 </View>
 
@@ -316,7 +321,7 @@ const styles = StyleSheet.create({
         height: hp(15),
     },
     cardText: {
-       color:'#002440',
+        color: '#002440',
         fontWeight: themes.fonts.bold,
         textAlign: 'center',
         fontSize: hp(2),
@@ -366,6 +371,37 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         paddingVertical: 5,
         borderRadius: 12,
+    },
+    booknowButton: {
+        marginVertical:12,
+        width: wp(95),
+        height: hp(7),
+        backgroundColor: themes.colors.primary,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: themes.radius.xxl,
+        elevation: 5, // For Android shadow
+        shadowColor: '#000', // iOS shadow
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+    },
+    booknowText: {
+        textAlign: 'center',
+        fontSize: hp(4),
+        fontWeight: themes.fonts.extraBold,
+        color: themes.colors.textLight,
+        position: 'absolute', // Position text over outline
+    },
+    booknowTextOutline: {
+        textAlign: 'center',
+        fontSize: hp(4),
+        fontWeight: themes.fonts.extraBold,
+        color: 'black', // Outline color
+        textShadowColor: 'white', // Shadow color for better contrast
+        textShadowOffset: { width: 1, height: 1 }, // Shadow offset for outline
+        textShadowRadius: 1, // Shadow blur radius for outline
+        position: 'absolute', // Position this under the main text
     },
 
 });
