@@ -8,6 +8,7 @@ import {Entypo, FontAwesome, FontAwesome6, Ionicons} from "@expo/vector-icons";
 import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-native-reanimated";
 import HairSpecialistCont from "../../components/reusable/HairSpecialistCont";
 import TimerComp from "../../components/reusable/TimerComp";
+import {router} from "expo-router";
 
 const data = [
     {
@@ -164,7 +165,7 @@ const HomePage = () => {
                     </View>
                 </View>
             </View>
-            <TouchableOpacity style={styles.booknowButton}>
+            <TouchableOpacity style={styles.booknowButton} onPress={() => router.push("modal/booking")}>
                 <Text style={styles.booknowText}>BOOK NOW</Text>
                 <Text style={styles.booknowTextOutline}>BOOK NOW</Text>
             </TouchableOpacity>

@@ -35,7 +35,7 @@ const _layout = () => {
                       },
                       headerRight: () => (
                           <TouchableOpacity
-                              onPress={() => router.push('modal/')}
+                              onPress={() => router.push('modal/notification')}
                               style={{ marginRight: 12 ,
                                   marginBottom:5,
                                   backgroundColor: 'white',

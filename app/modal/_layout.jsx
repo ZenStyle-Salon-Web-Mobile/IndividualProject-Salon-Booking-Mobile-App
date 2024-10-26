@@ -18,6 +18,14 @@ const _layout = () => {
 
                 }}
             />
+            <Stack.Screen
+                name="booking"
+                options={{headerShown: true,
+                    title: 'Booking', // Title in the header
+                    headerLeft: () => <BackButton router={router} />,
+
+                }}
+            />
 
         </Stack>
 
