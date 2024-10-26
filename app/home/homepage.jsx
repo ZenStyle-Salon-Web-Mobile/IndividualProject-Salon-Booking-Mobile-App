@@ -56,7 +56,7 @@ const HomePage = () => {
     const Card = ({item, navigation}) => {
         return (
             <TouchableOpacity
-                // onPress={() => navigation.navigate('Details', { image: item.image, id: item.id })}
+                onPress={() => router.push(`/listing/${item.id}?image=${item.image}&rating=${item.rating}&duration=${item.duration}&price=${item.price}`)}
                 style={styles.card}
             >
                 <Image source={item.image} style={styles.image2} resizeMode="cover"/>
@@ -86,8 +86,6 @@ const HomePage = () => {
                     <Text style={styles.priceText}>{item.price}</Text>
 
                 </View>
-
-
             </TouchableOpacity>
         );
     };
