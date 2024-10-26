@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {Stack} from "expo-router";
+import {router, Stack} from "expo-router";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import {NavigationContainer} from "@react-navigation/native";
@@ -35,7 +35,7 @@ const _layout = () => {
                       },
                       headerRight: () => (
                           <TouchableOpacity
-                              onPress={() => {}}
+                              onPress={() => router.push('modal/')}
                               style={{ marginRight: 12 ,
                                   marginBottom:5,
                                   backgroundColor: 'white',
