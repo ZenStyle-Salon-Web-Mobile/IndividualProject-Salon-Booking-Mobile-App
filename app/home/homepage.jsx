@@ -17,6 +17,7 @@ const data = [
         price: 'Rs.5000.00',
         duration: '30 mins',
         rating: 4.5,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
     },
     {
         id: 'Facial',
@@ -24,6 +25,7 @@ const data = [
         price: 'Rs.6000.00',
         duration: '45 mins',
         rating: 4.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
     },
     {
         id: 'Makeup',
@@ -31,6 +33,7 @@ const data = [
         price: 'Rs.7000.00',
         duration: '60 mins',
         rating: 5.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
     },
     {
         id: 'Rebounding',
@@ -38,6 +41,7 @@ const data = [
         price: 'Rs.7000.00',
         duration: '60 mins',
         rating: 5.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
 
     },
     {
@@ -46,6 +50,7 @@ const data = [
         price: 'Rs.7000.00',
         duration: '60 mins',
         rating: 5.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
 
     },
     // Add more images as needed
@@ -56,7 +61,7 @@ const HomePage = () => {
     const Card = ({item, navigation}) => {
         return (
             <TouchableOpacity
-                onPress={() => router.push(`/listing/${item.id}?image=${item.image}&rating=${item.rating}&duration=${item.duration}&price=${item.price}`)}
+                onPress={() => router.push(`/listing/${item.id}?image=${item.image}&rating=${item.rating}&duration=${item.duration}&price=${item.price}&description=${item.description}`)}
                 style={styles.card}
             >
                 <Image source={item.image} style={styles.image2} resizeMode="cover"/>
