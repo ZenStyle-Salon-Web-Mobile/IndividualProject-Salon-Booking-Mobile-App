@@ -39,11 +39,14 @@ const Notification = () => {
                 style={styles.notificationItem}
                 onPress={() => toggleExpand(index)}
             >
-                <Ionicons name="notifications" size={20} color={themes.colors.primary}/>
-                <View style={styles.notificationContent}>
-                    <Text style={styles.notificationTitle}>{item.title}</Text>
-                    <Text style={styles.notificationTime}>{item.time}</Text>
+                <View style={{flexDirection:'row'}}>
+                    <Ionicons name="notifications" size={20} color={themes.colors.primary}/>
+                    <View style={styles.notificationContent}>
+                        <Text style={styles.notificationTitle}>{item.title}</Text>
+                        <Text style={styles.notificationTime}>{item.time}</Text>
+                    </View>
                 </View>
+
                 <Ionicons
                     name={expandedIndex === index ? name = "arrow-down-circle-sharp" : name = "arrow-forward-circle-sharp"}
                     size={24} color="black"/>
@@ -87,6 +90,8 @@ const styles = StyleSheet.create({
         padding: 12,
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
     notificationContent: {
         marginLeft: 10,
