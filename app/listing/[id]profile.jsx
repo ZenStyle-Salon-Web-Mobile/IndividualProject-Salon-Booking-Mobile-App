@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Stack, useLocalSearchParams} from "expo-router";
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
@@ -59,7 +59,13 @@ const ProfileDetails = () => {
                         <Text style={styles.text}>{loggedInUser.phoneNumber}</Text>
                     </View>
                 </View>
+                <View style={styles.footer}>
+                    <TouchableOpacity style={styles.bookingBtn}>
+                        <Text style={styles.textBook}>Settings</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
+
         </>
 
     );
@@ -120,6 +126,26 @@ const styles = StyleSheet.create({
         marginVertical: 6,
         color: themes.colors.primary,
         marginRight: 20,
+    },
+    footer: {
+
+        position: 'absolute',
+        bottom: 0,
+        paddingBottom: 30,
+    },
+    bookingBtn: {
+        width: wp(85),
+        backgroundColor: themes.colors.primary,
+        padding: 20,
+        borderRadius: themes.radius.xxl,
+        alignItems: 'center',
+    },
+    textBook: {
+        fontSize: hp(2.5),
+        fontWeight: themes.fonts.bold,
+        letterSpacing: 0.5,
+        textTransform: 'uppercase',
+        color: themes.colors.darkLight,
     },
 
 });
