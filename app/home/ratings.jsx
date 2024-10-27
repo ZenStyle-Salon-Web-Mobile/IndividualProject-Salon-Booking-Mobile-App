@@ -136,6 +136,8 @@ const Ratings = () => {
 
             <View style={{flex: 1, marginBottom: 10}}>
                 <FlatList
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
                     data={reviewsData}
                     keyExtractor={(item) => item.id}
                     renderItem={({item}) => (
