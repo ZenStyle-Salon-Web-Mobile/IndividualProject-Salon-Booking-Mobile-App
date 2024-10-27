@@ -47,7 +47,7 @@ const Promotions = () => {
                 renderItem={({ item }) => (
                     <View style={styles.bannerContainer}>
                         <Image source={item.imageUrl} style={styles.bannerImage} />
-                        <OfferButton bottom={25} left={22}  />
+                        <OfferButton bottom={25} left={29}  />
                     </View>
                 )}
                 onSnapToItem={handleSnapToItem} // Updates active slide
@@ -67,7 +67,10 @@ const Promotions = () => {
     );
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            style={styles.container}>
 
             <Banner text={"SALE 75% OFF"} backgroundColor={themes.colors.darkLight} />
             {renderBannerCarousel(sale.firstPromo)}
