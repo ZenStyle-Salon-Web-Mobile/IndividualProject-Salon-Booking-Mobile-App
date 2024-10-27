@@ -4,10 +4,12 @@ import {router, Stack, useLocalSearchParams} from "expo-router";
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
 import Icon from "../../assets/icons";
+import ThreeDotsHorizontal from "../../assets/icons/ThreeDotsHorizontal";
+import {FontAwesome} from "@expo/vector-icons";
 
 
 const HairSpecialist = () => {
-    const { data } = useLocalSearchParams();
+    const {data} = useLocalSearchParams();
     let parsedData = {};
 
     try {
@@ -16,7 +18,7 @@ const HairSpecialist = () => {
         console.error("Error parsing data:", error);
     }
 
-    const { image, rating, duration, description, position, id } = parsedData;
+    const {image, rating, duration, description, position, id} = parsedData;
 
     return (
         <>
@@ -35,12 +37,21 @@ const HairSpecialist = () => {
 
                 <View style={styles.wrapText}>
 
-
-
                     <View style={styles.subContainer}>
                         <View>
-                            <Text style={styles.textContainer}>Gender</Text>
-                            <Icon name="heart" size={30} strokeWidth={1.6} style={styles.icons}/>
+                            <Text style={styles.textContainer}>Rating</Text>
+                            <FontAwesome
+                                name={"star"} // Filled or outlined stars
+                                size={30}
+                                color={"#FFD700"} // Gold for filled, gray for outline
+                                style={{
+                                    shadowColor: 'black',
+                                    shadowOpacity: 0.2,
+                                    shadowRadius: 5,
+                                    shadowOffset: {width: 0, height: 2},
+                                    elevation: 2,
+                                }}
+                            />
                         </View>
                         <Text style={styles.text}>{rating}</Text>
                     </View>
@@ -56,7 +67,7 @@ const HairSpecialist = () => {
                     <View style={styles.subContainer}>
                         <View>
                             <Text style={styles.textContainer}>Duration</Text>
-                            <Icon name="send" size={30} strokeWidth={1.6} style={styles.icons}/>
+                            <Icon name="edit" size={30} strokeWidth={1.6} style={styles.icons}/>
                         </View>
                         <Text style={styles.text}>{duration}</Text>
                     </View>
