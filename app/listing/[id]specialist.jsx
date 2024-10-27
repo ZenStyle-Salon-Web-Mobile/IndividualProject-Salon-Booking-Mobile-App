@@ -87,8 +87,9 @@ const HairSpecialist = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        marginTop:90,
         alignItems: "center",
+
     },
     imageCont: {
         width: wp(80),
@@ -105,6 +106,7 @@ const styles = StyleSheet.create({
     },
     personalInfo: {
         fontSize: hp(3),
+        paddingBottom:10,
         fontWeight: themes.fonts.bold
     },
     infoDetails: {
@@ -124,11 +126,11 @@ const styles = StyleSheet.create({
     subContainer: {
         flexDirection: 'row',
         height: hp(8),
-        width: wp(85),
+        width: wp(100),
         borderWidth: 0.5,
         borderColor: themes.colors.primary,
         borderCurve: 'continuous',
-        borderRadius: themes.radius.xxl,
+
         paddingHorizontal: 18,
         gap: 12,
         alignItems: 'center',

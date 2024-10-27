@@ -1,15 +1,24 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
+import {View, Text, StyleSheet, Image, Pressable, TouchableOpacity, Button, TextInput} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
 import {themes} from "../../constants/themes";
-import {Fontisto, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
+import {
+    AntDesign,
+    FontAwesome,
+    FontAwesome5,
+    Fontisto,
+    MaterialCommunityIcons,
+    MaterialIcons
+} from "@expo/vector-icons";
 import {hp} from "../../helpers/common";
+import BottomSheet, {BottomSheetModal, BottomSheetModalProvider} from "@gorhom/bottom-sheet";
+import {CardField, useStripe} from "@stripe/stripe-react-native";
 
 const membershipData = [
     {
         type: 'Gold',
-        price:'1550',
+        price: '1550',
         backgroundColor: 'black',
         image: require('../../assets/images/cards/1.png'), // Add a relevant gold image
         name: 'Priority Booking',
@@ -27,7 +36,7 @@ const membershipData = [
     },
     {
         type: 'Platinum',
-        price:'1750',
+        price: '1750',
         backgroundColor: 'black',
         image: require('../../assets/images/cards/3.png'), // Add a relevant platinum image
         name: 'Priority Booking',
@@ -41,7 +50,7 @@ const membershipData = [
     },
     {
         type: 'Silver',
-        price:'1250',
+        price: '1250',
         backgroundColor: 'black',
         image: require('../../assets/images/cards/2.png'), // Add a relevant silver image
         name: 'Priority Booking',
@@ -52,51 +61,177 @@ const membershipData = [
 ];
 
 const MembershipCard = ({item, parallaxProps}) => {
+
+    const [focusedInput, setFocusedInput] = useState(null); // Track focused input for highlighting
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [cardDetails, setCardDetails] = useState({
+        cardNumber: '',
+        expiryDate: '',
+        cvc: '',
+        billingAddress: '',
+        zipCode: ''
+    });
+
+    const handleInputChange = (name, value) => {
+        setCardDetails(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const [activeOption, setActiveOption] = useState(null);
+
+    const bottomSheetRef = useRef(null);
+
+    // Define snap points (height at which the bottom sheet should open)
+    const snapPoints = useMemo(() => [ '50%', '80%'], []);
+
+    const handleOpenPaymentSheet = () => {
+        bottomSheetRef.current?.expand();
+    };
+
     return (
-        <View style={[styles.card, {backgroundColor: item.backgroundColor}]}>
-            <Text style={styles.title}>{item.type} Membership</Text>
-            <Text style={{
-                textAlign: 'center', color: themes.colors.textLight,
-                paddingHorizontal:20
-            }}> Become a VIP Loyalty Member today to look and feel your best all year long,
-                while taking advantage of our best pricing!
-                At "CHRISTELL EMPOWERED CLUB", it is our goal to listen to your concerns and find solutions that address
-                all of your aesthetic needs.</Text>
-            <Image source={item.image} style={styles.image} {...parallaxProps} />
-            <Text style={{
-                fontSize:hp(2),
-                color: themes.colors.textLight,
-                bottom:25
-            }}>Rs.<Text style={styles.membershipText}>{item.price}</Text>.00</Text>
-            <Text style={styles.title}> BENEFITS INCLUDE</Text>
-            <View style={{flexDirection:'row',flexWrap:'wrap',width: '80%', justifyContent:'space-evenly'}}>
-                <View style={{justifyContent: 'center', alignItems: 'center', margin:10}}>
-                    <MaterialIcons name={item.iconName} size={60} color="#ffe5f3"/>
-                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name}</Text>
+        <View style={styles.container}>
+            <TouchableOpacity onPress={handleOpenPaymentSheet}>
+                <View style={[styles.card, {backgroundColor: item.backgroundColor}]}>
+                    <Text style={styles.title}>{item.type} Membership</Text>
+                    <Text style={{
+                        textAlign: 'center', color: themes.colors.textLight,
+                        paddingHorizontal: 20
+                    }}> Become a VIP Loyalty Member today to look and feel your best all year long,
+                        while taking advantage of our best pricing!
+                        At "CHRISTELL EMPOWERED CLUB", it is our goal to listen to your concerns and find solutions that
+                        address
+                        all of your aesthetic needs.</Text>
+                    <Image source={item.image} style={styles.image} {...parallaxProps} />
+                    <Text style={{
+                        fontSize: hp(2),
+                        color: themes.colors.textLight,
+                        bottom: 25
+                    }}>Rs.<Text style={styles.membershipText}>{item.price}</Text>.00</Text>
+                    <Text style={styles.title}> BENEFITS INCLUDE</Text>
+                    <View
+                        style={{flexDirection: 'row', flexWrap: 'wrap', width: '80%', justifyContent: 'space-evenly'}}>
+                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+                            <MaterialIcons name={item.iconName} size={60} color="#ffe5f3"/>
+                            <Text style={{
+                                textAlign: 'center',
+                                color: themes.colors.textLight,
+                                paddingVertical: 10
+                            }}> {item.name}</Text>
+                        </View>
+                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+                            <Fontisto name={item.iconName2} size={60} color="#ffe5f3"/>
+                            <Text style={{
+                                textAlign: 'center',
+                                color: themes.colors.textLight,
+                                paddingVertical: 10
+                            }}> {item.name2}</Text>
+                        </View>
+                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+                            <MaterialCommunityIcons name={item.iconName3} size={60} color="#ffe5f3"/>
+                            <Text style={{
+                                textAlign: 'center',
+                                color: themes.colors.textLight,
+                                paddingVertical: 10
+                            }}> {item.name3}</Text>
+                        </View>
+                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+                            <MaterialCommunityIcons name={item.iconName3} size={60} color="#ffe5f3"/>
+                            <Text style={{
+                                textAlign: 'center',
+                                color: themes.colors.textLight,
+                                paddingVertical: 10
+                            }}> {item.name3}</Text>
+                        </View>
+                    </View>
+                    <Pressable style={styles.membershipButton}>
+                        <Text style={{color: 'white'}}>
+                            Become a Member Touch the Payment
+                        </Text>
+                    </Pressable>
                 </View>
-                <View style={{justifyContent: 'center', alignItems: 'center',margin:10}}>
-                    <Fontisto name={item.iconName2} size={60} color="#ffe5f3" />
-                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name2}</Text>
-                </View>
-                <View style={{justifyContent: 'center', alignItems: 'center',margin:10}}>
-                    <MaterialCommunityIcons name={item.iconName3} size={60} color="#ffe5f3" />
-                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
-                </View>
-                <View style={{justifyContent: 'center', alignItems: 'center',margin:10}}>
-                    <MaterialCommunityIcons name={item.iconName3} size={60} color="#ffe5f3" />
-                    <Text style={{textAlign: 'center', color: themes.colors.textLight,paddingVertical:10}}> {item.name3}</Text>
-                </View>
-            </View>
-            <Pressable style={styles.membershipButton}>
-                <Text style={{color: 'white'}}>
-                    Become a Member
-                </Text>
-            </Pressable>
+            </TouchableOpacity>
 
+            {/* Bottom Sheet */}
+            <BottomSheet enablePanDownToClose ref={bottomSheetRef} index={-1} snapPoints={snapPoints}>
+                <View style={styles.contentContainer}>
+                    <Text style={styles.sheetTitle}>Select Payment Method</Text>
 
+                    {/* Example Payment Options */}
+                    <TouchableOpacity
+                        style={[styles.paymentOption, activeOption === 'apple' && styles.activeBorder]}
+                        onPressIn={() => setActiveOption('apple')}
+                    >
+                        <AntDesign name="apple1" size={24} color="black" />
+                        <Text style={styles.paymentText}>Apple Pay</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[styles.paymentOption, activeOption === 'google' && styles.activeBorder]}
+                        onPressIn={() => setActiveOption('google')}
+                    >
+                        <FontAwesome5 name="google-pay" size={24} color="black" />
+                        <Text style={styles.paymentText}>Google Pay</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[styles.paymentOption, activeOption === 'card' && styles.activeBorder]}
+                        onPressIn={() => setActiveOption('card')}
+                        onPress={() => bottomSheetRef.current?.expand(2)}
+                    >
+                        <FontAwesome name="credit-card-alt" size={24} color="black" />
+                        <Text style={styles.paymentText}>Credit or Debit Card</Text>
+                    </TouchableOpacity>
+
+                    {/* Card Details Form */}
+
+                    <View style={styles.cardForm}>
+                        <TextInput
+                            style={[styles.input, focusedInput === 'cardNumber' && styles.focusedBorder]}
+                            placeholder="0000-0000-0000-0000"
+                            keyboardType="numeric"
+                            onFocus={() => setFocusedInput('cardNumber')}
+                            onBlur={() => setFocusedInput(null)}
+                        />
+                        <View style={styles.row}>
+                            <TextInput
+                                style={[styles.input, styles.smallInput, focusedInput === 'expiryDate' && styles.focusedBorder]}
+                                placeholder="MM / YY"
+                                keyboardType="numeric"
+                                onFocus={() => setFocusedInput('expiryDate')}
+                                onBlur={() => setFocusedInput(null)}
+                            />
+                            <TextInput
+                                style={[styles.input, styles.smallInput, focusedInput === 'cvc' && styles.focusedBorder]}
+                                placeholder="CVC"
+                                keyboardType="numeric"
+                                onFocus={() => setFocusedInput('cvc')}
+                                onBlur={() => setFocusedInput(null)}
+                            />
+                        </View>
+                        <TextInput
+                            style={[styles.input, focusedInput === 'billingAddress' && styles.focusedBorder]}
+                            placeholder="Billing Address"
+                            onFocus={() => setFocusedInput('billingAddress')}
+                            onBlur={() => setFocusedInput(null)}
+                        />
+                        <TextInput
+                            style={[styles.input, focusedInput === 'zipCode' && styles.focusedBorder]}
+                            placeholder="ZIP Code"
+                            keyboardType="numeric"
+                            onFocus={() => setFocusedInput('zipCode')}
+                            onBlur={() => setFocusedInput(null)}
+                        />
+                    </View>
+
+                </View>
+            </BottomSheet>
         </View>
-    );
+)
+    ;
 };
+
 
 const MembershipCarousel = () => {
     return (
@@ -123,7 +258,10 @@ const MembershipCarousel = () => {
                 height={800}
                 data={membershipData}
                 renderItem={({item, index, animationValue}) => (
+
                     <MembershipCard key={index} item={item} parallaxProps={{animationValue}}/>
+
+
                 )}
                 mode="parallax"
                 modeConfig={{
@@ -135,12 +273,13 @@ const MembershipCarousel = () => {
     );
 };
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+
     },
     card: {
         width: 400,
@@ -168,11 +307,83 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
     },
-    membershipText:{
-        fontSize:hp(6.5),
+    membershipText: {
+        fontSize: hp(6.5),
         color: themes.colors.textLight,
-        fontWeight:themes.fonts.semibold
+        fontWeight: themes.fonts.semibold
 
+    },
+
+
+    payButton: {
+        backgroundColor: '#007AFF',
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        borderRadius: 8,
+    },
+    payButtonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    contentContainer: {
+        flex: 1,
+        paddingHorizontal: 24,
+        paddingVertical: 20,
+    },
+    sheetTitle: {
+        fontSize: 18,
+        fontWeight: '600',
+        marginBottom: 16,
+    },
+    paymentOption: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 8,
+        marginVertical: 8,
+        borderWidth: 1,
+        borderColor: 'transparent',  // Default border color is transparent
+    },
+    activeBorder: {
+        borderColor: 'red',  // Border color when the button is pressed
+    },
+    paymentText: {
+        fontSize: 16,
+        paddingLeft:10,
+    },
+    cardForm: {
+        marginTop: 16,
+    },
+    input: {
+        height: 50,
+        borderColor: '#ddd',
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingHorizontal: 12,
+        marginBottom: 12,
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    smallInput: {
+        flex: 0.45,
+    },
+    confirmButton: {
+        backgroundColor: '#007AFF',
+        paddingVertical: 14,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 16,
+    },
+    confirmButtonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '600',
+    },
+    focusedBorder: {
+        borderColor: 'blue', // Highlight border color on focus
     },
 });
 
