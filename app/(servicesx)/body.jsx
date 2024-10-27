@@ -22,49 +22,25 @@ const images = {
 
 const blogData = [{
   id: '1',
-  title: '1) ACNE',
-  paragraph: 'Acne is a skin condition caused by increased oil production of the sebaceous (oil) glands. The excess oil, together with dead skin cells, blocks the hair follicles causing whiteheads, blackheads, and pimples. The skin on the face, chest, upper back, and shoulders are most prone to this condition.',
+  title: '1) LASER TATTOO REMOVAL',
+  paragraph: 'Using a laser is one of the best methods of getting rid of your unwanted tattoos. Your tattoo is made up of colored pigment that has been injected into your skin through small deep holes. The laser tattoo removal treatment utilizes pulses of light from the laser directed at the tattoo to break up the pigment that makes the tattoo.\n' +
+      '\n',
   date: '11th Jan 2022',
 
 }, {
   id: '2',
-  title: '2) ACNE SCARS',
-  paragraph: 'Though skin has the natural ability to heal itself, and even with the most careful of treatment, depending on the severity of the acne, scars may occur. An acne lesion may result in loss or formation of skin tissue – the loss results in milder scars and the formation results in more severe scars.',
+  title: '2) STRETCH MARKS',
+  paragraph: 'The technology used in treating stretch marks is laser skin resurfacing. It’s a minimally invasive skin barrier breakthrough treatment that’s ideal for skin repair and aesthetic improvement and is a quick, effective, and pain-free solution for your undesirable stretchmarks.',
   date: '5th Nov 2021',
 }, {
   id: '3',
-  title: '3) Appointment Rescheduling and Cancellations',
-  paragraph: 'Appointments can be rescheduled or cancelled without penalty up to 72 hours prior to the scheduled appointment time. Refunds for cancellations are processed manually and can take up to two working days to complete, provided via the original method of payment or through direct bank transfer.' + 'No rescheduling or cancellations are allowed within 72 hours of the appointment time, and no refunds will be provided under these circumstances.',
+  title: '3) EXCESSIVE SWEATING',
+  paragraph: 'Generally, sweating is caused by a hike in temperature, exercise, or a nervous or embarrassing situation. But for some individuals, even without these triggers, excessive sweating may occur. This is known as hyperthyroidism.',
   date: '24th Sept 2021',
 }, {
   id: '4',
-  title: '4) Service Limitations and Liability',
-  paragraph: 'Specific services such as hair coloring, straightening, keratin treatments, and facials include a mandatory, free allergy test that must be conducted at least two days before the scheduled service. Salon Liyo will not be held responsible for any adverse effects or medical conditions that arise due to treatments administered at the salon or resulting from failure to conduct the allergy tests.',
-  date: '24th Sept 2021',
-}, {
-  id: '5',
-  title: '5) Data Privacy',
-  paragraph: 'Salon Liyo respects the privacy of its clients. Personal data collected during registration and booking is used solely for processing appointments and will not be shared with third parties, except as required by law.',
-  date: '24th Sept 2021',
-}, {
-  id: '6',
-  title: '6) Dispute Resolution',
-  paragraph: 'In the event of a dispute, customers are encouraged to contact our customer service team through the provided hotline or email. Salon Liyo commits to resolving disputes amicably and efficiently.',
-  date: '24th Sept 2021',
-}, {
-  id: '7',
-  title: '7) Modifications to Terms',
-  paragraph: 'Salon Liyo reserves the right to amend these terms and conditions at any time. All changes will be effective immediately upon their posting on the website. Continued use of the booking system after any changes constitutes acceptance of the new terms.',
-  date: '24th Sept 2021',
-}, {
-  id: '8',
-  title: '8) Contact Information',
-  paragraph: 'For further information or assistance, please contact us via our WhatsApp number, hotline, or email. Contact details are available on our website and through your booking confirmation.',
-  date: '24th Sept 2021',
-}, {
-  id: '9',
-  title: '9) Legal Compliance',
-  paragraph: 'Salon Liyo operates in compliance with applicable local and national laws. Users agree to not use the booking system for any unlawful activities.',
+  title: '4) MEDICAL CAMOUFLAGING',
+  paragraph: 'We offer the top-of-the-line latest technology in the field of medical tattooing used to reduce and disguise scarring from surgeries, injuries, trauma, or illness. Medical tattooing has been proven the world over to be beneficial in helping patients recover both physically as well as psychologically, rebuilding self-confidence and emotional well being.',
   date: '24th Sept 2021',
 },];
 
