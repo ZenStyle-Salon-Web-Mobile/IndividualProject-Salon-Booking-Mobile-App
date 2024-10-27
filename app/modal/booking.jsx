@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, FlatList, Dimensions } from 'react-native';
 import { Calendar } from 'react-native-calendars';
+import OfferButton from "../../components/OfferButton";
 
 const { width } = Dimensions.get('window');
 
@@ -65,19 +66,23 @@ const BookingOnboarding = () => {
   );
 
   return (
-      <FlatList
-          data={sections}
-          keyExtractor={(item) => item.key}
-          horizontal
-          pagingEnabled
-          ref={flatListRef}
-          showsHorizontalScrollIndicator={false}
-          renderItem={renderItem}
-          onMomentumScrollEnd={(event) => {
-            const newIndex = Math.round(event.nativeEvent.contentOffset.x / width);
-            setCurrentIndex(newIndex);
-          }}
-      />
+      <>
+       <OfferButton/>
+        <FlatList
+            data={sections}
+            keyExtractor={(item) => item.key}
+            horizontal
+            pagingEnabled
+            ref={flatListRef}
+            showsHorizontalScrollIndicator={false}
+            renderItem={renderItem}
+            onMomentumScrollEnd={(event) => {
+              const newIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+              setCurrentIndex(newIndex);
+            }}
+        />
+      </>
+
   );
 };
 
