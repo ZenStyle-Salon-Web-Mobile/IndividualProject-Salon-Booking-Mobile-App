@@ -176,9 +176,6 @@ const HomePage = () => {
                                     />
                                 </TouchableOpacity>
                             )}
-
-
-
                         </View>
 
                         <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>

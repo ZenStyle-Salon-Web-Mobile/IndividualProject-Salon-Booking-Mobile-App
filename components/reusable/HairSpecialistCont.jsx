@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList} f
 import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import {Entypo, FontAwesome, FontAwesome6, Ionicons} from "@expo/vector-icons";
+import {router} from "expo-router";
 
 const data = [
     {
@@ -11,6 +12,7 @@ const data = [
         position: 'Hair Stylish',
         duration: '4 yrs exp',
         rating: 4.5,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
     },
     {
         id: 'Kaushika',
@@ -18,6 +20,7 @@ const data = [
         position: 'Hair Spa',
         duration: '3 yrs exp',
         rating: 4.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
     },
     {
         id: 'Nirushi',
@@ -25,6 +28,7 @@ const data = [
         position: 'Oil Massage',
         duration: '5 yrs exp',
         rating: 5.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
     },
     {
         id: 'Dananjani',
@@ -32,6 +36,7 @@ const data = [
         position: 'Therapy',
         duration: '4 yrs exp',
         rating: 5.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
 
     },
     {
@@ -40,6 +45,7 @@ const data = [
         position: 'Skin Specialist',
         duration: '7 yrs exp',
         rating: 5.1,
+        description:'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Arsecularatne is also an Aesthetic Medicine and Anti-Aging Specialist. Teaming with knowledge, experience, and new technology, she doesn’t waver in creating new inventions that continue to inspire & inflame the industry. ',
 
     },
     // Add more images as needed
@@ -50,9 +56,22 @@ const HairSpecialistCont = () => {
     const Card = ({item, navigation}) => {
         return (
             <TouchableOpacity
-                // onPress={() => navigation.navigate('Details', { image: item.image, id: item.id })}
-                style={styles.card}
-            >
+                onPress={() => {
+                    const data = JSON.stringify({
+                        id:item.id,
+                        image: item.image,
+                        rating: item.rating,
+                        duration: item.duration,
+                        description: item.description,
+                        position: item.position,
+                    });
+
+                    router.push({
+                        pathname: `/listing/[id]specialist`,
+                        params: { data }, // Pass the JSON string here
+                    });
+                }}
+                style={styles.card} >
                 <Image source={item.image} style={styles.image2} resizeMode="cover"/>
                 <View style={styles.addIcon}>
                     <FontAwesome6 name="add" size={20} color="black"/>
