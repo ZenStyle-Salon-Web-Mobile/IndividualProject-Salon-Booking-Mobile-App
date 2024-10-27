@@ -135,18 +135,17 @@ const HomePage = () => {
             {/*header*/}
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View>
-                    <TouchableOpacity
-                        onPress={() => {
-                        }}
-                        style={{marginVertical: 10}}
-                    >
-                        <Image
-                            source={{
-                                uri: "https://xsgames.co/randomusers/assets/avatars/male/77.jpg"
-                            }}
-                            style={{width: 50, height: 50, borderRadius: 50}}
-                        />
-                    </TouchableOpacity>
+                    <View style={{marginVertical: 10, width: 50, height: 50, borderRadius: 50}}>
+                        <TouchableOpacity onPress={() => {}}>
+                            <Image
+                                source={{
+                                    uri: "https://xsgames.co/randomusers/assets/avatars/male/77.jpg"
+                                }}
+                                style={{width: 50, height: 50, borderRadius: 50}}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
                     <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
                     <Text style={styles.headingText}>{greeting}</Text>
 
