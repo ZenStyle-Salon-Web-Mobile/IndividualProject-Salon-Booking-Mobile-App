@@ -67,7 +67,6 @@ const BookingOnboarding = () => {
 
   return (
       <>
-       <OfferButton/>
         <FlatList
             data={sections}
             keyExtractor={(item) => item.key}

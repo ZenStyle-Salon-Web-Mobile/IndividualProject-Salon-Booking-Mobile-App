@@ -73,7 +73,7 @@ const HairSpecialist = () => {
                     </View>
                 </View>
                 <View style={styles.footer}>
-                    <TouchableOpacity style={styles.bookingBtn}>
+                    <TouchableOpacity style={styles.bookingBtn} onPress={() => router.push("modal/booking")}>
                         <Text style={styles.textBook}>BOOK NOW</Text>
                     </TouchableOpacity>
                 </View>

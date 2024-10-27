@@ -3,10 +3,11 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {wp} from "../helpers/common";
 import {themes} from "../constants/themes";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {router} from "expo-router";
 
 const OfferButton = ({bottom,left}) => {
     return (
-        <TouchableOpacity style={[styles.container, {bottom, left}]}>
+        <TouchableOpacity style={[styles.container, {bottom, left}]} onPress={() => router.push("modal/booking")}>
             <Text style={{
                 fontWeight:themes.fonts.bold,
             }}>Get Offer Now</Text>

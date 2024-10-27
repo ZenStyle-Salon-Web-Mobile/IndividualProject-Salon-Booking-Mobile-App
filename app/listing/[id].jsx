@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native';
-import {Stack, useLocalSearchParams} from "expo-router";
+import {router, Stack, useLocalSearchParams} from "expo-router";
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
 import {FontAwesome} from "@expo/vector-icons";
@@ -79,10 +79,10 @@ const ListingDetails = () => {
                 </Animated.ScrollView>
             </View>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.bookingBtn}>
+                <TouchableOpacity style={styles.bookingBtn} onPress={() => router.push("modal/booking")}>
                     <Text style={styles.textBook}>Book Now</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.priceBtn}>
+                <TouchableOpacity style={styles.priceBtn} onPress={() => router.push("modal/booking")}>
                     <Text style={styles.textPrice}>{price}</Text>
                 </TouchableOpacity>
             </View>
