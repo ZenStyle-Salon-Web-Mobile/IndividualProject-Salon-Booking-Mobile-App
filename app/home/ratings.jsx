@@ -24,7 +24,7 @@ const reviewsData = [
         name: 'Martin Luther',
         date: '2 days ago',
         rating: 4,
-        review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        review: 'The youngest Sri Lankan to have qualified in Medical Cosmetology, Dr. Secularisation is also an Aesthetic Medicine and Anti-Aging Specialist.',
         avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
     },
     {
@@ -32,7 +32,7 @@ const reviewsData = [
         name: 'Johan Smith',
         date: '3 days ago',
         rating: 3,
-        review: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+        review: 'Teaming with knowledge, experience, and new technology, she does’t waver in creating new inventions that continue to inspire & inflame the industry. ',
         avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
     },
     {
@@ -40,7 +40,7 @@ const reviewsData = [
         name: 'Johan Smith',
         date: '3 days ago',
         rating: 3,
-        review: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+        review: 'A connoisseur with over 30 years of acclaimed excellence, she has been the mentor to many a woman to be strong, fearless & beautiful.',
         avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
     },
     {
@@ -48,7 +48,8 @@ const reviewsData = [
         name: 'Johan Smith',
         date: '3 days ago',
         rating: 3,
-        review: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+        review: '\n' +
+            'Graduated from Christine Valmy Institute of New York and Kimari International in Singapore, she is the first Sri Lankan to obtain a degree in beauty & hairdressing. ',
         avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
     },
 
