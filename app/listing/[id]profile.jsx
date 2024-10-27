@@ -28,35 +28,35 @@ const ProfileDetails = () => {
                 <View style={styles.wrapText}>
 
                     <View style={styles.subContainer}>
-                        <Text style={styles.textContainer}>Name</Text>
-                        <View style={{flexDirection: 'row'}}>
-                            <Icon name="user" size={26} strokeWidth={1.6}/>
-                            <Text style={styles.text}>{loggedInUser.name}</Text>
+                        <View>
+                            <Text style={styles.textContainer}>Name</Text>
+                            <Icon name="user" size={30} strokeWidth={1.6} style={styles.icons}/>
                         </View>
+                        <Text style={styles.text}>{loggedInUser.name}</Text>
                     </View>
 
                     <View style={styles.subContainer}>
-                        <Text style={styles.textContainer}>Gender</Text>
-                        <View style={{flexDirection: 'row'}}>
-                            <Icon name="heart" size={26} strokeWidth={1.6}/>
-                            <Text style={styles.text}>{loggedInUser.gender}</Text>
+                        <View>
+                            <Text style={styles.textContainer}>Gender</Text>
+                            <Icon name="heart" size={30} strokeWidth={1.6} style={styles.icons}/>
                         </View>
+                        <Text style={styles.text}>{loggedInUser.gender}</Text>
                     </View>
 
                     <View style={styles.subContainer}>
-                        <Text style={styles.textContainer}>Email</Text>
-                        <View style={{flexDirection: 'row'}}>
-                            <Icon name="mail" size={26} strokeWidth={1.6}/>
-                            <Text style={styles.text}>{loggedInUser.email}</Text>
+                        <View>
+                            <Text style={styles.textContainer}>Email</Text>
+                            <Icon name="mail" size={30} strokeWidth={1.6} style={styles.icons}/>
                         </View>
+                        <Text style={styles.text}>{loggedInUser.email}</Text>
                     </View>
 
                     <View style={styles.subContainer}>
-                        <Text style={styles.textContainer}>Phone</Text>
-                        <View style={{flexDirection: 'row'}}>
-                            <Icon name="send" size={26} strokeWidth={1.6}/>
-                            <Text style={styles.text}>{loggedInUser.phoneNumber}</Text>
+                        <View>
+                            <Text style={styles.textContainer}>Phone</Text>
+                            <Icon name="send" size={30} strokeWidth={1.6} style={styles.icons}/>
                         </View>
+                        <Text style={styles.text}>{loggedInUser.phoneNumber}</Text>
                     </View>
                 </View>
             </View>
@@ -93,24 +93,33 @@ const styles = StyleSheet.create({
         fontWeight: themes.fonts.medium,
         textAlign: "center",
     },
-    wrapText: { },
-    textContainer: {},
+    wrapText: {},
+    textContainer: {
+        fontSize: hp(1.5),
+        fontWeight: themes.fonts.semibold,
+    },
     text: {
-        fontSize: 18,
-
+        fontSize: hp(2),
+        fontWeight: themes.fonts.medium,
     },
     subContainer: {
+        flexDirection: 'row',
         height: hp(8),
         width: wp(85),
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderColor: themes.colors.primary,
         borderCurve: 'continuous',
         borderRadius: themes.radius.xxl,
         paddingHorizontal: 18,
         gap: 12,
-        justifyContent: "center",
-        marginBottom:20,
-
+        alignItems: 'center',
+        marginBottom: 20,
+        backgroundColor: themes.colors.textLight
+    },
+    icons: {
+        marginVertical: 6,
+        color: themes.colors.primary,
+        marginRight: 20,
     },
 
 });
