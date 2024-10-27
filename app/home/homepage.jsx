@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList} from 'react-native';
 import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
@@ -10,6 +10,7 @@ import HairSpecialistCont from "../../components/reusable/HairSpecialistCont";
 import TimerComp from "../../components/reusable/TimerComp";
 import {router} from "expo-router";
 import OfferButton from "../../components/OfferButton";
+
 
 const data = [
     {
@@ -58,6 +59,31 @@ const data = [
 ];
 
 const HomePage = () => {
+
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulate loading user data, e.g., from AsyncStorage or an API
+        const fetchUserData = async () => {
+            // Simulated user data
+            const user = {
+                id: 1,
+                name: 'Ramesh Kaushika',
+                gender: 'Male',
+                email: 'ramesh.kaushika2245.com',
+                phoneNumber: '+94765341860',
+                image: 'https://xsgames.co/randomusers/assets/avatars/male/77.jpg',
+            };
+            setLoggedInUser(user);
+            setLoading(false); // Data loading completed
+        };
+
+        fetchUserData();
+    }, []);
+
+
+
 
     const Card = ({item, navigation}) => {
         return (
@@ -130,109 +156,119 @@ const HomePage = () => {
     }, []);
 
     return (
+            <View style={styles.container}>
+                {/*header*/}
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View>
+                        <View style={{marginVertical: 10, width: 50, height: 50, borderRadius: 50}}>
+                            {loggedInUser && (
+                                <TouchableOpacity
+                                    onPress={() => router.push({
+                                    pathname: '/listing/[id]profile',
+                                    params: { user: JSON.stringify(loggedInUser) } // Pass user data as a JSON string
+                                })}
+                                    >
+                                    <Image
+                                        source={{
+                                            uri : loggedInUser.image
+                                        }}
+                                        style={{width: 50, height: 50, borderRadius: 50}}
+                                    />
+                                </TouchableOpacity>
+                            )}
 
-        <View style={styles.container}>
-            {/*header*/}
-            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View>
-                    <View style={{marginVertical: 10, width: 50, height: 50, borderRadius: 50}}>
-                        <TouchableOpacity onPress={() => {}}>
-                            <Image
-                                source={{
-                                    uri: "https://xsgames.co/randomusers/assets/avatars/male/77.jpg"
-                                }}
-                                style={{width: 50, height: 50, borderRadius: 50}}
-                            />
-                        </TouchableOpacity>
+
+
+                        </View>
+
+                        <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
+                        <Text style={styles.headingText}>{greeting}</Text>
+
                     </View>
-
-                    <Text style={styles.subHeadingText}>Hello Ramesh Kaushika</Text>
-                    <Text style={styles.headingText}>{greeting}</Text>
-
-                </View>
-                <View style={{paddingTop: 10, width: wp(30), alignItems: 'flex-end', alignContent: 'space-between'}}>
-                    <Text style={styles.subHeadingText}>CALL US NOW</Text>
-                    <Text style={{fontSize: hp(1.8), fontWeight: themes.fonts.medium}}>+94765341860</Text>
-                    <View style={{height: 20}}/>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                        <Entypo name="facebook" size={22} color={themes.colors.primaryDark}
-                                style={{paddingHorizontal: 5}}/>
-                        <Entypo name="instagram" size={22} color={themes.colors.primaryDark}
-                                style={{paddingHorizontal: 5}}/>
-                        <FontAwesome6 name="x-twitter" size={22} color={themes.colors.primaryDark}
-                                      style={{paddingHorizontal: 5}}/>
-                        <Entypo name="linkedin" size={22} color={themes.colors.primaryDark}
-                                style={{paddingHorizontal: 5}}/>
-                        <Entypo name="youtube" size={22} color={themes.colors.primaryDark}
-                                style={{paddingHorizontal: 5}}/>
-                    </View>
-                </View>
-            </View>
-            <TouchableOpacity style={styles.booknowButton} onPress={() => router.push("modal/booking")}>
-                <Text style={styles.booknowText}>BOOK NOW</Text>
-                <Text style={styles.booknowTextOutline}>BOOK NOW</Text>
-            </TouchableOpacity>
-
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-            >
-                <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
-                    <Text style={styles.subTopic}>Special Offers</Text>
-                    <View style={styles.timer}>
-                        <Ionicons name='time-outline' size={16} color={'black'}/>
-                        <TimerComp/>
+                    <View style={{paddingTop: 10, width: wp(30), alignItems: 'flex-end', alignContent: 'space-between'}}>
+                        <Text style={styles.subHeadingText}>CALL US NOW</Text>
+                        <Text style={{fontSize: hp(1.8), fontWeight: themes.fonts.medium}}>+94765341860</Text>
+                        <View style={{height: 20}}/>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                            <Entypo name="facebook" size={22} color={themes.colors.primaryDark}
+                                    style={{paddingHorizontal: 5}}/>
+                            <Entypo name="instagram" size={22} color={themes.colors.primaryDark}
+                                    style={{paddingHorizontal: 5}}/>
+                            <FontAwesome6 name="x-twitter" size={22} color={themes.colors.primaryDark}
+                                          style={{paddingHorizontal: 5}}/>
+                            <Entypo name="linkedin" size={22} color={themes.colors.primaryDark}
+                                    style={{paddingHorizontal: 5}}/>
+                            <Entypo name="youtube" size={22} color={themes.colors.primaryDark}
+                                    style={{paddingHorizontal: 5}}/>
+                        </View>
                     </View>
                 </View>
+                <TouchableOpacity style={styles.booknowButton} onPress={() => router.push("modal/booking")}>
+                    <Text style={styles.booknowText}>BOOK NOW</Text>
+                    <Text style={styles.booknowTextOutline}>BOOK NOW</Text>
+                </TouchableOpacity>
 
-                {/* Carousel Section */}
-                <View style={styles.carouselContainer}>
-                    <Carousel
-                        loop
-                        width={wp(100)}
-                        height={hp(25)}
-                        autoPlay={true}
-                        autoPlayInterval={4000}
-                        data={sliderImages}
-                        scrollAnimationDuration={1000}
-                        mode="parallax-horizontal"
-                        parallaxScrollingScale={0.9}
-                        parallaxScrollingOffset={50}
-                        onProgressChange={handleProgressChange} // Updates the currentIndex as the user scrolls
-                        renderItem={({item}) => (
-                            <>
-                                <ItemCard item={item}/>
-                                <OfferButton  bottom={15} left={20} />
-                            </>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                >
+                    <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+                        <Text style={styles.subTopic}>Special Offers</Text>
+                        <View style={styles.timer}>
+                            <Ionicons name='time-outline' size={16} color={'black'}/>
+                            <TimerComp/>
+                        </View>
+                    </View>
 
-                        )}
-                    />
-                    {/* Render the pagination dots below the carousel */}
-                    <PaginationDots/>
-                </View>
+                    {/* Carousel Section */}
+                    <View style={styles.carouselContainer}>
+                        <Carousel
+                            loop
+                            width={wp(100)}
+                            height={hp(25)}
+                            autoPlay={true}
+                            autoPlayInterval={4000}
+                            data={sliderImages}
+                            scrollAnimationDuration={1000}
+                            mode="parallax-horizontal"
+                            parallaxScrollingScale={0.9}
+                            parallaxScrollingOffset={50}
+                            onProgressChange={handleProgressChange} // Updates the currentIndex as the user scrolls
+                            renderItem={({item}) => (
+                                <>
+                                    <ItemCard item={item}/>
+                                    <OfferButton  bottom={15} left={20} />
+                                </>
 
-                {/* Topics under the image */}
-                <View style={styles.topicContainer}>
-                    <Text style={styles.subTopic}>Top Services</Text>
-                    <View style={{height: hp(23)}}>
-                        <FlatList
-                            data={data}
-                            renderItem={({item}) => <Card item={item}/>}
-                            keyExtractor={(item) => item.id}
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
+                            )}
                         />
+                        {/* Render the pagination dots below the carousel */}
+                        <PaginationDots/>
                     </View>
 
+                    {/* Topics under the image */}
+                    <View style={styles.topicContainer}>
+                        <Text style={styles.subTopic}>Top Services</Text>
+                        <View style={{height: hp(23)}}>
+                            <FlatList
+                                data={data}
+                                renderItem={({item}) => <Card item={item}/>}
+                                keyExtractor={(item) => item.id}
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                            />
+                        </View>
 
-                    <Text style={styles.subTopic}>Hair Specialist</Text>
-                    <View style={{height: hp(21)}}>
-                        <HairSpecialistCont/>
+
+                        <Text style={styles.subTopic}>Hair Specialist</Text>
+                        <View style={{height: hp(21)}}>
+                            <HairSpecialistCont/>
+                        </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
 
-        </View>
+            </View>
+
     );
 };
 
