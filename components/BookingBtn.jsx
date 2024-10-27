@@ -2,10 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {themes} from "../constants/themes";
 import {hp, wp} from "../helpers/common";
+import {router} from "expo-router";
 
 const BookingBtn = () => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => router.push("modal/booking")}>
             <Text style={styles.text}>Booking now</Text>
         </TouchableOpacity>
     );
