@@ -5,6 +5,7 @@ import { themes } from "../../constants/themes";
 import Banner from "../../components/Banner";
 import Carousel from "react-native-reanimated-carousel";
 import { sale } from "../../components/reusable/Sale";
+import OfferButton from "../../components/OfferButton";
 
 const Promotions = () => {
     const [activeSlide, setActiveSlide] = useState(0); // Tracks current slide for pagination
@@ -46,6 +47,7 @@ const Promotions = () => {
                 renderItem={({ item }) => (
                     <View style={styles.bannerContainer}>
                         <Image source={item.imageUrl} style={styles.bannerImage} />
+                        <OfferButton bottom={25} left={22}  />
                     </View>
                 )}
                 onSnapToItem={handleSnapToItem} // Updates active slide

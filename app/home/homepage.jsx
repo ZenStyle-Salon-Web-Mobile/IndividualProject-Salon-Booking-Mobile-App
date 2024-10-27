@@ -202,7 +202,7 @@ const HomePage = () => {
                         renderItem={({item}) => (
                             <>
                                 <ItemCard item={item}/>
-                                <OfferButton />
+                                <OfferButton  bottom={15} left={20} />
                             </>
 
                         )}

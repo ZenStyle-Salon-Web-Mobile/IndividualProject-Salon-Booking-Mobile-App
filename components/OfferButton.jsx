@@ -4,9 +4,9 @@ import {wp} from "../helpers/common";
 import {themes} from "../constants/themes";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 
-const OfferButton = () => {
+const OfferButton = ({bottom,left}) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={[styles.container, {bottom, left}]}>
             <Text style={{
                 fontWeight:themes.fonts.bold,
             }}>Get Offer Now</Text>
@@ -27,8 +27,7 @@ const styles = StyleSheet.create({
         borderWidth:1.5,
         borderColor:themes.colors.primary,
         position: 'absolute',
-        bottom: 15,
-        left:20,
+
     },
 });
 
