@@ -62,21 +62,29 @@ const membershipData = [
 
 const MembershipCard = ({item, parallaxProps}) => {
 
-    const [focusedInput, setFocusedInput] = useState(null); // Track focused input for highlighting
     const [selectedOption, setSelectedOption] = useState(null);
+    const [focusedInput, setFocusedInput] = useState(null);
     const [cardDetails, setCardDetails] = useState({
         cardNumber: '',
         expiryDate: '',
         cvc: '',
         billingAddress: '',
-        zipCode: ''
+        zipCode: '',
     });
 
+    // Input handler with format restrictions
     const handleInputChange = (name, value) => {
-        setCardDetails(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === 'cardNumber') {
+            value = value.replace(/\D/g, '').slice(0, 16); // Allow only numbers, max 16 digits
+        } else if (name === 'expiryDate') {
+            value = value.replace(/\D/g, '').slice(0, 4); // Allow only numbers, max 4 digits
+            if (value.length >= 2) value = value.slice(0, 2) + ' / ' + value.slice(2); // Auto-insert '/'
+        } else if (name === 'cvc') {
+            value = value.replace(/\D/g, '').slice(0, 4); // Allow only numbers, max 4 digits
+        } else if (name === 'zipCode') {
+            value = value.replace(/\D/g, '').slice(0, 5); // Allow only numbers, max 5 digits
+        }
+        setCardDetails(prevState => ({ ...prevState, [name]: value }));
     };
 
     const [activeOption, setActiveOption] = useState(null);
@@ -191,38 +199,55 @@ const MembershipCard = ({item, parallaxProps}) => {
                             style={[styles.input, focusedInput === 'cardNumber' && styles.focusedBorder]}
                             placeholder="0000-0000-0000-0000"
                             keyboardType="numeric"
+                            value={cardDetails.cardNumber}
                             onFocus={() => setFocusedInput('cardNumber')}
                             onBlur={() => setFocusedInput(null)}
+                            onChangeText={value => handleInputChange('cardNumber', value)}
                         />
+
                         <View style={styles.row}>
                             <TextInput
                                 style={[styles.input, styles.smallInput, focusedInput === 'expiryDate' && styles.focusedBorder]}
                                 placeholder="MM / YY"
                                 keyboardType="numeric"
+                                value={cardDetails.expiryDate}
                                 onFocus={() => setFocusedInput('expiryDate')}
                                 onBlur={() => setFocusedInput(null)}
+                                onChangeText={value => handleInputChange('expiryDate', value)}
                             />
+
                             <TextInput
                                 style={[styles.input, styles.smallInput, focusedInput === 'cvc' && styles.focusedBorder]}
                                 placeholder="CVC"
                                 keyboardType="numeric"
+                                value={cardDetails.cvc}
                                 onFocus={() => setFocusedInput('cvc')}
                                 onBlur={() => setFocusedInput(null)}
+                                onChangeText={value => handleInputChange('cvc', value)}
                             />
                         </View>
+
                         <TextInput
                             style={[styles.input, focusedInput === 'billingAddress' && styles.focusedBorder]}
                             placeholder="Billing Address"
+                            value={cardDetails.billingAddress}
                             onFocus={() => setFocusedInput('billingAddress')}
                             onBlur={() => setFocusedInput(null)}
+                            onChangeText={value => handleInputChange('billingAddress', value)}
                         />
+
                         <TextInput
                             style={[styles.input, focusedInput === 'zipCode' && styles.focusedBorder]}
                             placeholder="ZIP Code"
                             keyboardType="numeric"
+                            value={cardDetails.zipCode}
                             onFocus={() => setFocusedInput('zipCode')}
                             onBlur={() => setFocusedInput(null)}
+                            onChangeText={value => handleInputChange('zipCode', value)}
                         />
+                        <TouchableOpacity style={styles.confirmButton}>
+                            <Text style={styles.confirmButtonText}>Confirm Payment</Text>
+                        </TouchableOpacity>
                     </View>
 
                 </View>
