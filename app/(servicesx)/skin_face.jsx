@@ -33,38 +33,38 @@ const blogData = [{
     date: '5th Nov 2021',
 }, {
     id: '3',
-    title: '3) Appointment Rescheduling and Cancellations',
-    paragraph: 'Appointments can be rescheduled or cancelled without penalty up to 72 hours prior to the scheduled appointment time. Refunds for cancellations are processed manually and can take up to two working days to complete, provided via the original method of payment or through direct bank transfer.' + 'No rescheduling or cancellations are allowed within 72 hours of the appointment time, and no refunds will be provided under these circumstances.',
+    title: '3) ROSACEA (PINK FACE)',
+    paragraph: 'Rosacea is a very common skin condition characterized by permanent redness around the center of the face. Most often the redness gradually spreads to cheeks, forehead, chin, and even ears chest, and back.',
     date: '24th Sept 2021',
 }, {
     id: '4',
-    title: '4) Service Limitations and Liability',
-    paragraph: 'Specific services such as hair coloring, straightening, keratin treatments, and facials include a mandatory, free allergy test that must be conducted at least two days before the scheduled service. Salon Liyo will not be held responsible for any adverse effects or medical conditions that arise due to treatments administered at the salon or resulting from failure to conduct the allergy tests.',
+    title: '4) WARTS AND CORNS',
+    paragraph: 'A common viral infection caused by the HPN virus. There are different types of warts usually identified by their appearance.',
     date: '24th Sept 2021',
 }, {
     id: '5',
-    title: '5) Data Privacy',
-    paragraph: 'Salon Liyo respects the privacy of its clients. Personal data collected during registration and booking is used solely for processing appointments and will not be shared with third parties, except as required by law.',
+    title: '5) KELOIDS (HYPERTROPHIC SCARS )',
+    paragraph: 'A scar is a result of the body naturally healing or replacing damaged skin. It usually consists of fibrous tissue, therefore the composition may differ in appearance. Scars may appear flat, lumpy, sunken, lightly, or darkly pigmented.',
     date: '24th Sept 2021',
 }, {
     id: '6',
-    title: '6) Dispute Resolution',
-    paragraph: 'In the event of a dispute, customers are encouraged to contact our customer service team through the provided hotline or email. Salon Liyo commits to resolving disputes amicably and efficiently.',
+    title: '6) LIQUID NITROGEN CRYOFREEZING',
+    paragraph: 'Liquid nitrogen cryofreezing is a treatment used for warts, tags, and other skin lesions. It is an inexpensive, safe, and effective method to treat unsightly skin growths. Furthermore, you can be in and out of treatment in no time and back to your day-to-day routines. ',
     date: '24th Sept 2021',
 }, {
     id: '7',
-    title: '7) Modifications to Terms',
-    paragraph: 'Salon Liyo reserves the right to amend these terms and conditions at any time. All changes will be effective immediately upon their posting on the website. Continued use of the booking system after any changes constitutes acceptance of the new terms.',
+    title: '7) TEETH WHITENING',
+    paragraph: 'A whiter, brighter smile is now yours with Christell teeth whitening treatment. Our professional treatment, one of the most effective in town, takes years of coffee, tobacco, and other stains – simply walk out with an amazing smile. ',
     date: '24th Sept 2021',
 }, {
     id: '8',
-    title: '8) Contact Information',
-    paragraph: 'For further information or assistance, please contact us via our WhatsApp number, hotline, or email. Contact details are available on our website and through your booking confirmation.',
+    title: '8) KERATOSIS PILARIS',
+    paragraph: 'Keratosis pilaris is a very common condition that causes tiny rough bumps on your skin. The condition is usually accompanied by dry or rough skin.',
     date: '24th Sept 2021',
 }, {
     id: '9',
-    title: '9) Legal Compliance',
-    paragraph: 'Salon Liyo operates in compliance with applicable local and national laws. Users agree to not use the booking system for any unlawful activities.',
+    title: '9) ECZEMA',
+    paragraph: 'Eczema is a term used to describe common types of dermatitis or skin inflammation. The most common symptom is a red rash with swelling and blisters, or a persisting irritation with darker, thickened skin.',
     date: '24th Sept 2021',
 },];
 

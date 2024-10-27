@@ -108,7 +108,7 @@ const MembershipCard = ({item, parallaxProps}) => {
                         paddingHorizontal: 20
                     }}> Become a VIP Loyalty Member today to look and feel your best all year long,
                         while taking advantage of our best pricing!
-                        At "CHRISTELL EMPOWERED CLUB", it is our goal to listen to your concerns and find solutions that
+                        At "ZENSTYLE EMPOWERED CLUB", it is our goal to listen to your concerns and find solutions that
                         address
                         all of your aesthetic needs.</Text>
                     <Image source={item.image} style={styles.image} {...parallaxProps} />
