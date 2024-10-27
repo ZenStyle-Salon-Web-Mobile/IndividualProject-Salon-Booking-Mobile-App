@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {Stack, useLocalSearchParams} from "expo-router";
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
+import Icon from "../../assets/icons";
 
 const ProfileDetails = () => {
     const {user} = useLocalSearchParams();
@@ -26,36 +27,38 @@ const ProfileDetails = () => {
 
                 <View style={styles.wrapText}>
 
-                    <View>
+                    <View style={styles.subContainer}>
                         <Text style={styles.textContainer}>Name</Text>
-                        <View>
+                        <View style={{flexDirection: 'row'}}>
+                            <Icon name="user" size={26} strokeWidth={1.6}/>
                             <Text style={styles.text}>{loggedInUser.name}</Text>
                         </View>
                     </View>
 
-                    <View>
+                    <View style={styles.subContainer}>
                         <Text style={styles.textContainer}>Gender</Text>
-                        <View>
+                        <View style={{flexDirection: 'row'}}>
+                            <Icon name="heart" size={26} strokeWidth={1.6}/>
                             <Text style={styles.text}>{loggedInUser.gender}</Text>
                         </View>
                     </View>
 
-                    <View>
+                    <View style={styles.subContainer}>
                         <Text style={styles.textContainer}>Email</Text>
-                        <View>
+                        <View style={{flexDirection: 'row'}}>
+                            <Icon name="mail" size={26} strokeWidth={1.6}/>
                             <Text style={styles.text}>{loggedInUser.email}</Text>
                         </View>
                     </View>
 
-                    <View>
+                    <View style={styles.subContainer}>
                         <Text style={styles.textContainer}>Phone</Text>
-                        <View>
+                        <View style={{flexDirection: 'row'}}>
+                            <Icon name="send" size={26} strokeWidth={1.6}/>
                             <Text style={styles.text}>{loggedInUser.phoneNumber}</Text>
                         </View>
                     </View>
-
                 </View>
-
             </View>
         </>
 
@@ -71,7 +74,6 @@ const styles = StyleSheet.create({
     imageCont: {
         width: wp(80),
         height: hp(40),
-
         justifyContent: "center",
         alignItems: "center",
         borderRadius: themes.radius.xl
@@ -91,13 +93,25 @@ const styles = StyleSheet.create({
         fontWeight: themes.fonts.medium,
         textAlign: "center",
     },
-    wrapText: {},
+    wrapText: { },
     textContainer: {},
     text: {
         fontSize: 18,
-        marginBottom: 10,
-    },
 
+    },
+    subContainer: {
+        height: hp(8),
+        width: wp(85),
+        borderWidth: 1,
+        borderColor: themes.colors.primary,
+        borderCurve: 'continuous',
+        borderRadius: themes.radius.xxl,
+        paddingHorizontal: 18,
+        gap: 12,
+        justifyContent: "center",
+        marginBottom:20,
+
+    },
 
 });
 

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderCurve: 'continuous',
     borderRadius: themes.radius.xxl,
     paddingHorizontal: 18,
-    gap: 12
+    gap: 12,
   },
 });
 
