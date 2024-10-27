@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList , Image} from 'react
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { themes } from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
+import BookingBtn from "../../components/BookingBtn";
 
 // Sample image URLs; replace these with your actual image paths
 const images = {
@@ -88,6 +89,7 @@ export default function Skin_Face() {
                 <View style={styles.expandedContainer}>
                     <Image resizeMode="cover" source={images[item.id]} style={styles.image} />
                     <Text style={styles.paragraph}>{item.paragraph}</Text>
+                    <BookingBtn/>
                 </View>
             )}
             <Text style={styles.date}>{item.date}</Text>
