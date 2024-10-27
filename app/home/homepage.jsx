@@ -9,6 +9,7 @@ import Animated, {useAnimatedStyle, useSharedValue, withSpring,} from "react-nat
 import HairSpecialistCont from "../../components/reusable/HairSpecialistCont";
 import TimerComp from "../../components/reusable/TimerComp";
 import {router} from "expo-router";
+import OfferButton from "../../components/OfferButton";
 
 const data = [
     {
@@ -200,7 +201,11 @@ const HomePage = () => {
                         parallaxScrollingOffset={50}
                         onProgressChange={handleProgressChange} // Updates the currentIndex as the user scrolls
                         renderItem={({item}) => (
-                            <ItemCard item={item}/>
+                            <>
+                                <ItemCard item={item}/>
+                                <OfferButton />
+                            </>
+
                         )}
                     />
                     {/* Render the pagination dots below the carousel */}
@@ -239,6 +244,7 @@ const ItemCard = ({item}) => {
                 source={item}
                 style={styles.image}
             />
+
         </View>
     );
 };
@@ -281,6 +287,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10, // Horizontal space between images
         borderRadius: 20,
         overflow: 'hidden',
+
     },
     image: {
         width: '100%',
@@ -360,7 +367,6 @@ const styles = StyleSheet.create({
         fontWeight: themes.fonts.bold,
         color: '#666',
         fontSize: hp(1.8),
-
     },
     rating: {
         paddingHorizontal: 5,
@@ -407,6 +413,7 @@ const styles = StyleSheet.create({
         textShadowRadius: 1, // Shadow blur radius for outline
         position: 'absolute', // Position this under the main text
     },
+
 
 });
 

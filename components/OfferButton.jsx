@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
         borderRadius:themes.radius.xxl,
         borderWidth:1.5,
         borderColor:themes.colors.primary,
-
+        position: 'absolute',
+        bottom: 15,
+        left:20,
     },
 });
 
