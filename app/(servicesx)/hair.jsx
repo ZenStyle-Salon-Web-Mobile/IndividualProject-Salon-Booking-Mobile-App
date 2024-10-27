@@ -22,51 +22,31 @@ const images = {
 
 const blogData = [{
     id: '1',
-    title: '1) ACNE',
-    paragraph: 'Acne is a skin condition caused by increased oil production of the sebaceous (oil) glands. The excess oil, together with dead skin cells, blocks the hair follicles causing whiteheads, blackheads, and pimples. The skin on the face, chest, upper back, and shoulders are most prone to this condition.',
+    title: '1) LASER HAIR REMOVAL',
+    paragraph: 'Hypertrichosis, commonly known as excessive hair growth can affect any part of the body. Usually identified by comparing the hair growth of others of the same age, sex, and ethnic background.',
     date: '11th Jan 2022',
 
 }, {
     id: '2',
-    title: '2) ACNE SCARS',
-    paragraph: 'Though skin has the natural ability to heal itself, and even with the most careful of treatment, depending on the severity of the acne, scars may occur. An acne lesion may result in loss or formation of skin tissue – the loss results in milder scars and the formation results in more severe scars.',
+    title: '2) PATCHY HAIR LOSS / ALOPECIA AREATA',
+    paragraph: 'Patchy loss of hair, also known as Alopecia Areata, usually occurs in areas on the scalp. But eyebrows, lashes, and beards can also get affected. The causes for this have been identified as heredity, thyroid-related disease, hormonal changes, stress, nutritional deficiencies, and external treatment such as coloring, bleaching, or fungal infections of the scalp.',
     date: '5th Nov 2021',
 }, {
     id: '3',
-    title: '3) Appointment Rescheduling and Cancellations',
-    paragraph: 'Appointments can be rescheduled or cancelled without penalty up to 72 hours prior to the scheduled appointment time. Refunds for cancellations are processed manually and can take up to two working days to complete, provided via the original method of payment or through direct bank transfer.' + 'No rescheduling or cancellations are allowed within 72 hours of the appointment time, and no refunds will be provided under these circumstances.',
+    title: '3) HAIR LOSS',
+    paragraph: 'Characterized by receding frontal hairline and loss of hair on the top of the head, this could be accompanied by loss of hair in other areas. The condition is also referred to as Androgenetic Alopecia.',
     date: '24th Sept 2021',
 }, {
     id: '4',
-    title: '4) Service Limitations and Liability',
-    paragraph: 'Specific services such as hair coloring, straightening, keratin treatments, and facials include a mandatory, free allergy test that must be conducted at least two days before the scheduled service. Salon Liyo will not be held responsible for any adverse effects or medical conditions that arise due to treatments administered at the salon or resulting from failure to conduct the allergy tests.',
+    title: '4) DANDRUFF',
+    paragraph: 'Symptoms such as the itchy, dry flaky scalp, and white or yellow greasy scales are identified as dandruff. Fungus, stress, and hormonal imbalance contribute to dandruff.',
     date: '24th Sept 2021',
 }, {
     id: '5',
-    title: '5) Data Privacy',
-    paragraph: 'Salon Liyo respects the privacy of its clients. Personal data collected during registration and booking is used solely for processing appointments and will not be shared with third parties, except as required by law.',
+    title: '5) LACER HAIR REMOVEL',
+    paragraph: 'Salon ZENSTYLE respects the privacy of its clients. Personal data collected during registration and booking is used solely for processing appointments and will not be shared with third parties, except as required by law.',
     date: '24th Sept 2021',
-}, {
-    id: '6',
-    title: '6) Dispute Resolution',
-    paragraph: 'In the event of a dispute, customers are encouraged to contact our customer service team through the provided hotline or email. Salon Liyo commits to resolving disputes amicably and efficiently.',
-    date: '24th Sept 2021',
-}, {
-    id: '7',
-    title: '7) Modifications to Terms',
-    paragraph: 'Salon Liyo reserves the right to amend these terms and conditions at any time. All changes will be effective immediately upon their posting on the website. Continued use of the booking system after any changes constitutes acceptance of the new terms.',
-    date: '24th Sept 2021',
-}, {
-    id: '8',
-    title: '8) Contact Information',
-    paragraph: 'For further information or assistance, please contact us via our WhatsApp number, hotline, or email. Contact details are available on our website and through your booking confirmation.',
-    date: '24th Sept 2021',
-}, {
-    id: '9',
-    title: '9) Legal Compliance',
-    paragraph: 'Salon Liyo operates in compliance with applicable local and national laws. Users agree to not use the booking system for any unlawful activities.',
-    date: '24th Sept 2021',
-},];
+}, ];
 
 export default function Hair() {
     const [expandedId, setExpandedId] = useState(null);
