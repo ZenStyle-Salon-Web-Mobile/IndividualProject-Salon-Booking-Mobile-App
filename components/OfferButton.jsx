@@ -2,23 +2,32 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {wp} from "../helpers/common";
 import {themes} from "../constants/themes";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 const OfferButton = () => {
-  return (
-    <TouchableOpacity style={styles.container}>
-      <Text>OfferButton Component</Text>
-
-    </TouchableOpacity>
-  );
+    return (
+        <TouchableOpacity style={styles.container}>
+            <Text style={{
+                fontWeight:themes.fonts.bold,
+            }}>Get Offer Now</Text>
+            <MaterialCommunityIcons name="arrow-right-drop-circle" size={24} color={themes.colors.primary}/>
+        </TouchableOpacity>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width:wp(10),
-      backgroundColor:themes.colors.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    container: {
+        width: wp(35),
+        backgroundColor: 'white',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        flexDirection: 'row',
+        padding:8,
+        borderRadius:themes.radius.xxl,
+        borderWidth:1.5,
+        borderColor:themes.colors.primary,
+
+    },
 });
 
 export default OfferButton;
