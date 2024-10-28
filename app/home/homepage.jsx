@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Linking} from 'react-native';
 import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import Carousel from 'react-native-reanimated-carousel';
@@ -59,6 +59,12 @@ const data = [
 ];
 
 const HomePage = () => {
+
+    const makePhoneCall = (phoneNumber) => {
+        Linking.openURL(`tel:${phoneNumber}`)
+            .catch((err) => console.log('Error:', err));
+    };
+
 
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -183,8 +189,11 @@ const HomePage = () => {
 
                     </View>
                     <View style={{paddingTop: 10, width: wp(30), alignItems: 'flex-end', alignContent: 'space-between'}}>
-                        <Text style={styles.subHeadingText}>CALL US NOW</Text>
-                        <Text style={{fontSize: hp(1.8), fontWeight: themes.fonts.medium}}>+94765341860</Text>
+                        <TouchableOpacity onPress={() => makePhoneCall('+94765341860')}>
+                            <Text style={styles.subHeadingText}>CALL US NOW</Text>
+                            <Text style={{fontSize: hp(1.8), fontWeight: themes.fonts.medium}}>+94765341860</Text>
+                        </TouchableOpacity>
+
                         <View style={{height: 20}}/>
                         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
                             <Entypo name="facebook" size={22} color={themes.colors.primaryDark}
