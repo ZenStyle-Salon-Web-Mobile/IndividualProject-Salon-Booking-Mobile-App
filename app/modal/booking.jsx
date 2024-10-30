@@ -3,9 +3,24 @@ import {View, Text, TextInput, Button, StyleSheet, Dimensions, Alert} from 'reac
 import {Calendar} from 'react-native-calendars';
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
-
+import DropDownPicker from "react-native-dropdown-picker";
 
 const BookingOnboarding = () => {
+
+    const [open, setOpen] = useState(false);
+    const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+    const [timeSlots, setTimeSlots] = useState([
+        { label: "08:00 AM - 09:00 AM", value: "08:00 AM - 09:00 AM" },
+        { label: "09:00 AM - 10:00 AM", value: "09:00 AM - 10:00 AM" },
+        { label: "10:00 AM - 11:00 AM", value: "10:00 AM - 11:00 AM" },
+        { label: "11:00 AM - 12:00 PM", value: "11:00 AM - 12:00 PM" },
+        { label: "12:00 PM - 01:00 PM", value: "12:00 PM - 01:00 PM" },
+        { label: "01:00 PM - 02:00 PM", value: "01:00 PM - 02:00 PM" },
+        { label: "02:00 PM - 03:00 PM", value: "02:00 PM - 03:00 PM" },
+        { label: "03:00 PM - 04:00 PM", value: "03:00 PM - 04:00 PM" },
+        { label: "04:00 PM - 05:00 PM", value: "04:00 PM - 05:00 PM" },
+    ]);
+
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -52,6 +67,18 @@ const BookingOnboarding = () => {
                             selectedDayBackgroundColor: 'transparent',
                             selectedDayTextColor: 'red',
                         }}
+                    />
+                    <DropDownPicker
+                        open={open}
+                        value={selectedTimeSlot}
+                        items={timeSlots}
+                        setOpen={setOpen}
+                        setValue={setSelectedTimeSlot}
+                        setItems={setTimeSlots}
+                        placeholder="Select a time slot"
+                        containerStyle={{ marginTop: 10 }}
+                        style={{ backgroundColor: "#fafafa" }}
+                        dropDownStyle={{ backgroundColor: "#fafafa" }}
                     />
                     <TextInput
                         style={styles.input}
@@ -214,6 +241,17 @@ const styles = StyleSheet.create({
         marginTop: 20,
         bottom: 30,
 
+    },
+    label: { fontSize: 16, marginBottom: 10 },
+    dropdown: {
+        width: 200,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#009688',
+    },
+    dropdownContainer: {
+        width: 200,
+        borderColor: '#009688',
     },
 });
 
