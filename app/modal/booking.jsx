@@ -28,7 +28,7 @@ const BookingOnboarding = () => {
         } else if (name === 'zipCode') {
             value = value.replace(/\D/g, '').slice(0, 5); // Allow only numbers, max 5 digits
         }
-        setCardDetails(prevState => ({ ...prevState, [name]: value }));
+        setCardDetails(prevState => ({...prevState, [name]: value}));
     };
 
     const [open, setOpen] = useState(false);
@@ -189,10 +189,38 @@ const BookingOnboarding = () => {
                         <TouchableOpacity style={styles.confirmButton}>
                             <Text style={styles.confirmButtonText}>Confirm Payment</Text>
                         </TouchableOpacity>
+                        <Text>Personal Info</Text>
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={styles.inputPayment}
+                            placeholder="Name"
+                            value={formData.name}
+                            onChangeText={(text) => setFormData({...formData, name: text})}
+                        />
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={styles.inputPayment}
+                            placeholder="Gender"
+                            value={formData.gender}
+                            onChangeText={(text) => setFormData({...formData, gender: text})}
+                        />
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={styles.inputPayment}
+                            placeholder="E-mail"
+                            value={formData.email}
+                            onChangeText={(text) => setFormData({...formData, email: text})}
+                        />
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={styles.inputPayment}
+                            placeholder="Phone Number"
+                            value={formData.phone}
+                            onChangeText={(text) => setFormData({...formData, phone: text})}
+                        />
                     </View>
                 </>
             ),
-            subTitle:'Hwllo',
             buttonLabel: 'Next',
             validation: () => formData.cardNumber && formData.expiryDate && formData.cvv,
         },
@@ -227,7 +255,7 @@ const BookingOnboarding = () => {
         }
     };
 
-    const {title, content, buttonLabel} = sections[currentStep];
+    const {title, content, buttonLabel,} = sections[currentStep];
 
     return (
         <View style={[styles.section]}>
@@ -312,7 +340,7 @@ const styles = StyleSheet.create({
     },
 
     cardForm: {
-        width:wp(78)
+        width: wp(78)
     },
     inputPayment: {
         height: 50,
