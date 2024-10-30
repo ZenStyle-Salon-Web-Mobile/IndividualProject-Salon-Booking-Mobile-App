@@ -1,168 +1,220 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Dimensions, Alert } from 'react-native';
-import { Calendar } from 'react-native-calendars';
+import React, {useState} from 'react';
+import {View, Text, TextInput, Button, StyleSheet, Dimensions, Alert} from 'react-native';
+import {Calendar} from 'react-native-calendars';
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
 
 
-
 const BookingOnboarding = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
-    selectedDate: null,
-  });
+    const [currentStep, setCurrentStep] = useState(0);
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        cardNumber: '',
+        expiryDate: '',
+        cvv: '',
+        selectedDate: null,
+    });
 
-  const sections = [
-    {
-      title: 'Select Date',
-      content: (
-          <>
-            <Calendar
-                onDayPress={(day) => setFormData({ ...formData, selectedDate: day.dateString })}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="First Name"
-                value={formData.firstName}
-                onChangeText={(text) => setFormData({ ...formData, firstName: text })}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChangeText={(text) => setFormData({ ...formData, lastName: text })}
-            />
-          </>
-      ),
-      buttonLabel: 'Next',
-      validation: () => formData.firstName && formData.lastName && formData.selectedDate,
-    },
-    {
-      title: 'Payment',
-      content: (
-          <>
-            <TextInput
-                style={styles.input}
-                placeholder="Card Number"
-                keyboardType="numeric"
-                value={formData.cardNumber}
-                onChangeText={(text) => setFormData({ ...formData, cardNumber: text })}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Expiry Date (MM/YY)"
-                value={formData.expiryDate}
-                onChangeText={(text) => setFormData({ ...formData, expiryDate: text })}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="CVV"
-                keyboardType="numeric"
-                secureTextEntry
-                value={formData.cvv}
-                onChangeText={(text) => setFormData({ ...formData, cvv: text })}
-            />
-          </>
-      ),
-      buttonLabel: 'Next',
-      validation: () => formData.cardNumber && formData.expiryDate && formData.cvv,
-    },
-    {
-      title: 'Confirmation',
-      content: (
-          <>
-            <Text style={styles.confirmationText}>Thank you for your booking!</Text>
-            <Text style={styles.orderId}>Order ID: #123456</Text>
-          </>
-      ),
-      buttonLabel: 'Finish',
-      validation: () => true,
-    },
-  ];
-
-  const handleNext = () => {
-    if (sections[currentStep].validation()) {
-      if (currentStep < sections.length - 1) {
-        setCurrentStep(currentStep + 1);
-      } else {
-        Alert.alert('Booking Complete', 'Thank you for your booking!');
-      }
-    } else {
-      Alert.alert('Incomplete Information', 'Please fill in all required fields.');
+    const handleDateSelect = (day) => {
+        setFormData({...formData, selectedDate: day.dateString});
     }
-  };
 
-  const handleBack = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
+    const sections = [
+        {
+            title: 'Select Date',
+            content: (
+                <>
+                    <Calendar
+                        style={{borderRadius:'10',
+                    width:wp(78),
+                            marginBottom:20,
 
-  const { title, content, buttonLabel } = sections[currentStep];
+                    }}
+                        onDayPress={handleDateSelect}
+                        markedDates={{
+                            [formData.selectedDate]: {
+                                selected: true,
+                                selectedColor: 'transparent',
+                                customStyles: {
+                                    container: {
+                                        borderColor: 'red',
+                                        borderWidth: 2,
+                                        borderRadius: 5,
+                                    },
+                                    text: {
+                                        color: 'black',
+                                    },
+                                },
+                            },
+                        }}
+                        theme={{
+                            selectedDayBackgroundColor: 'transparent',
+                            selectedDayTextColor: 'red',
+                        }}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="First Name"
+                        value={formData.firstName}
+                        onChangeText={(text) => setFormData({...formData, firstName: text})}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Catogory"
+                        value={formData.lastName}
+                        onChangeText={(text) => setFormData({...formData, lastName: text})}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Gender"
+                        value={formData.lastName}
+                        onChangeText={(text) => setFormData({...formData, lastName: text})}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Gender"
+                        value={formData.lastName}
+                        onChangeText={(text) => setFormData({...formData, lastName: text})}
+                    />
+                </>
+            ),
+            buttonLabel: 'Next',
+            validation: () => formData.firstName && formData.lastName && formData.selectedDate,
+        },
+        {
+            title: 'Payment',
+            content: (
+                <>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Card Number"
+                        keyboardType="numeric"
+                        value={formData.cardNumber}
+                        onChangeText={(text) => setFormData({...formData, cardNumber: text})}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Expiry Date (MM/YY)"
+                        value={formData.expiryDate}
+                        onChangeText={(text) => setFormData({...formData, expiryDate: text})}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="CVV"
+                        keyboardType="numeric"
+                        secureTextEntry
+                        value={formData.cvv}
+                        onChangeText={(text) => setFormData({...formData, cvv: text})}
+                    />
+                </>
+            ),
+            buttonLabel: 'Next',
+            validation: () => formData.cardNumber && formData.expiryDate && formData.cvv,
+        },
+        {
+            title: 'Confirmation',
+            content: (
+                <>
+                    <Text style={styles.confirmationText}>Thank you for your booking!</Text>
+                    <Text style={styles.orderId}>Order ID: #123456</Text>
+                </>
+            ),
+            buttonLabel: 'Finish',
+            validation: () => true,
+        },
+    ];
 
-  return (
-      <View style={[styles.section]}>
-        <Text style={styles.sectionTitle}>{title}</Text>
-        {content}
-        {currentStep > 0 && (
-            <Button title="Back" onPress={handleBack} color="#888" />
-        )}
-        <Button title={buttonLabel} onPress={handleNext} />
-      </View>
-  );
+    const handleNext = () => {
+        if (sections[currentStep].validation()) {
+            if (currentStep < sections.length - 1) {
+                setCurrentStep(currentStep + 1);
+            } else {
+                Alert.alert('Booking Complete', 'Thank you for your booking!');
+            }
+        } else {
+            Alert.alert('Incomplete Information', 'Please fill in all required fields.');
+        }
+    };
+
+    const handleBack = () => {
+        if (currentStep > 0) {
+            setCurrentStep(currentStep - 1);
+        }
+    };
+
+    const {title, content, buttonLabel} = sections[currentStep];
+
+    return (
+        <View style={[styles.section]}>
+            <Text style={styles.sectionTitle}>{title}</Text>
+            {content}
+            <View style={styles.buttonContainer}>
+                {currentStep > 0 && (
+                    <Button title="Back" onPress={handleBack} color="red"/>
+                )}
+                <Button title={buttonLabel} onPress={handleNext}/>
+            </View>
+
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  section: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: themes.colors.subColor,
-    marginHorizontal: 15,
-    marginTop: 15,
-    marginBottom: 38,
-    borderRadius: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 5, // for Android shadow
+    section: {
+        flex: 1,
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: themes.colors.subColor,
+        marginHorizontal: 15,
+        marginTop: 15,
+        marginBottom: 38,
+        borderRadius: 15,
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+        elevation: 5, // for Android shadow
 
 
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333333',
-    marginBottom: 20,
-  },
-  input: {
-    width: '80%',
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    backgroundColor: '#F9F9F9',
-  },
-  confirmationText: {
-    fontSize: 16,
-    color: '#333333',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  orderId: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1E90FF',
-    textAlign: 'center',
-  },
+    },
+    sectionTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#333333',
+        marginBottom: 20,
+    },
+    input: {
+        width: '80%',
+        height: 40,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 8,
+        marginBottom: 10,
+        paddingHorizontal: 10,
+        backgroundColor: '#F9F9F9',
+    },
+    confirmationText: {
+        fontSize: 16,
+        color: '#333333',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    orderId: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1E90FF',
+        textAlign: 'center',
+    },
+    buttonContainer: {
+        position: 'absolute',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '80%',
+        marginTop: 20,
+        bottom: 30,
+
+    },
 });
 
 export default BookingOnboarding;
