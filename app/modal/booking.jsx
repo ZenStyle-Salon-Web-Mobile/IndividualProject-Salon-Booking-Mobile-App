@@ -52,6 +52,10 @@ const BookingOnboarding = () => {
         cardNumber: '',
         expiryDate: '',
         cvv: '',
+        name:'',
+        gender:'',
+        email:'',
+        phone:'',
         selectedDate: null,
 
     });
@@ -189,7 +193,7 @@ const BookingOnboarding = () => {
                         <TouchableOpacity style={styles.confirmButton}>
                             <Text style={styles.confirmButtonText}>Confirm Payment</Text>
                         </TouchableOpacity>
-                        <Text>Personal Info</Text>
+                        <Text style={styles.title}>Personal Info</Text>
                         <TextInput
                             placeholderTextColor={'gray'}
                             style={styles.inputPayment}
@@ -222,7 +226,7 @@ const BookingOnboarding = () => {
                 </>
             ),
             buttonLabel: 'Next',
-            validation: () => formData.cardNumber && formData.expiryDate && formData.cvv,
+            validation: () => formData.cardNumber && formData.expiryDate && formData.cvv && formData.name && formData.gender && formData.email && formData.phone,
         },
         {
             title: 'Confirmation',
@@ -371,6 +375,12 @@ const styles = StyleSheet.create({
     },
     focusedBorder: {
         borderColor: 'blue', // Highlight border color on focus
+    },
+    title:{
+        paddingVertical:20,
+        textAlign:'center',
+       fontWeight:themes.fonts.semibold,
+        fontSize:hp(2.5)
     },
 });
 
