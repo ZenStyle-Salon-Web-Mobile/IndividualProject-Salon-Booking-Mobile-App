@@ -10,7 +10,7 @@ import HairSpecialistCont from "../../components/reusable/HairSpecialistCont";
 import TimerComp from "../../components/reusable/TimerComp";
 import {router} from "expo-router";
 import OfferButton from "../../components/OfferButton";
-import TimeRangeDropdown from "../../components/TimeRangeDropdown";
+
 
 
 const data = [

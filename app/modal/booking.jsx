@@ -1,11 +1,35 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Button, StyleSheet, Dimensions, Alert} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet, Dimensions, Alert, TouchableOpacity} from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
 import DropDownPicker from "react-native-dropdown-picker";
 
 const BookingOnboarding = () => {
+
+    const [focusedInput, setFocusedInput] = useState(null);
+    const [cardDetails, setCardDetails] = useState({
+        cardNumber: '',
+        expiryDate: '',
+        cvc: '',
+        billingAddress: '',
+        zipCode: '',
+    });
+
+    // Input handler with format restrictions
+    const handleInputChange = (name, value) => {
+        if (name === 'cardNumber') {
+            value = value.replace(/\D/g, '').slice(0, 16); // Allow only numbers, max 16 digits
+        } else if (name === 'expiryDate') {
+            value = value.replace(/\D/g, '').slice(0, 4); // Allow only numbers, max 4 digits
+            if (value.length >= 2) value = value.slice(0, 2) + ' / ' + value.slice(2); // Auto-insert '/'
+        } else if (name === 'cvc') {
+            value = value.replace(/\D/g, '').slice(0, 4); // Allow only numbers, max 4 digits
+        } else if (name === 'zipCode') {
+            value = value.replace(/\D/g, '').slice(0, 5); // Allow only numbers, max 5 digits
+        }
+        setCardDetails(prevState => ({ ...prevState, [name]: value }));
+    };
 
     const [open, setOpen] = useState(false);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
@@ -83,12 +107,14 @@ const BookingOnboarding = () => {
                         dropDownStyle={{backgroundColor: "#fafafa"}}
                     />
                     <TextInput
+                        placeholderTextColor={'gray'}
                         style={styles.input}
                         placeholder="Select Expert"
                         value={formData.expert}
                         onChangeText={(text) => setFormData({...formData, expert: text})}
                     />
                     <TextInput
+                        placeholderTextColor={'gray'}
                         style={styles.input}
                         placeholder="Status"
                         value={formData.status}
@@ -104,29 +130,69 @@ const BookingOnboarding = () => {
             title: 'Payment',
             content: (
                 <>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Card Number"
-                        keyboardType="numeric"
-                        value={formData.cardNumber}
-                        onChangeText={(text) => setFormData({...formData, cardNumber: text})}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Expiry Date (MM/YY)"
-                        value={formData.expiryDate}
-                        onChangeText={(text) => setFormData({...formData, expiryDate: text})}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="CVV"
-                        keyboardType="numeric"
-                        secureTextEntry
-                        value={formData.cvv}
-                        onChangeText={(text) => setFormData({...formData, cvv: text})}
-                    />
+                    <View style={styles.cardForm}>
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={[styles.inputPayment, focusedInput === 'cardNumber' && styles.focusedBorder]}
+                            placeholder="0000-0000-0000-0000"
+                            keyboardType="numeric"
+                            value={cardDetails.cardNumber}
+                            onFocus={() => setFocusedInput('cardNumber')}
+                            onBlur={() => setFocusedInput(null)}
+                            onChangeText={value => handleInputChange('cardNumber', value)}
+                        />
+
+                        <View style={styles.row}>
+                            <TextInput
+                                placeholderTextColor={'gray'}
+                                style={[styles.inputPayment, styles.smallInput, focusedInput === 'expiryDate' && styles.focusedBorder]}
+                                placeholder="MM / YY"
+                                keyboardType="numeric"
+                                value={cardDetails.expiryDate}
+                                onFocus={() => setFocusedInput('expiryDate')}
+                                onBlur={() => setFocusedInput(null)}
+                                onChangeText={value => handleInputChange('expiryDate', value)}
+                            />
+
+                            <TextInput
+                                placeholderTextColor={'gray'}
+                                style={[styles.inputPayment, styles.smallInput, focusedInput === 'cvc' && styles.focusedBorder]}
+                                placeholder="CVC"
+                                keyboardType="numeric"
+                                value={cardDetails.cvc}
+                                onFocus={() => setFocusedInput('cvc')}
+                                onBlur={() => setFocusedInput(null)}
+                                onChangeText={value => handleInputChange('cvc', value)}
+                            />
+                        </View>
+
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={[styles.inputPayment, focusedInput === 'billingAddress' && styles.focusedBorder]}
+                            placeholder="Billing Address"
+                            value={cardDetails.billingAddress}
+                            onFocus={() => setFocusedInput('billingAddress')}
+                            onBlur={() => setFocusedInput(null)}
+                            onChangeText={value => handleInputChange('billingAddress', value)}
+                        />
+
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={[styles.inputPayment, focusedInput === 'zipCode' && styles.focusedBorder]}
+                            placeholder="ZIP Code"
+                            keyboardType="numeric"
+                            value={cardDetails.zipCode}
+                            onFocus={() => setFocusedInput('zipCode')}
+                            onBlur={() => setFocusedInput(null)}
+                            onChangeText={value => handleInputChange('zipCode', value)}
+                        />
+                        <TouchableOpacity style={styles.confirmButton}>
+                            <Text style={styles.confirmButtonText}>Confirm Payment</Text>
+                        </TouchableOpacity>
+                    </View>
                 </>
             ),
+            subTitle:'Hwllo',
             buttonLabel: 'Next',
             validation: () => formData.cardNumber && formData.expiryDate && formData.cvv,
         },
@@ -243,6 +309,40 @@ const styles = StyleSheet.create({
     dropdownContainer: {
         width: 200,
         borderColor: '#009688',
+    },
+
+    cardForm: {
+        width:wp(78)
+    },
+    inputPayment: {
+        height: 50,
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingHorizontal: 12,
+        marginBottom: 12,
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    smallInput: {
+        flex: 0.45,
+    },
+    confirmButton: {
+        backgroundColor: '#007AFF',
+        paddingVertical: 14,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 16,
+    },
+    confirmButtonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '600',
+    },
+    focusedBorder: {
+        borderColor: 'blue', // Highlight border color on focus
     },
 });
 
