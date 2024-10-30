@@ -10,25 +10,26 @@ const BookingOnboarding = () => {
     const [open, setOpen] = useState(false);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [timeSlots, setTimeSlots] = useState([
-        { label: "08:00 AM - 09:00 AM", value: "08:00 AM - 09:00 AM" },
-        { label: "09:00 AM - 10:00 AM", value: "09:00 AM - 10:00 AM" },
-        { label: "10:00 AM - 11:00 AM", value: "10:00 AM - 11:00 AM" },
-        { label: "11:00 AM - 12:00 PM", value: "11:00 AM - 12:00 PM" },
-        { label: "12:00 PM - 01:00 PM", value: "12:00 PM - 01:00 PM" },
-        { label: "01:00 PM - 02:00 PM", value: "01:00 PM - 02:00 PM" },
-        { label: "02:00 PM - 03:00 PM", value: "02:00 PM - 03:00 PM" },
-        { label: "03:00 PM - 04:00 PM", value: "03:00 PM - 04:00 PM" },
-        { label: "04:00 PM - 05:00 PM", value: "04:00 PM - 05:00 PM" },
+        {label: "08:00 AM - 09:00 AM", value: "08:00 AM - 09:00 AM"},
+        {label: "09:00 AM - 10:00 AM", value: "09:00 AM - 10:00 AM"},
+        {label: "10:00 AM - 11:00 AM", value: "10:00 AM - 11:00 AM"},
+        {label: "11:00 AM - 12:00 PM", value: "11:00 AM - 12:00 PM"},
+        {label: "12:00 PM - 01:00 PM", value: "12:00 PM - 01:00 PM"},
+        {label: "01:00 PM - 02:00 PM", value: "01:00 PM - 02:00 PM"},
+        {label: "02:00 PM - 03:00 PM", value: "02:00 PM - 03:00 PM"},
+        {label: "03:00 PM - 04:00 PM", value: "03:00 PM - 04:00 PM"},
+        {label: "04:00 PM - 05:00 PM", value: "04:00 PM - 05:00 PM"},
     ]);
 
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        status: '',
+        expert: '',
         cardNumber: '',
         expiryDate: '',
         cvv: '',
         selectedDate: null,
+
     });
 
     const handleDateSelect = (day) => {
@@ -41,11 +42,12 @@ const BookingOnboarding = () => {
             content: (
                 <>
                     <Calendar
-                        style={{borderRadius:'10',
-                    width:wp(78),
-                            marginBottom:20,
+                        style={{
+                            borderRadius: '10',
+                            width: wp(78),
+                            marginBottom: 10,
 
-                    }}
+                        }}
                         onDayPress={handleDateSelect}
                         markedDates={{
                             [formData.selectedDate]: {
@@ -76,38 +78,27 @@ const BookingOnboarding = () => {
                         setValue={setSelectedTimeSlot}
                         setItems={setTimeSlots}
                         placeholder="Select a time slot"
-                        containerStyle={{ marginTop: 10 }}
-                        style={{ backgroundColor: "#fafafa" }}
-                        dropDownStyle={{ backgroundColor: "#fafafa" }}
+                        containerStyle={{marginTop: 10, width: wp(78),}}
+                        style={{backgroundColor: "#fafafa", width: wp(78), marginBottom: 30,}}
+                        dropDownStyle={{backgroundColor: "#fafafa"}}
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder="First Name"
-                        value={formData.firstName}
-                        onChangeText={(text) => setFormData({...formData, firstName: text})}
+                        placeholder="Select Expert"
+                        value={formData.expert}
+                        onChangeText={(text) => setFormData({...formData, expert: text})}
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder="Catogory"
-                        value={formData.lastName}
-                        onChangeText={(text) => setFormData({...formData, lastName: text})}
+                        placeholder="Status"
+                        value={formData.status}
+                        onChangeText={(text) => setFormData({...formData, status: text})}
                     />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Gender"
-                        value={formData.lastName}
-                        onChangeText={(text) => setFormData({...formData, lastName: text})}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Gender"
-                        value={formData.lastName}
-                        onChangeText={(text) => setFormData({...formData, lastName: text})}
-                    />
+
                 </>
             ),
             buttonLabel: 'Next',
-            validation: () => formData.firstName && formData.lastName && formData.selectedDate,
+            validation: () => formData.status && formData.expert && formData.selectedDate && selectedTimeSlot,
         },
         {
             title: 'Payment',
@@ -212,12 +203,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     input: {
-        width: '80%',
-        height: 40,
+        width: wp(78),
+        height: hp(6),
         borderColor: '#ccc',
         borderWidth: 1,
-        borderRadius: 8,
-        marginBottom: 10,
+        borderRadius: 15,
+        marginBottom: 30,
         paddingHorizontal: 10,
         backgroundColor: '#F9F9F9',
     },
@@ -242,7 +233,7 @@ const styles = StyleSheet.create({
         bottom: 30,
 
     },
-    label: { fontSize: 16, marginBottom: 10 },
+    label: {fontSize: 16, marginBottom: 10},
     dropdown: {
         width: 200,
         borderWidth: 1,
