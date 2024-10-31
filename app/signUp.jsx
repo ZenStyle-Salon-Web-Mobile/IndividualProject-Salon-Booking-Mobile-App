@@ -10,19 +10,50 @@ import BackButton from "../components/BackButton";
 import {hp, wp} from "../helpers/common";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import instance from "../services/AxiosOrder/AxiosOrder";
 
 const SignUp = () => {
   const router = useRouter();
-  const nameRef = useRef("");
-  const genderRef = useRef("");
-  const emailRef = useRef("");
-  const phoneNolRef = useRef("");
-  const passwordRef = useRef("");
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNo, setPhoneNo] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = () => {
-    router.push('login')
-  }
+  const onSubmit = async () => {
+    setLoading(true); // Start loading
+    try {
+      // Send a POST request
+      const response = await instance.post('/api/v1/customer/register', {
+        customerName: name,
+        gender: gender,
+        email: email,
+        phoneNumber: phoneNo,
+        password: password,
+      });
+
+      // Handle success (redirect to login)
+      console.log('User registered:', response.data);
+
+      // Clear the fields
+      setName('');
+      setGender('');
+      setEmail('');
+      setPhoneNo('');
+      setPassword('');
+
+      router.push('login');
+
+    } catch (error) {
+      console.error('Error registering user:', error);
+      // Handle error (display a message, etc.)
+    } finally {
+      setLoading(false); // Stop loading
+    }
+
+  };
+
 
   return (
       <ScreenWrapper>
@@ -43,31 +74,31 @@ const SignUp = () => {
             <Input
                 icon={<Icon name="user" size={26} strokeWidth={1.6}/>}
                 placeholder={'Enter your name'}
-                onChangeText={value => nameRef.current = value}
+                onChangeText={setName}
             />
             <Input
                 icon={<Icon name="heart" size={26} strokeWidth={1.6}/>}
                 placeholder={'Enter your Gender'}
                 sec
-                onChangeText={value => genderRef.current = value}
+                onChangeText={setGender}
             />
             <Input
                 icon={<Icon name="mail" size={26} strokeWidth={1.6}/>}
                 placeholder={'Enter your E-mail'}
                 sec
-                onChangeText={value => passwordRef.current = value}
+                onChangeText={setEmail}
             />
             <Input
                 icon={<Icon name="send" size={26} strokeWidth={1.6}/>}
                 placeholder={'Enter your phone number'}
                 sec
-                onChangeText={value => passwordRef.current = value}
+                onChangeText={setPhoneNo}
             />
             <Input
                 icon={<Icon name="lock" size={26} strokeWidth={1.6}/>}
                 placeholder={'Enter your password'}
                 sec
-                onChangeText={value => passwordRef.current = value}
+                onChangeText={setPassword}
             />
 
             {/*  button  */}
