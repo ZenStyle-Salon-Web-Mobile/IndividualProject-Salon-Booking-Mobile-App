@@ -15,7 +15,6 @@ import {themes} from "../../constants/themes";
 import {hp, wp} from "../../helpers/common";
 import {FontAwesome} from "@expo/vector-icons";
 import * as Progress from 'react-native-progress';
-import ScreenWrapper from "../../components/ScreenWrapper";
 import {StatusBar} from "expo-status-bar";
 
 const reviewsData = [
@@ -58,7 +57,19 @@ const reviewsData = [
 
 const Ratings = () => {
 
+    const [liveData, setLiveData] = useState('Loading...');
     const [theme, setTheme] = useState(Appearance.getColorScheme());
+
+    useEffect(() => {
+        // Simulate fetching live data every second
+        const intervalId = setInterval(() => {
+            const newData = `Current Time: ${new Date().toLocaleTimeString()}`;
+            setLiveData(newData);
+        }, 1000);
+
+        // Cleanup interval on component unmount
+        return () => clearInterval(intervalId);
+    }, []);
 
     // Listen for theme changes
     useEffect(() => {
@@ -166,7 +177,8 @@ const Ratings = () => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.content}>
                         <View style={styles.modalCard}>
-                            <Text>Add Ratings</Text>
+                            <Text style={styles.liveText}>Add Ratings</Text>
+                            <Text style={[styles.liveText,{fontSize: hp(1.5)}]}>{liveData}</Text>
                             <View style={styles.startContainer}>
                                 {Array(5).fill().map((_, index) => (
                                     <Pressable key={index} onPress={() => handleStarPress(index + 1)}>
@@ -197,7 +209,6 @@ const Ratings = () => {
                         </View>
                     </View>
                 </TouchableWithoutFeedback>
-
             </Modal>
 
             {/* Reviews List */}
@@ -331,6 +342,10 @@ const styles = StyleSheet.create({
     },
     review: {
         marginTop: 5,
+    },
+    liveText: {
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 });
 
