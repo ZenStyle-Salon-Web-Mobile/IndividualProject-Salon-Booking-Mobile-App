@@ -8,11 +8,13 @@ import Settings from "./settings";
 import {themes} from "../../constants/themes";
 import {Ionicons} from "@expo/vector-icons";
 import {Colors} from "react-native/Libraries/NewAppScreen";
+import customDrawerContent from "../../components/CustomDrawerContent";
 
 const _layout = () => {
   return (
       <GestureHandlerRootView style={{ flex: 1 }}>
           <Drawer
+              drawerContent={customDrawerContent}
               screenOptions={{
                   swipeEnabled: false,
                   icon:{backgroundColor:'red'},
