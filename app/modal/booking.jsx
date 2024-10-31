@@ -49,9 +49,6 @@ const BookingOnboarding = () => {
     const [formData, setFormData] = useState({
         status: '',
         expert: '',
-        cardNumber: '',
-        expiryDate: '',
-        cvv: '',
         name:'',
         gender:'',
         email:'',
@@ -74,7 +71,6 @@ const BookingOnboarding = () => {
                             borderRadius: '10',
                             width: wp(78),
                             marginBottom: 10,
-
                         }}
                         onDayPress={handleDateSelect}
                         markedDates={{
@@ -169,7 +165,6 @@ const BookingOnboarding = () => {
                                 onChangeText={value => handleInputChange('cvc', value)}
                             />
                         </View>
-
                         <TextInput
                             placeholderTextColor={'gray'}
                             style={[styles.inputPayment, focusedInput === 'billingAddress' && styles.focusedBorder]}
@@ -226,14 +221,56 @@ const BookingOnboarding = () => {
                 </>
             ),
             buttonLabel: 'Next',
-            validation: () => formData.cardNumber && formData.expiryDate && formData.cvv && formData.name && formData.gender && formData.email && formData.phone,
+            validation: () => cardDetails.cardNumber && cardDetails.expiryDate && cardDetails.cvc && cardDetails.billingAddress && cardDetails.zipCode && formData.gender && formData.email && formData.phone,
         },
         {
             title: 'Confirmation',
             content: (
                 <>
-                    <Text style={styles.confirmationText}>Thank you for your booking!</Text>
-                    <Text style={styles.orderId}>Order ID: #123456</Text>
+                    <View style={styles.orderCont}>
+                        <Text style={styles.confirmationText}>Adding Details</Text>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Order ID : </Text>
+                            <Text style={styles.orderId}>#123456</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Name : </Text>
+                            <Text style={styles.orderId}>{formData.name}</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Gender : </Text>
+                            <Text style={styles.orderId}>{formData.gender}</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>E-mail : </Text>
+                            <Text style={styles.orderId}>{formData.email}</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Date : </Text>
+                            <Text style={styles.orderId}>{formData.selectedDate}</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Time : </Text>
+                            <Text style={styles.orderId}>{selectedTimeSlot}</Text>
+                        </View>
+                        <Text style={styles.confirmationText}>Payment Info</Text>
+
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Status: </Text>
+                            <Text style={styles.orderId}>{formData.status}</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between'}}>
+                            <Text style={styles.orderId}>Expert: </Text>
+                            <Text style={styles.orderId}>{formData.expert}</Text>
+                        </View>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between',paddingTop:100}}>
+                            <Text style={styles.confirmationText}>Payment: </Text>
+                            <Text style={styles.confirmationText}>500/=</Text>
+                        </View>
+
+                        <Text style={[styles.confirmationText, {position:'absolute', bottom:0, textAlign:'center',width: '100%'}]}>Thank you for your booking!</Text>
+
+                    </View>
                 </>
             ),
             buttonLabel: 'Finish',
@@ -311,15 +348,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#F9F9F9',
     },
     confirmationText: {
-        fontSize: 16,
-        color: '#333333',
+        fontSize: 20,
+        color: themes.colors.dark,
         textAlign: 'center',
-        marginBottom: 10,
+        fontWeight:themes.fonts.bold,
+        marginVertical: 10,
     },
     orderId: {
+        paddingBottom:5,
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#1E90FF',
+        color: themes.colors.primary,
         textAlign: 'center',
     },
     buttonContainer: {
@@ -381,6 +420,13 @@ const styles = StyleSheet.create({
         textAlign:'center',
        fontWeight:themes.fonts.semibold,
         fontSize:hp(2.5)
+    },
+    orderCont:{
+        backgroundColor:'white',
+        width:wp(85),
+        height:hp(65),
+        borderRadius:themes.radius.md,
+        padding:10,
     },
 });
 
