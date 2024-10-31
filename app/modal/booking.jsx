@@ -263,13 +263,11 @@ const BookingOnboarding = () => {
                             <Text style={styles.orderId}>Expert: </Text>
                             <Text style={styles.orderId}>{formData.expert}</Text>
                         </View>
-                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between',paddingTop:100}}>
-                            <Text style={styles.confirmationText}>Payment: </Text>
-                            <Text style={styles.confirmationText}>500/=</Text>
+                        <View style={{display:'flex', flexDirection:'row',  justifyContent:'space-between',paddingTop:100, alignItems:'center'}}>
+                            <Text style={[styles.confirmationText,{fontSize: hp(3)}]}>Paid: </Text>
+                            <Text style={[styles.orderId,{fontSize: hp(5), fontStyle:'italic'}]}>Rs.500/=</Text>
                         </View>
-
                         <Text style={[styles.confirmationText, {position:'absolute', bottom:0, textAlign:'center',width: '100%'}]}>Thank you for your booking!</Text>
-
                     </View>
                 </>
             ),
