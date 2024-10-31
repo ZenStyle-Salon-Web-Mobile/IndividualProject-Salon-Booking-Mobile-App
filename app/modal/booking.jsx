@@ -185,6 +185,12 @@ const BookingOnboarding = () => {
                             onBlur={() => setFocusedInput(null)}
                             onChangeText={value => handleInputChange('zipCode', value)}
                         />
+                        <Text style={{
+                            fontSize:hp(1.8),
+                            color:'red',
+                            fontWeight:themes.fonts.bold,
+                            textAlign:'center'
+                        }}>WARNING BOOKING CHARGES Rs.500/=</Text>
                         <TouchableOpacity style={styles.confirmButton}>
                             <Text style={styles.confirmButtonText}>Confirm Payment</Text>
                         </TouchableOpacity>

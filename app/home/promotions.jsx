@@ -72,15 +72,15 @@ const Promotions = () => {
             showsHorizontalScrollIndicator={false}
             style={styles.container}>
 
-            <Banner text={"SALE 75% OFF"} backgroundColor={themes.colors.darkLight} />
+            <Banner text={"PROMO 75% OFF"} backgroundColor={themes.colors.darkLight} />
             {renderBannerCarousel(sale.firstPromo)}
 
 
-            <Banner text={"SALE 50% OFF"} backgroundColor={themes.colors.primary} />
+            <Banner text={"PROMO 50% OFF"} backgroundColor={themes.colors.primary} />
             {renderBannerCarousel(sale.SecPromo)}
 
 
-            <Banner text={"SALE 25% OFF"} backgroundColor={themes.colors.dark} textColor={themes.colors.darkLight} />
+            <Banner text={"PROMO 25% OFF"} backgroundColor={themes.colors.dark} textColor={themes.colors.darkLight} />
             {renderBannerCarousel(sale.thirdPromo)}
         </ScrollView>
     );

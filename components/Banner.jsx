@@ -6,7 +6,7 @@ import {themes} from "../constants/themes";
 // Reusable Banner Component
 const Banner = ({ backgroundColor, text, textColor }) => {
     return (
-        <View style={[styles.bannerDesign, { backgroundColor }]}>
+        <View style={[styles.bannerDesign, { backgroundColor}]}>
             <Text style={[styles.bannerText, { color: textColor }]}>{text}</Text>
         </View>
     );
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     bannerText: {
         // color:theme.colors.textLight,
-        fontSize:hp(5),
+        fontSize:hp(4),
         textAlign:"center",
         fontWeight:themes.fonts.bold,
         letterSpacing: 7,
