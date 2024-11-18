@@ -104,7 +104,7 @@ const SignUp = () => {
             {/*  button  */}
             <Button title={'Sign up'} loading={loading} onPress={onSubmit}/>
           </View>
-          {/*  footer 12345678 */}
+          {/*  footer 123456789 */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>
               Already have an account
