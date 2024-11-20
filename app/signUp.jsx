@@ -106,7 +106,7 @@ const SignUp = () => {
           </View>
           {/*  footer */}
           {/*  footer 12345678910*/}
-          {/*  foot*/}
+          {/*  foo */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>
               Already have an account
