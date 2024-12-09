@@ -10,19 +10,49 @@ import BackButton from "../components/BackButton";
 import {hp, wp} from "../helpers/common";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import instance from "../services/AxiosOrder/AxiosOrder";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Login = () => {
     const router = useRouter();
-    const emailRef = useRef("");
-    const passwordRef = useRef("");
     const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const onSubmit = async () => {
-        if(!emailRef.current || !passwordRef.current){
-            Alert.alert("Sign Up", "please fill all the fields!");
+
+        console.log('Email:', email);
+        console.log('Password:', password);
+
+        if (!email || !password) {
+            Alert.alert('Validation Error', 'Please fill in both email and password.');
+            return;
         }
-        router.push("/home/homepage")
-    }
+
+        try {
+            const response = await instance.post('/salon-app/api/v1/customer/login', {
+                email: email,
+                password: password,
+            });
+
+            // Assuming the backend returns the token in the response
+            const  token  = response.data;
+            console.log(response.data)
+
+            if (token) {
+                // Save the token in AsyncStorage
+                await AsyncStorage.setItem('userToken', token);
+                Alert.alert('Login Successful', 'Token saved locally.');
+                router.push("/home/homepage")
+            } else {
+                Alert.alert('Login Failed', 'Token not received.');
+            }
+        } catch (error) {
+            console.error(error);
+            Alert.alert('Login Error', 'Invalid credentials or server issue.');
+        }
+    };
 
 
 
@@ -45,13 +75,17 @@ const Login = () => {
                     <Input
                         icon={<Icon name="mail" size={26} strokeWidth={1.6}/>}
                         placeholder={'Enter your email'}
-                        onChangeText={value => emailRef.current = value}
+                        value={email}
+                        onChangeText={text => setEmail(text)}
+
                     />
                     <Input
                         icon={<Icon name="lock" size={26} strokeWidth={1.6}/>}
                         placeholder={'Enter your password'}
+                        value={password}
+                        onChangeText={text => setPassword(text)}
                         sec
-                        onChangeText={value => passwordRef.current = value}
+
                     />
                     <Pressable onPress={() => router.push('forgotPassword')}>
                         <Text style={styles.forgotPassword}>
