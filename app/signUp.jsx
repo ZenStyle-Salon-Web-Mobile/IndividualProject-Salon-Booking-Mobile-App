@@ -25,7 +25,7 @@ const SignUp = () => {
     setLoading(true); // Start loading
     try {
       // Send a POST request
-      const response = await instance.post('/api/v1/customer/register', {
+      const response = await instance.post('/salon-app/api/v1/customer/register', {
         customerName: name,
         gender: gender,
         email: email,
