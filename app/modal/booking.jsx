@@ -4,6 +4,7 @@ import {Calendar} from 'react-native-calendars';
 import {hp, wp} from "../../helpers/common";
 import {themes} from "../../constants/themes";
 import DropDownPicker from "react-native-dropdown-picker";
+import instance from "../../services/AxiosOrder/AxiosOrder";
 
 const BookingOnboarding = () => {
 
@@ -282,17 +283,17 @@ const BookingOnboarding = () => {
         },
     ];
 
-    const handleNext = () => {
-        if (sections[currentStep].validation()) {
-            if (currentStep < sections.length - 1) {
-                setCurrentStep(currentStep + 1);
-            } else {
-                Alert.alert('Booking Complete', 'Thank you for your booking!');
-            }
-        } else {
-            Alert.alert('Incomplete Information', 'Please fill in all required fields.');
-        }
-    };
+    // const handleNext = () => {
+    //     if (sections[currentStep].validation()) {
+    //         if (currentStep < sections.length - 1) {
+    //             setCurrentStep(currentStep + 1);
+    //         } else {
+    //             Alert.alert('Booking Complete', 'Thank you for your booking!');
+    //         }
+    //     } else {
+    //         Alert.alert('Incomplete Information', 'Please fill in all required fields.');
+    //     }
+    // };
 
     const handleBack = () => {
         if (currentStep > 0) {
@@ -301,6 +302,45 @@ const BookingOnboarding = () => {
     };
 
     const {title, content, buttonLabel,} = sections[currentStep];
+
+    const handleNext = async () => {
+        if (sections[currentStep].validation()) {
+            if (currentStep < sections.length - 1) {
+                setCurrentStep(currentStep + 1);
+            } else {
+                // Data to be sent via POST request
+                const bookingData = {
+                    name: formData.name,
+                    gender: formData.gender,
+                    email: formData.email,
+                    phone: formData.phone,
+                    status: formData.status,
+                    expert: formData.expert,
+                    selectedDate: formData.selectedDate,
+                    timeSlot: selectedTimeSlot,
+                    cardDetails: {
+                        cardNumber: cardDetails.cardNumber,
+                        expiryDate: cardDetails.expiryDate,
+                        cvc: cardDetails.cvc,
+                        billingAddress: cardDetails.billingAddress,
+                        zipCode: cardDetails.zipCode,
+                    },
+                };
+
+                try {
+                    // Make the POST request using Axios
+                    const response = await instance.post('/salon-app/api/v1/appointment', bookingData); // Replace 'bookings' with your actual endpoint
+                    console.log(response.data);
+                    Alert.alert('Booking Complete', 'Thank you for your booking!');
+                } catch (error) {
+                    console.error('Error during booking:', error);
+                    Alert.alert('Booking Failed', 'There was an error completing your booking.');
+                }
+            }
+        } else {
+            Alert.alert('Incomplete Information', 'Please fill in all required fields.');
+        }
+    };
 
     return (
         <View style={[styles.section]}>
