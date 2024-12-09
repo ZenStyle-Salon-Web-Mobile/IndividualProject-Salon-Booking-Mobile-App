@@ -1,5 +1,16 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {StyleSheet, ScrollView, View, Dimensions, Pressable, Linking, Text, TextInput, Button} from 'react-native';
+import {
+    StyleSheet,
+    ScrollView,
+    View,
+    Dimensions,
+    Pressable,
+    Linking,
+    Text,
+    TextInput,
+    Button,
+    Alert
+} from 'react-native';
 import Animated, {useAnimatedStyle, useSharedValue, withDelay, withTiming} from "react-native-reanimated";
 import {Image} from "expo-image";
 import {themes} from "../../constants/themes";
@@ -14,6 +25,7 @@ import whatsappLogo from '../../assets/images/social-logos/icons8-whatsapp-480.p
 import {hp} from "../../helpers/common";
 import {Entypo, FontAwesome, Fontisto, MaterialIcons, SimpleLineIcons} from "@expo/vector-icons";
 import Svg, {Defs, LinearGradient, Rect, Stop} from "react-native-svg";
+import instance from "../../services/AxiosOrder/AxiosOrder";
 
 
 const {width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -44,6 +56,62 @@ const Contact = () => {
     const handleOpen = () => {
         bottomSheetRef.current?.expand();
     };
+
+    const handleSubmit = async () => {
+
+        const [name, setName] = useState('');
+        const [email, setEmail] = useState('');
+        const [contactNumber, setContactNumber] = useState('');
+        const [subject, setSubject] = useState('');
+
+
+        // Validate inputs
+        if (!name || !email || !contactNumber || !subject) {
+            Alert.alert('Error', 'Please fill all the fields');
+            return;
+        }
+
+        try {
+            // Get the token from AsyncStorage
+            const token = await AsyncStorage.getItem('authToken');
+
+            if (!token) {
+                Alert.alert('Error', 'Token not found');
+                return;
+            }
+
+            // Axios POST request
+            const response = await instance.post(
+                '/salon-app/api/v1/contact',  // Replace with your API endpoint
+                {
+                    name,
+                    email,
+                    contactNumber,
+                    subject,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,  // Pass the token in headers
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                Alert.alert('Success', 'Your message has been sent');
+                // Optionally clear the form fields
+                setName('');
+                setEmail('');
+                setContactNumber('');
+                setSubject('');
+            } else {
+                Alert.alert('Error', 'Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error(error);
+            Alert.alert('Error', 'Failed to submit. Please try again later.');
+        }
+    };
+
 
 
     return (
@@ -167,9 +235,11 @@ const Contact = () => {
                     />
 
                     {/* Submit Button */}
-                    <Pressable style={{ padding: 15,
+                    <Pressable
+                        style={{ padding: 15,
                         backgroundColor: '#1a000e',
-                        borderRadius: 10,}} onPress={() => console.log('Form Submitted')}>
+                        borderRadius: 10,}}
+                        onPress={handleSubmit}>
                         <Text style={{textAlign: "center",color:themes.colors.darkLight, fontWeight:themes.fonts.bold, fontSize: hp(2) }} >
                             Submit
                         </Text>
